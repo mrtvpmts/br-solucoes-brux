@@ -88,17 +88,23 @@ export default function About() {
                             <motion.div
                                 key={activeSlide}
                                 drag="x"
+                                dragDirectionLock
                                 dragConstraints={{ left: 0, right: 0 }}
+                                dragElastic={0.2}
                                 onDragEnd={(e, { offset, velocity }) => {
+                                    const swipeThreshold = 30
+                                    const velocityThreshold = 500
                                     const swipe = offset.x
-                                    if (swipe < -50) nextSlide()
-                                    else if (swipe > 50) prevSlide()
+                                    const vel = velocity.x
+
+                                    if (swipe < -swipeThreshold || vel < -velocityThreshold) nextSlide()
+                                    else if (swipe > swipeThreshold || vel > velocityThreshold) prevSlide()
                                 }}
                                 initial={{ opacity: 0, x: 100, filter: 'blur(20px)' }}
                                 animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
                                 exit={{ opacity: 0, x: -100, filter: 'blur(20px)' }}
-                                transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-                                className="space-y-6 md:space-y-10 touch-none cursor-grab active:cursor-grabbing"
+                                transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+                                className="space-y-6 md:space-y-10 touch-none cursor-grab active:cursor-grabbing w-full h-full flex flex-col items-center justify-center py-4"
                             >
                                 <div className="space-y-3 md:space-y-4">
                                     <span className="text-brand-green font-black uppercase tracking-[0.5em] md:tracking-[0.8em] text-[10px] md:text-[12px] drop-shadow-[0_0_10px_rgba(57,255,20,0.5)]">

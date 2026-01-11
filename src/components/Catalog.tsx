@@ -61,16 +61,30 @@ export default function Catalog() {
     return (
         <section id="catalog" className="relative py-40 bg-[#080a09]">
             <div className="max-w-7xl mx-auto px-8 space-y-32">
-                <div className="text-center space-y-6">
-                    <h2 className="text-impact !text-4xl md:!text-7xl">
-                        Catálogo <span className="text-neon">Industrial</span>
-                    </h2>
-                    <div className="h-1 w-32 bg-brand-green/20 mx-auto rounded-full" />
+                <div className="space-y-6 mb-12">
+                    <div className="text-center space-y-6">
+                        <h2 className="text-impact !text-4xl md:!text-7xl">
+                            Catálogo <span className="text-neon">Industrial</span>
+                        </h2>
+                        <div className="h-1 w-32 bg-brand-green/20 mx-auto rounded-full" />
+                    </div>
+
+                    {/* Mobile Swipe Hint */}
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 0.4 }}
+                        className="text-[10px] text-brand-green font-black uppercase tracking-[0.4em] text-center md:hidden"
+                    >
+                        Arraste para o lado para ver mais
+                    </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+                {/* Grid on Desktop, Horizontal Scroll on Mobile */}
+                <div className="flex md:grid md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 overflow-x-auto md:overflow-visible pb-12 md:pb-0 snap-x snap-mandatory no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
                     {products.map((p, i) => (
-                        <ProductCard key={i} {...p} />
+                        <div key={i} className="min-w-[85vw] md:min-w-0 snap-center">
+                            <ProductCard {...p} />
+                        </div>
                     ))}
                 </div>
             </div>
