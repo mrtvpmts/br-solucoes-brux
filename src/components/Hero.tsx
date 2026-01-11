@@ -56,8 +56,8 @@ export default function Hero() {
                         transition={{ duration: 1.5, delay: 0.8 }}
                         className="max-w-4xl mx-auto text-white/50 text-xl md:text-3xl font-light tracking-[0.15em] uppercase leading-tight"
                     >
-                        Comunicação clara, neutra e inclusiva para atender demandas de qualquer volume.<br />
-                        Autoridade e eficiência em ambientes profissionais.
+                        Soluções químicas de alto impacto para operações que exigem rigor técnico e eficiência absoluta.<br />
+                        Autoridade e performance superior em ambientes profissionais.
                     </motion.p>
                 </div>
 
