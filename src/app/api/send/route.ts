@@ -5,7 +5,7 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
 
 export async function POST(request: Request) {
     try {
-        const { name, company, email, whatsapp } = await request.json();
+        const { name, company, email, whatsapp, segment, message } = await request.json();
 
         if (!resend) {
             return NextResponse.json({ error: 'Resend API key not configured' }, { status: 500 });
@@ -21,7 +21,9 @@ export async function POST(request: Request) {
           <p><strong>Nome:</strong> ${name}</p>
           <p><strong>Empresa:</strong> ${company}</p>
           <p><strong>E-mail:</strong> ${email}</p>
-          <p><strong>WhatsApp:</strong> ${whatsapp}</p>
+          <p><strong>WhatsApp:</strong> ${whatsapp || 'Não informado'}</p>
+          <p><strong>Segmento:</strong> ${segment}</p>
+          <p><strong>Mensagem/Demanda:</strong> ${message || 'Sem mensagem adicional'}</p>
           <hr />
           <p style="font-size: 12px; color: #666;">Enviado via BRUX Landing Page - Stitch Elite</p>
         </div>
