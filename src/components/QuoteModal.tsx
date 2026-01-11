@@ -173,7 +173,7 @@ export default function QuoteModal() {
                                         {isSubmitting ? (
                                             <>Processando <Loader2 className="w-5 h-5 animate-spin" /></>
                                         ) : (
-                                            <>Enviar Solicitação <Send size={18} /></>
+                                            <>Falar com Especialista <Send size={18} /></>
                                         )}
                                     </button>
                                 </div>

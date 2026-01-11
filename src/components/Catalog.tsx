@@ -45,7 +45,7 @@ function ProductCard({ title, subtitle, image }: ProductCardProps) {
                 onClick={() => setOpen(true)}
                 className="btn-stitch w-full py-5 text-lg"
             >
-                Solicitar Orçamento
+                Falar com Especialista
             </button>
         </motion.div>
     )
@@ -64,7 +64,7 @@ export default function Catalog() {
                 <div className="space-y-6 mb-12">
                     <div className="text-center space-y-6">
                         <h2 className="text-impact !text-4xl md:!text-7xl">
-                            Catálogo <span className="text-neon">Industrial</span>
+                            Soluções Químicas <span className="text-neon">para Limpeza</span>
                         </h2>
                         <div className="h-1 w-32 bg-brand-green/20 mx-auto rounded-full" />
                     </div>

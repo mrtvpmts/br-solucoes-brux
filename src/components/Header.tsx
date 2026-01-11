@@ -21,7 +21,7 @@ export default function Header() {
     return (
         <header className="fixed top-0 left-0 w-full z-50 bg-[#060807]/80 backdrop-blur-md border-b border-white/5">
             <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                <Link href="#home">
+                <Link href="#home" className="flex items-center gap-1 group">
                     <Image
                         src="/textures/logo-brux.png"
                         alt="BRUX"
@@ -29,6 +29,7 @@ export default function Header() {
                         height={45}
                         className="brightness-125 saturate-150"
                     />
+                    <span className="text-brand-green font-black text-[8px] self-start mt-2 group-hover:drop-shadow-[0_0_8px_#39FF14] transition-all">®</span>
                 </Link>
 
                 {/* Desktop Nav */}
@@ -57,7 +58,7 @@ export default function Header() {
                         onClick={() => setOpen(true)}
                         className="btn-stitch btn-stitch-primary py-3 px-6 text-[10px] scale-100"
                     >
-                        Solicitar Orçamento
+                        Falar com Especialista
                     </button>
                 </div>
             </div>

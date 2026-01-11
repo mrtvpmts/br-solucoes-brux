@@ -60,13 +60,16 @@ export default function Footer() {
             {/* FINAL CONTACT PANEL */}
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white/[0.03] border border-white/10 rounded-[64px] p-10 md:p-20 relative z-10 overflow-hidden shadow-2xl">
                 <div className="space-y-12">
-                    <Image
-                        src="/textures/logo-brux.png"
-                        alt="BRUX SOLUTIONS"
-                        width={240}
-                        height={90}
-                        className="brightness-125"
-                    />
+                    <div className="flex items-center gap-1 group">
+                        <Image
+                            src="/textures/logo-brux.png"
+                            alt="BRUX SOLUTIONS"
+                            width={240}
+                            height={90}
+                            className="brightness-125"
+                        />
+                        <span className="text-brand-green font-black text-xl self-start mt-4 group-hover:drop-shadow-[0_0_12px_#39FF14] transition-all">®</span>
+                    </div>
 
                     <div className="space-y-10">
                         <div className="flex items-center gap-6 group">
@@ -84,7 +87,7 @@ export default function Footer() {
                                 <Phone size={24} />
                             </div>
                             <div className="space-y-1">
-                                <span className="block text-[8px] font-black text-brand-green uppercase tracking-[0.4em]">Atendimento B2B</span>
+                                <span className="block text-[8px] font-black text-brand-green uppercase tracking-[0.4em]">Atendimento e WhatsApp</span>
                                 <span className="text-white text-xl font-medium tracking-tight">(11) 2776-8000</span>
                             </div>
                         </div>
@@ -120,9 +123,14 @@ export default function Footer() {
             </div>
 
             <div className="max-w-7xl mx-auto pt-24 border-t border-white/5 mt-32 flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] text-white/20 font-black uppercase tracking-[0.6em]">
-                <div className="flex items-center gap-4">
-                    <span className="text-brand-green/30">●</span>
-                    <span>BRUX SOLUÇÕES EM LIMPEZA PROFISSIONAL</span>
+                <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+                    <div className="flex items-center gap-4">
+                        <span className="text-brand-green/30">●</span>
+                        <span>BRUX ® SOLUÇÕES EM LIMPEZA PROFISSIONAL</span>
+                    </div>
+                    <span className="text-[8px] opacity-40 lowercase tracking-[0.2em] md:ml-4">
+                        BRUX ® é uma marca em processo de registro junto ao INPI. Todos os direitos reservados.
+                    </span>
                 </div>
                 <div className="flex gap-12">
                     <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>

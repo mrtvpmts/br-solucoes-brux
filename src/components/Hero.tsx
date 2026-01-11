@@ -34,7 +34,7 @@ export default function Hero() {
                         className="flex items-center gap-3 justify-center text-[10px] font-black uppercase tracking-[0.5em] text-brand-green/60 mb-4"
                     >
                         <div className="w-8 h-[1px] bg-brand-green/40" />
-                        BRUX SOLUÇÕES EM LIMPEZA PROFISSIONAL
+                        BRUX ® SOLUÇÕES EM LIMPEZA PROFISSIONAL
                         <div className="w-8 h-[1px] bg-brand-green/40" />
                     </motion.div>
 
@@ -44,9 +44,9 @@ export default function Hero() {
                         transition={{ duration: 1, delay: 0.3 }}
                         className="text-impact"
                     >
-                        Sua Operação com<br />
+                        A Inteligência Química<br />
                         <span className="text-neon block mt-8 drop-shadow-[0_0_30px_rgba(57,255,20,0.4)]">
-                            Performance Máxima
+                            por trás da limpeza impecável
                         </span>
                     </motion.h1>
 
@@ -56,8 +56,7 @@ export default function Hero() {
                         transition={{ duration: 1.5, delay: 0.8 }}
                         className="max-w-4xl mx-auto text-white/50 text-xl md:text-3xl font-light tracking-[0.15em] uppercase leading-tight"
                     >
-                        Soluções químicas de alto impacto para operações que exigem rigor técnico e eficiência absoluta.<br />
-                        Autoridade e performance superior em ambientes profissionais.
+                        Soluções Químicas para Limpeza
                     </motion.p>
                 </div>
 
@@ -72,18 +71,18 @@ export default function Hero() {
                         onClick={() => setOpen(true)}
                         className="btn-stitch btn-stitch-primary py-7 px-16 text-xl scale-110 shadow-[0_20px_50px_rgba(57,255,20,0.2)]"
                     >
-                        Solicitar Orçamento
+                        Ver Catálogo Completo
                     </button>
 
                     <button
-                        onClick={() => window.open('https://wa.me/551127768000?text=Olá, gostaria de informações sobre soluções de limpeza profissional.', '_blank')}
+                        onClick={() => window.open('https://wa.me/551127768000?text=Olá, gostaria de falar com um especialista sobre soluções de limpeza profissional.', '_blank')}
                         className="btn-stitch py-7 px-14 text-xl shadow-xl group border-white/10 hover:border-brand-green"
                     >
                         <span className="flex items-center gap-4">
                             <svg className="text-brand-green" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.891 11.891-11.891 3.181 0 6.167 1.24 8.407 3.481 2.242 2.242 3.483 5.23 3.481 8.409 0 6.556-5.332 11.891-11.891 11.891-2.025 0-4.004-.515-5.76-1.493l-6.227 1.713zm5.835-4.267c1.54 1.014 3.09 1.541 4.935 1.541 5.421 0 9.833-4.412 9.833-9.832.001-2.628-1.026-5.099-2.895-6.968-1.867-1.868-4.341-2.893-6.969-2.893-5.421 0-9.833-4.412-9.833 9.832 0 1.916.529 3.475 1.524 4.92l-1.002 3.658 3.731-.99c.003-.001.004-.001.004-.001zm11.36-6.143c-.471-.237-2.78-1.371-3.213-1.53-.433-.158-.75-.237-1.066.237-.315.474-1.22 1.53-1.496 1.846-.275.315-.552.355-1.022.118-.471-.237-1.989-.733-3.788-2.336-1.4-.1.248-2.285 1.248-3.397.301-.113.4-.188.599-.394.2-.206.315-.474.158-.79-.158-.315-1.066-2.568-1.464-3.525-.389-.929-.785-.803-1.066-.817-.272-.014-.582-.016-.893-.016s-.817.118-1.245.592c-.427.474-1.63 1.593-1.63 3.882s1.669 4.498 1.905 4.815c.236.315 3.286 5.018 7.961 7.042 1.112.482 1.98.77 2.657.985 1.118.354 2.136.305 2.94.184.897-.133 2.78-.315-2.78-1.137s-.158-1.503-.158-1.897c0-.158.079-.237.237-.315z" />
                             </svg>
-                            Falar Conosco
+                            Falar com Especialista
                         </span>
                     </button>
                 </motion.div>
