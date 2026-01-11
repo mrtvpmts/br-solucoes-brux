@@ -68,14 +68,14 @@ export default function About() {
                 {/* MASSIVE REACTIVE CAROUSEL FRAME */}
                 <motion.div
                     style={{ scale, opacity }}
-                    className="relative w-full border-x border-white/5 bg-white/[0.01] backdrop-blur-3xl rounded-[40px] md:rounded-[100px] p-6 md:p-32 overflow-hidden group shadow-[0_0_100px_rgba(0,0,0,0.5)]"
+                    className="relative w-full border-x border-white/5 bg-white/[0.01] backdrop-blur-3xl rounded-[40px] md:rounded-[100px] p-6 md:py-20 md:px-32 overflow-hidden group shadow-[0_0_100px_rgba(0,0,0,0.5)]"
                 >
                     {/* Animated Heavy Brackets (STITCH LOGO DNA) */}
-                    <div className="absolute top-0 left-0 w-24 md:w-48 h-24 md:h-48 border-t-4 border-l-4 border-brand-green/40 rounded-tl-[40px] md:rounded-tl-[100px] group-hover:border-brand-green transition-all duration-1000" />
-                    <div className="absolute bottom-0 right-0 w-24 md:w-48 h-24 md:h-48 border-b-4 border-r-4 border-brand-green/40 rounded-br-[40px] md:rounded-br-[100px] group-hover:border-brand-green transition-all duration-1000" />
+                    <div className="absolute top-0 left-0 w-24 md:w-32 h-24 md:h-32 border-t-4 border-l-4 border-brand-green/40 rounded-tl-[40px] md:rounded-tl-[100px] group-hover:border-brand-green transition-all duration-1000" />
+                    <div className="absolute bottom-0 right-0 w-24 md:w-32 h-24 md:h-32 border-b-4 border-r-4 border-brand-green/40 rounded-br-[40px] md:rounded-br-[100px] group-hover:border-brand-green transition-all duration-1000" />
 
                     {/* TOP HUD NAV */}
-                    <div className="w-full flex justify-between mb-8 md:mb-16 opacity-30 text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-brand-green">
+                    <div className="w-full flex justify-between mb-6 md:mb-12 opacity-30 text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-brand-green">
                         <div className="flex items-center gap-2 md:gap-4">
                             <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brand-green animate-ping" />
                             <span>Sector: About_Brux_v.Elite</span>
@@ -83,7 +83,7 @@ export default function About() {
                         <span>Seq: 0{activeSlide + 1}/0{slides.length}</span>
                     </div>
 
-                    <div className="relative min-h-[300px] md:min-h-[400px] flex flex-col items-center text-center">
+                    <div className="relative min-h-[250px] md:min-h-[350px] flex flex-col items-center text-center">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeSlide}
@@ -98,55 +98,55 @@ export default function About() {
                                 animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
                                 exit={{ opacity: 0, x: -100, filter: 'blur(20px)' }}
                                 transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-                                className="space-y-8 md:space-y-12 touch-none cursor-grab active:cursor-grabbing"
+                                className="space-y-6 md:space-y-10 touch-none cursor-grab active:cursor-grabbing"
                             >
-                                <div className="space-y-4 md:space-y-6">
+                                <div className="space-y-3 md:space-y-4">
                                     <span className="text-brand-green font-black uppercase tracking-[0.5em] md:tracking-[0.8em] text-[10px] md:text-[12px] drop-shadow-[0_0_10px_rgba(57,255,20,0.5)]">
                                         {slides[activeSlide].label}
                                     </span>
-                                    <h2 className="text-white font-black italic uppercase tracking-tighter text-3xl md:text-8xl leading-tight md:leading-none">
+                                    <h2 className="text-white font-black italic uppercase tracking-tighter text-2xl md:text-7xl leading-tight md:leading-[0.9]">
                                         {slides[activeSlide].title.split(':').map((part, idx) => (
-                                            <span key={idx} className={idx === 1 ? "text-neon block mt-2 md:mt-4" : ""}>{part}</span>
+                                            <span key={idx} className={idx === 1 ? "text-neon block mt-1 md:mt-2" : ""}>{part}</span>
                                         ))}
                                     </h2>
-                                    <div className="h-[2px] w-24 md:w-48 bg-brand-green/40 mx-auto rounded-full shadow-[0_0_20px_#39FF14]" />
+                                    <div className="h-[2px] w-20 md:w-40 bg-brand-green/40 mx-auto rounded-full shadow-[0_0_20px_#39FF14]" />
                                 </div>
 
-                                <p className="text-white/80 text-lg md:text-4xl font-medium leading-[1.4] md:leading-[1.3] max-w-5xl mx-auto tracking-tight px-2">
+                                <p className="text-white/80 text-base md:text-3xl font-medium leading-[1.4] md:leading-[1.4] max-w-4xl mx-auto tracking-tight px-2">
                                     {slides[activeSlide].desc}
                                 </p>
 
-                                <div className="pt-8 md:pt-12 text-[8px] md:text-[10px] text-white/20 font-black uppercase tracking-[0.5em] md:tracking-[0.8em]">
+                                {/* INTEGRATED NAVIGATION BUTTONS INSIDE CAROUSEL */}
+                                <div className="flex items-center justify-center gap-4 pt-4">
+                                    <button
+                                        onClick={prevSlide}
+                                        className="w-10 h-10 md:w-12 md:h-12 rounded-lg border border-white/5 bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-brand-green hover:border-brand-green/40 transition-all"
+                                    >
+                                        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+                                    </button>
+
+                                    <div className="flex gap-2">
+                                        {slides.map((_, i) => (
+                                            <div
+                                                key={i}
+                                                className={`h-1.5 transition-all duration-700 rounded-full ${i === activeSlide ? 'w-8 bg-brand-green shadow-[0_0_10px_#39FF14]' : 'w-2 bg-white/10'}`}
+                                            />
+                                        ))}
+                                    </div>
+
+                                    <button
+                                        onClick={nextSlide}
+                                        className="w-10 h-10 md:w-12 md:h-12 rounded-lg border border-white/5 bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-brand-green hover:border-brand-green/40 transition-all"
+                                    >
+                                        <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+                                    </button>
+                                </div>
+
+                                <div className="pt-4 md:pt-6 text-[8px] md:text-[10px] text-white/20 font-black uppercase tracking-[0.5em] md:tracking-[0.8em]">
                                     {slides[activeSlide].meta}
                                 </div>
                             </motion.div>
                         </AnimatePresence>
-                    </div>
-
-                    {/* ELITE METALLIC NAVIGATION */}
-                    <div className="absolute bottom-6 md:bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-6 md:gap-16 z-20">
-                        <button
-                            onClick={prevSlide}
-                            className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl border border-white/5 bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-brand-green hover:border-brand-green/40 hover:bg-brand-green/[0.05] transition-all"
-                        >
-                            <ChevronLeft className="w-5 h-5 md:w-8 md:h-8" />
-                        </button>
-
-                        <div className="flex gap-2 md:gap-4">
-                            {slides.map((_, i) => (
-                                <div
-                                    key={i}
-                                    className={`h-1 md:h-2 transition-all duration-700 rounded-full ${i === activeSlide ? 'w-8 md:w-16 bg-brand-green shadow-[0_0_20px_#39FF14]' : 'w-2 md:w-4 bg-white/10'}`}
-                                />
-                            ))}
-                        </div>
-
-                        <button
-                            onClick={nextSlide}
-                            className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl border border-white/5 bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-brand-green hover:border-brand-green/40 hover:bg-brand-green/[0.05] transition-all"
-                        >
-                            <ChevronRight className="w-5 h-5 md:w-8 md:h-8" />
-                        </button>
                     </div>
                 </motion.div>
             </div>
