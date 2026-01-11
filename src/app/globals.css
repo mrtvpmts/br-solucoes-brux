@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-green: #39FF14;
+  --color-brand-dark: #060807;
+}
+
+html,
+body {
+  background: #060807;
+  color: white;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- THE STITCH BACKGROUND ENGINE (SHARP) --- */
+.stitch-bg-dynamic {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(44, 255, 122, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(44, 255, 122, 0.05) 0%, transparent 40%),
+    #060807;
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -9;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 998;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+  background-size: 100% 4px;
+}
+
+/* --- THE STITCH BEVELED HEADER --- */
+.beveled-divider {
+  position: relative;
+  height: 100px;
+  width: 100%;
+  background: #060807;
+  clip-path: polygon(0 0, 48% 0, 50% 40%, 52% 0, 100% 0, 100% 100%, 0 100%);
+  border-top: 2px solid rgba(44, 255, 122, 0.4);
+  margin-top: -50px;
+  z-index: 20;
+}
+
+/* --- BUTTONS: STITCH PILL (ELITE) --- */
+.btn-stitch {
+  position: relative;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  color: white;
+  font-weight: 800;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn-stitch:hover {
+  border-color: #2cff7a;
+  box-shadow: 0 0 40px rgba(44, 255, 122, 0.4), inset 0 0 10px rgba(44, 255, 122, 0.2);
+  transform: translateY(-5px);
+  background: rgba(44, 255, 122, 0.08);
+}
+
+.btn-stitch-primary {
+  background: rgba(44, 255, 122, 0.12);
+  border-color: #2cff7a;
+  color: white;
+}
+
+/* --- CARDS: INDUSTRIAL NEON (ELITE) --- */
+.industrial-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  padding: 40px;
+  position: relative;
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.industrial-card:hover {
+  border-color: #2cff7a;
+  background: rgba(44, 255, 122, 0.06);
+  transform: translateY(-12px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(44, 255, 122, 0.1);
+}
+
+/* --- TYPOGRAPHY: STITCH IMPACT (ELITE) --- */
+.text-impact {
+  font-size: clamp(3.5rem, 14vw, 10rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-style: italic;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  color: white;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+}
+
+.text-neon {
+  color: #2cff7a;
+  text-shadow: 0 0 40px rgba(44, 255, 122, 0.6), 0 0 10px rgba(44, 255, 122, 0.4);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060807;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 10px;
+  border: 2px solid #060807;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2cff7a;
+}
