@@ -1,11 +1,48 @@
 'use client'
 
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useQuote } from './QuoteContext'
-import { X, CheckCircle, Send } from 'lucide-react'
+import { X, CheckCircle, Send, Loader2 } from 'lucide-react'
 
 export default function QuoteModal() {
     const { open, setOpen, success, setSuccess } = useQuote()
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [formData, setFormData] = useState({
+        name: '',
+        company: '',
+        email: '',
+        whatsapp: ''
+    })
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        if (!formData.name || !formData.email || !formData.company) {
+            alert('Por favor, preencha os campos obrigatórios.')
+            return
+        }
+
+        setIsSubmitting(true)
+        try {
+            const response = await fetch('/api/send', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+
+            if (response.ok) {
+                setSuccess(true)
+                setFormData({ name: '', company: '', email: '', whatsapp: '' })
+            } else {
+                alert('Erro ao enviar solicitação. Tente novamente.')
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error)
+            alert('Erro técnico ao conectar com o servidor.')
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
 
     return (
         <AnimatePresence>
@@ -17,13 +54,13 @@ export default function QuoteModal() {
                     className="fixed inset-0 bg-black/80 backdrop-blur-xl z-[100] flex items-center justify-center p-4 px-6 overflow-hidden"
                 >
                     {/* Backdrop Click to Close */}
-                    <div className="absolute inset-0" onClick={() => setOpen(false)} />
+                    <div className="absolute inset-0" onClick={() => !isSubmitting && setOpen(false)} />
 
                     <motion.div
                         initial={{ scale: 0.9, opacity: 0, y: 20 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                        className="bg-[#0b0f0d] border border-white/10 rounded-3xl p-8 md:p-10 w-full max-w-lg relative z-10 shadow-[0_0_50px_rgba(44,255,122,0.15)] overflow-hidden"
+                        className="relative z-10 bg-[#0b0f0d] border border-white/10 rounded-3xl p-8 md:p-10 w-full max-w-lg shadow-[0_0_50px_rgba(44,255,122,0.15)] overflow-hidden"
                     >
                         {/* Close Button */}
                         <button
@@ -34,7 +71,7 @@ export default function QuoteModal() {
                         </button>
 
                         {!success ? (
-                            <div className="space-y-8">
+                            <form onSubmit={handleSubmit} className="space-y-8">
                                 <div className="space-y-2 text-center">
                                     <h3 className="text-3xl font-bold tracking-tight text-white mb-2">Solicitar Orçamento</h3>
                                     <p className="text-white/40 text-sm font-light">Preencha os dados e nossa equipe técnica retornará em breve.</p>
@@ -42,32 +79,61 @@ export default function QuoteModal() {
 
                                 <div className="space-y-4">
                                     <div className="space-y-1">
-                                        <label className="text-[10px] uppercase tracking-widest text-white/40 ml-1">Nome Completo</label>
-                                        <input className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10" placeholder="Seu nome" />
+                                        <label className="text-[10px] uppercase tracking-widest text-white/40 ml-1">Nome Completo *</label>
+                                        <input
+                                            required
+                                            value={formData.name}
+                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                            className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10"
+                                            placeholder="Seu nome"
+                                        />
                                     </div>
                                     <div className="space-y-1">
-                                        <label className="text-[10px] uppercase tracking-widest text-white/40 ml-1">Empresa</label>
-                                        <input className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10" placeholder="Nome da empresa" />
+                                        <label className="text-[10px] uppercase tracking-widest text-white/40 ml-1">Empresa *</label>
+                                        <input
+                                            required
+                                            value={formData.company}
+                                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                                            className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10"
+                                            placeholder="Nome da empresa"
+                                        />
                                     </div>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div className="space-y-1">
-                                            <label className="text-[10px] uppercase tracking-widest text-white/40 ml-1">E-mail Corporativo</label>
-                                            <input className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10" placeholder="email@empresa.com" />
+                                            <label className="text-[10px] uppercase tracking-widest text-white/40 ml-1">E-mail Corporativo *</label>
+                                            <input
+                                                required
+                                                type="email"
+                                                value={formData.email}
+                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10"
+                                                placeholder="email@empresa.com"
+                                            />
                                         </div>
                                         <div className="space-y-1">
                                             <label className="text-[10px] uppercase tracking-widest text-white/40 ml-1">WhatsApp</label>
-                                            <input className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10" placeholder="(00) 00000-0000" />
+                                            <input
+                                                value={formData.whatsapp}
+                                                onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+                                                className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10"
+                                                placeholder="(00) 00000-0000"
+                                            />
                                         </div>
                                     </div>
 
                                     <button
-                                        onClick={() => setSuccess(true)}
-                                        className="w-full py-5 rounded-2xl bg-brand-green text-black font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform active:scale-95 glow-green mt-4"
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className="w-full py-5 rounded-2xl bg-brand-green text-black font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:scale-[1.02] transition-transform shadow-[0_20px_40px_rgba(57,255,20,0.15)] mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
-                                        Enviar Solicitação <Send size={18} />
+                                        {isSubmitting ? (
+                                            <>Processando <Loader2 className="w-5 h-5 animate-spin" /></>
+                                        ) : (
+                                            <>Enviar Solicitação <Send size={18} /></>
+                                        )}
                                     </button>
                                 </div>
-                            </div>
+                            </form>
                         ) : (
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.8 }}
