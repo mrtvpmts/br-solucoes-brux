@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Building2, Hotel, Utensils, Store, Factory, Building, X, Zap, Shield, Droplets } from 'lucide-react'
