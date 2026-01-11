@@ -12,12 +12,14 @@ export default function QuoteModal() {
         name: '',
         company: '',
         email: '',
-        whatsapp: ''
+        whatsapp: '',
+        segment: '',
+        message: ''
     })
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        if (!formData.name || !formData.email || !formData.company) {
+        if (!formData.name || !formData.email || !formData.company || !formData.segment) {
             alert('Por favor, preencha os campos obrigatórios.')
             return
         }
@@ -31,8 +33,22 @@ export default function QuoteModal() {
             })
 
             if (response.ok) {
+                // Formatting WhatsApp message
+                const waMessage = encodeURIComponent(
+                    `*NOVO ORÇAMENTO - BRUX*\n\n` +
+                    `*Nome:* ${formData.name}\n` +
+                    `*Empresa:* ${formData.company}\n` +
+                    `*E-mail:* ${formData.email}\n` +
+                    `*WhatsApp:* ${formData.whatsapp || 'Não informado'}\n` +
+                    `*Segmento:* ${formData.segment}\n` +
+                    `*Demanda:* ${formData.message || 'Sem mensagem adicional'}`
+                )
+
+                // Open WhatsApp in a new tab
+                window.open(`https://wa.me/551127768000?text=${waMessage}`, '_blank')
+
                 setSuccess(true)
-                setFormData({ name: '', company: '', email: '', whatsapp: '' })
+                setFormData({ name: '', company: '', email: '', whatsapp: '', segment: '', message: '' })
             } else {
                 alert('Erro ao enviar solicitação. Tente novamente.')
             }
@@ -106,19 +122,47 @@ export default function QuoteModal() {
                                                 type="email"
                                                 value={formData.email}
                                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10"
+                                                className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10 text-white"
                                                 placeholder="email@empresa.com"
                                             />
                                         </div>
                                         <div className="space-y-1">
-                                            <label className="text-[10px] uppercase tracking-widest text-white/40 ml-1">WhatsApp</label>
+                                            <label className="text-[10px] uppercase tracking-widest text-white/40 ml-1">Telefone / WhatsApp</label>
                                             <input
                                                 value={formData.whatsapp}
                                                 onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                                                className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10"
-                                                placeholder="(00) 00000-0000"
+                                                className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10 text-white"
+                                                placeholder="(11) 00000-0000"
                                             />
                                         </div>
+                                    </div>
+
+                                    <div className="space-y-1">
+                                        <label className="text-[10px] uppercase tracking-widest text-white/40 ml-1">Segmento de Atuação *</label>
+                                        <select
+                                            required
+                                            value={formData.segment}
+                                            onChange={(e) => setFormData({ ...formData, segment: e.target.value })}
+                                            className="w-full p-4 rounded-xl bg-[#0b0f0d] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all text-white/70 appearance-none cursor-pointer"
+                                        >
+                                            <option value="" disabled>Selecione um segmento</option>
+                                            <option value="Condomínios">Condomínios</option>
+                                            <option value="Hotéis">Hotéis</option>
+                                            <option value="Restaurantes">Restaurantes</option>
+                                            <option value="Comércios">Comércios</option>
+                                            <option value="Indústrias">Indústrias</option>
+                                            <option value="Escritórios">Ambientes Corporativos</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="space-y-1">
+                                        <label className="text-[10px] uppercase tracking-widest text-white/40 ml-1">Mensagem / Demanda Espécifica</label>
+                                        <textarea
+                                            value={formData.message}
+                                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                            className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10 text-white min-h-[120px] resize-none"
+                                            placeholder="Como podemos ajudar sua operação? (Ex: Limpeza pós-obra, manutenção mensal...)"
+                                        />
                                     </div>
 
                                     <button
