@@ -11,6 +11,7 @@ import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import QuoteModal from '@/components/QuoteModal'
+import SocialProofCarousel from '@/components/SocialProofCarousel'
 import { QuoteProvider } from '@/components/QuoteContext'
 
 export default function Page() {
@@ -24,6 +25,7 @@ export default function Page() {
         <Segments />
         <ContactForm />
         <Differentials />
+        <SocialProofCarousel />
         <FAQ />
       </main>
       <Footer />

@@ -62,7 +62,7 @@ export default function Footer() {
                 <div className="flex flex-col justify-center items-start lg:border-r lg:border-white/5 lg:pr-12">
                     <div className="relative w-full aspect-video md:aspect-square max-h-[400px] transform-gpu">
                         <Image
-                            src="/textures/brux-logo-horizontal.png"
+                            src="/images/brux-logo-complete.png"
                             alt="BRUX SOLUTIONS"
                             fill
                             className="object-contain drop-shadow-[0_0_50px_rgba(34,197,94,0.3)] brightness-110"
