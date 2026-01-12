@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useQuote } from './QuoteContext'
-import { X, CheckCircle, Send, Loader2 } from 'lucide-react'
+import { X, CheckCircle, Send, Loader2, Phone } from 'lucide-react'
 
 export default function QuoteModal() {
     const { open, setOpen, success, setSuccess } = useQuote()
@@ -100,7 +100,7 @@ export default function QuoteModal() {
                                             required
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10"
+                                            className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10 text-white"
                                             placeholder="Seu nome"
                                         />
                                     </div>
@@ -110,7 +110,7 @@ export default function QuoteModal() {
                                             required
                                             value={formData.company}
                                             onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                                            className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10"
+                                            className="w-full p-4 rounded-xl bg-white/[0.03] border border-white/10 focus:border-brand-green/60 focus:outline-none transition-all placeholder:text-white/10 text-white"
                                             placeholder="Nome da empresa"
                                         />
                                     </div>
@@ -182,31 +182,53 @@ export default function QuoteModal() {
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="text-center py-10 space-y-8"
+                                className="text-center space-y-8"
                             >
-                                <div className="relative mx-auto w-24 h-24">
-                                    <div className="absolute inset-0 bg-brand-green/20 blur-2xl rounded-full animate-pulse" />
-                                    <div className="relative w-full h-full rounded-full border-2 border-brand-green/40 flex items-center justify-center text-brand-green bg-white/[0.03]">
-                                        <CheckCircle size={48} strokeWidth={1.5} />
+                                <div className="relative mx-auto w-32 h-32">
+                                    <motion.div
+                                        initial={{ scale: 0 }}
+                                        animate={{ scale: 1 }}
+                                        className="absolute inset-0 bg-brand-green/20 blur-2xl rounded-full"
+                                    />
+                                    <div className="relative w-full h-full rounded-full border-2 border-brand-green/40 flex items-center justify-center text-brand-green bg-white/[0.03] backdrop-blur-sm">
+                                        <CheckCircle size={56} strokeWidth={1.5} />
                                     </div>
                                 </div>
 
                                 <div className="space-y-3">
-                                    <h3 className="text-3xl font-bold text-white tracking-tight">Solicitação Enviada!</h3>
-                                    <p className="text-white/40 leading-relaxed font-light">
-                                        Obrigado por escolher a BRUX. Nossa equipe técnica analisará sua demanda e entrará em contato em até 24 horas úteis.
+                                    <h3 className="text-3xl font-black text-white tracking-widest italic uppercase">Solicitação Enviada!</h3>
+                                    <p className="text-white/40 leading-relaxed font-light text-sm max-w-[280px] mx-auto">
+                                        Obrigado por escolher a BRUX. Nossa equipe técnica analisará sua demanda e entrará em contato em breve.
                                     </p>
                                 </div>
 
-                                <button
-                                    onClick={() => {
-                                        setSuccess(false)
-                                        setOpen(false)
-                                    }}
-                                    className="w-full py-4 rounded-2xl border border-white/10 text-white font-bold hover:bg-white hover:text-black transition-all"
-                                >
-                                    Continuar Navegando
-                                </button>
+                                {/* Simplified Protocol Box for Modal */}
+                                <div className="py-3 px-6 bg-white/[0.03] border border-white/5 rounded-2xl inline-block">
+                                    <span className="block text-[8px] font-black text-brand-green uppercase tracking-[0.3em] mb-1">Protocolo:</span>
+                                    <span className="text-white font-mono text-lg font-black tracking-widest">BRUX-{new Date().getFullYear()}-QS{Math.floor(100 + Math.random() * 900)}</span>
+                                </div>
+
+                                <div className="flex flex-col gap-4 mt-8">
+                                    <button
+                                        onClick={() => {
+                                            const waMessage = encodeURIComponent(`*NOVO ORÇAMENTO - BRUX*\n\n*Nome:* ${formData.name}\n*Empresa:* ${formData.company}\n*Segmento:* ${formData.segment}`)
+                                            window.open(`https://wa.me/551127768000?text=${waMessage}`, '_blank')
+                                        }}
+                                        className="w-full py-4 rounded-2xl bg-[#25D366] text-white font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 shadow-lg"
+                                    >
+                                        <Phone size={14} fill="white" />
+                                        WhatsApp Direto
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            setSuccess(false)
+                                            setOpen(false)
+                                        }}
+                                        className="w-full py-3 rounded-2xl border border-white/10 text-white/50 text-[9px] font-bold uppercase tracking-widest hover:text-white transition-all"
+                                    >
+                                        Concluir
+                                    </button>
+                                </div>
                             </motion.div>
                         )}
 

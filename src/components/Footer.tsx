@@ -60,15 +60,15 @@ export default function Footer() {
             {/* FINAL CONTACT PANEL */}
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white/[0.03] border border-white/10 rounded-[64px] p-10 md:p-20 relative z-10 overflow-hidden shadow-2xl">
                 <div className="space-y-12">
-                    <div className="flex items-center gap-1 group">
-                        <Image
-                            src="/textures/logo-brux.png"
-                            alt="BRUX SOLUTIONS"
-                            width={240}
-                            height={90}
-                            className="brightness-125"
-                        />
-                        <span className="text-brand-green font-black text-xl self-start mt-4 group-hover:drop-shadow-[0_0_12px_#39FF14] transition-all">®</span>
+                    <div className="flex items-center gap-1 group relative">
+                        <div className="relative w-72 h-32 -ml-4">
+                            <Image
+                                src="/textures/logo-brux.png"
+                                alt="BRUX SOLUTIONS"
+                                fill
+                                className="brightness-125 object-contain"
+                            />
+                        </div>
                     </div>
 
                     <div className="space-y-10">
@@ -129,7 +129,7 @@ export default function Footer() {
                         <span>BRUX ® SOLUÇÕES EM LIMPEZA PROFISSIONAL</span>
                     </div>
                     <span className="text-[8px] opacity-40 lowercase tracking-[0.2em] md:ml-4">
-                        BRUX ® é uma marca em processo de registro junto ao INPI. Todos os direitos reservados.
+                        BRUX ® é uma marca registrada em processo perante o INPI. Todos os direitos reservados.
                     </span>
                 </div>
                 <div className="flex gap-12">

@@ -128,7 +128,7 @@ export default function Sections() {
                     className="mx-auto grayscale opacity-50"
                 />
                 <div className="text-xs text-white/20 tracking-[0.2em] uppercase">
-                    © 2024 BRUX - Soluções em Limpeza Industrial. Todos os direitos reservados.
+                    © 2024 BRUX ® - Soluções em Limpeza Industrial. Todos os direitos reservados.
                 </div>
             </footer>
         </div>

@@ -81,11 +81,12 @@ export default function Segments() {
             <div className="max-w-7xl mx-auto px-8 relative z-10">
 
                 <div className="flex flex-col items-center mb-32 space-y-6">
-                    <h2 className="text-impact !text-4xl md:!text-7xl">
-                        Segmentos <span className="text-neon">Atendidos</span>
+                    <h2 className="text-impact !text-4xl md:!text-8xl leading-none">
+                        Excelência em <br />
+                        <span className="text-neon block mt-4">Cada Segmento</span>
                     </h2>
                     <p className="text-white/40 font-black uppercase tracking-[0.4em] text-xs text-center">
-                        Clique em um setor para ver as especificações técnicas
+                        Segmentos Atendidos pela Engenharia Brux
                     </p>
                     <div className="h-1 w-32 bg-brand-green/20 rounded-full" />
                 </div>
@@ -203,12 +204,20 @@ export default function Segments() {
                                     </div>
                                 </div>
 
-                                <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 opacity-30 text-[9px] font-black uppercase tracking-[0.4em] text-brand-green">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
-                                        <span>SYSTEM_STABILITY: SECURE</span>
+                                <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                                    <div className="flex flex-col gap-1 opacity-30 text-[9px] font-black uppercase tracking-[0.4em] text-brand-green">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
+                                            <span>SYSTEM_STABILITY: SECURE</span>
+                                        </div>
+                                        <span>ENGENHARIA QUÍMICA BRUX // {selectedSegment.details.protocol}</span>
                                     </div>
-                                    <span>ENGENHARIA QUÍMICA BRUX // {selectedSegment.details.protocol}</span>
+                                    <button
+                                        onClick={() => window.open('https://wa.me/551127768000?text=' + encodeURIComponent(`Olá, gostaria de falar com um especialista sobre soluções para o segmento de ${selectedSegment.title}.`), '_blank')}
+                                        className="btn-stitch px-8 py-4 text-xs shadow-lg border-brand-green/20 hover:border-brand-green"
+                                    >
+                                        Falar com Especialista
+                                    </button>
                                 </div>
                             </div>
                         </motion.div>

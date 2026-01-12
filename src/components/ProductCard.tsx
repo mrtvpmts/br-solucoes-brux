@@ -48,7 +48,7 @@ export default function ProductCard({ title, subtitle }: ProductCardProps) {
                 onClick={() => setOpen(true)}
                 className="btn-stitch w-full mt-4 group-hover:bg-brand-green/10 group-hover:border-brand-green group-hover:text-brand-green transition-all"
             >
-                Solicitar Orçamento
+                Falar com Especialista
             </button>
         </motion.div>
     )

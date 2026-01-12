@@ -21,7 +21,7 @@ export default function About() {
     const slides = [
         {
             label: "DNA Industrial",
-            title: "BRUX Limpeza Profissional: Engenharia de Limpeza",
+            title: "BRUX Limpeza Profissional",
             desc: "Nascida na rigidez dos ambientes profissionais, a BRUX funde química avançada com eficiência bruta. Cada molécula é projetada para o impacto, garantindo performance inegociável onde outros falham.",
             meta: "CHEM_STABILITY: ALPHA // YIELD_INDEX: MAX"
         },

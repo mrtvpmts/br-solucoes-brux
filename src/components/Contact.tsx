@@ -43,7 +43,7 @@ export default function Contact() {
                         <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 pointer-events-none" />
 
                         <div className="relative z-10 flex items-center gap-3">
-                            Solicitar Orçamento Personalizado
+                            Falar com Especialista
                             <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
                         </div>
                     </button>

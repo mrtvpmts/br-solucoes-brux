@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import Image from 'next/image'
 import { useQuote } from './QuoteContext'
 
@@ -44,9 +45,9 @@ export default function Hero() {
                         transition={{ duration: 1, delay: 0.3 }}
                         className="text-impact"
                     >
-                        A Inteligência Química<br />
+                        Limpeza Industrial<br />
                         <span className="text-neon block mt-8 drop-shadow-[0_0_30px_rgba(57,255,20,0.4)]">
-                            por trás da limpeza impecável
+                            de Alta Performance
                         </span>
                     </motion.h1>
 
@@ -56,7 +57,7 @@ export default function Hero() {
                         transition={{ duration: 1.5, delay: 0.8 }}
                         className="max-w-4xl mx-auto text-white/50 text-xl md:text-3xl font-light tracking-[0.15em] uppercase leading-tight"
                     >
-                        Soluções Químicas para Limpeza
+                        Soluções Químicas para Resultados Absolutos
                     </motion.p>
                 </div>
 
@@ -67,12 +68,12 @@ export default function Hero() {
                     transition={{ duration: 1, delay: 1.2 }}
                     className="flex flex-wrap items-center justify-center gap-10 mt-28"
                 >
-                    <button
-                        onClick={() => setOpen(true)}
+                    <Link
+                        href="#catalog"
                         className="btn-stitch btn-stitch-primary py-7 px-16 text-xl scale-110 shadow-[0_20px_50px_rgba(57,255,20,0.2)]"
                     >
                         Ver Catálogo Completo
-                    </button>
+                    </Link>
 
                     <button
                         onClick={() => window.open('https://wa.me/551127768000?text=Olá, gostaria de falar com um especialista sobre soluções de limpeza profissional.', '_blank')}

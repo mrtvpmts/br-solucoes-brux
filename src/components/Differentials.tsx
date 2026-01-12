@@ -169,15 +169,23 @@ export default function Differentials() {
                                         </ul>
                                     </div>
 
-                                    <div className="pt-8 border-t border-white/5 flex justify-between items-center opacity-40">
-                                        <div className="flex items-center gap-2">
-                                            <BarChart3 size={14} className="text-brand-green" />
-                                            <span className="text-[9px] font-black uppercase tracking-widest text-white">Status: {selectedDiff.details.metric}</span>
+                                    <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                                        <div className="flex flex-col gap-1 opacity-40">
+                                            <div className="flex items-center gap-2">
+                                                <BarChart3 size={14} className="text-brand-green" />
+                                                <span className="text-[9px] font-black uppercase tracking-widest text-white">Status: {selectedDiff.details.metric}</span>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <Star size={14} className="text-brand-green" />
+                                                <span className="text-[9px] font-black uppercase tracking-widest text-white">Elite Standard</span>
+                                            </div>
                                         </div>
-                                        <div className="flex items-center gap-2">
-                                            <Star size={14} className="text-brand-green" />
-                                            <span className="text-[9px] font-black uppercase tracking-widest text-white">Elite Standard</span>
-                                        </div>
+                                        <button
+                                            onClick={() => window.open('https://wa.me/551127768000?text=' + encodeURIComponent(`Olá, gostaria de falar com um especialista sobre ${selectedDiff.title}.`), '_blank')}
+                                            className="btn-stitch px-8 py-4 text-xs shadow-lg border-brand-green/20 hover:border-brand-green"
+                                        >
+                                            Falar com Especialista
+                                        </button>
                                     </div>
                                 </div>
                             </motion.div>
@@ -208,16 +216,24 @@ export default function Differentials() {
                             <p className="text-white/60 text-lg md:text-xl font-medium leading-relaxed">
                                 Operação logística otimizada para garantir o suprimento contínuo de sua empresa na capital e região metropolitana.
                             </p>
-                            <div className="flex gap-10 pt-4">
-                                <div className="space-y-1">
-                                    <span className="block text-white font-black uppercase tracking-widest text-xs">SP Capital</span>
-                                    <span className="text-[10px] text-white/30 font-bold tracking-widest">Entrega Prioritária</span>
+                            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pt-4">
+                                <div className="flex gap-10">
+                                    <div className="space-y-1">
+                                        <span className="block text-white font-black uppercase tracking-widest text-xs">SP Capital</span>
+                                        <span className="text-[10px] text-white/30 font-bold tracking-widest">Entrega Prioritária</span>
+                                    </div>
+                                    <div className="w-[1px] h-10 bg-white/10" />
+                                    <div className="space-y-1">
+                                        <span className="block text-white font-black uppercase tracking-widest text-xs">Região Metropolitana</span>
+                                        <span className="text-[10px] text-white/30 font-bold tracking-widest">Cobertura Total</span>
+                                    </div>
                                 </div>
-                                <div className="w-[1px] h-10 bg-white/10" />
-                                <div className="space-y-1">
-                                    <span className="block text-white font-black uppercase tracking-widest text-xs">Região Metropolitana</span>
-                                    <span className="text-[10px] text-white/30 font-bold tracking-widest">Cobertura Total</span>
-                                </div>
+                                <button
+                                    onClick={() => window.open('https://wa.me/551127768000?text=' + encodeURIComponent('Olá, gostaria de falar com um especialista sobre a logística da BRUX.'), '_blank')}
+                                    className="btn-stitch px-10 py-5 text-sm"
+                                >
+                                    Falar com Especialista
+                                </button>
                             </div>
                         </div>
                     </motion.div>

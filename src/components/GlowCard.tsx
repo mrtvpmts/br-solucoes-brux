@@ -48,7 +48,7 @@ export default function GlowCard({ title, subtitle, image, tag }: GlowCardProps)
                 </div>
 
                 <button className="flex items-center gap-2 text-xs font-bold text-brand-green uppercase tracking-widest border-t border-white/5 w-full pt-4 justify-center group-hover:gap-4 transition-all">
-                    Solicitar Orçamento <ArrowRight size={14} />
+                    Falar com Especialista <ArrowRight size={14} />
                 </button>
             </div>
 

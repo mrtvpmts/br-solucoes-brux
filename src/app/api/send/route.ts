@@ -11,7 +11,7 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'Resend API key not configured' }, { status: 500 });
         }
 
-        const data = await resend.emails.send({
+        const { data: resendData, error: resendError } = await resend.emails.send({
             from: 'BRUX Landing Page <onboarding@resend.dev>',
             to: ['contato@bruxsolucoes.com.br'],
             subject: `Novo Orçamento: ${company}`,
@@ -30,8 +30,12 @@ export async function POST(request: Request) {
       `,
         });
 
-        return NextResponse.json(data);
-    } catch (error) {
-        return NextResponse.json({ error });
+        if (resendError) {
+            return NextResponse.json({ error: resendError.message, details: resendError }, { status: 400 });
+        }
+
+        return NextResponse.json(resendData);
+    } catch (error: any) {
+        return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
     }
 }
