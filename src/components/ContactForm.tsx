@@ -68,7 +68,7 @@ export default function ContactForm() {
     }
 
     return (
-        <section id="contact-form" className="relative py-40 bg-[#060807] px-8 overflow-hidden">
+        <section id="contact-form" className="relative py-8 md:py-16 bg-[#060807] px-8 overflow-hidden">
             {/* Background Glows */}
             <div className="absolute top-1/4 -left-20 w-96 h-96 bg-brand-green/5 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-brand-green/5 blur-[120px] rounded-full pointer-events-none" />
@@ -81,7 +81,7 @@ export default function ContactForm() {
                             initial={{ opacity: 1 }}
                             exit={{ opacity: 0, y: -20 }}
                         >
-                            <div className="text-center space-y-8 mb-24">
+                            <div className="text-center space-y-4 md:space-y-6 mb-8 md:mb-12">
                                 <h2 className="text-impact !text-4xl md:!text-7xl">Solicitar <span className="text-neon">Orçamento</span></h2>
                                 <p className="text-white/40 font-black uppercase tracking-[0.4em] text-xs">
                                     Atendimento imediato para demandas corporativas

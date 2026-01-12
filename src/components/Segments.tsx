@@ -77,21 +77,21 @@ export default function Segments() {
     ]
 
     return (
-        <section id="segments" className="relative py-40 bg-[#060807] overflow-hidden">
-            <div className="max-w-7xl mx-auto px-8 relative z-10">
+        <section id="segments" className="relative py-2 md:py-8 bg-[#060807] overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
 
-                <div className="flex flex-col items-center mb-32 space-y-6">
-                    <h2 className="text-impact !text-4xl md:!text-8xl leading-none">
+                <div className="flex flex-col items-center mb-8 md:mb-16 space-y-4 md:space-y-6">
+                    <h2 className="text-impact !text-3xl md:!text-8xl leading-none">
                         Excelência em <br />
-                        <span className="text-neon block mt-4">Cada Segmento</span>
+                        <span className="text-neon block mt-3 md:mt-4">Cada Segmento</span>
                     </h2>
-                    <p className="text-white/40 font-black uppercase tracking-[0.4em] text-xs text-center">
+                    <p className="text-white/30 font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-[10px] md:text-xs text-center">
                         Segmentos Atendidos pela Engenharia Brux
                     </p>
-                    <div className="h-1 w-32 bg-brand-green/20 rounded-full" />
+                    <div className="h-1 w-20 md:w-32 bg-brand-green/20 rounded-full" />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-10">
                     {segments.map((s, i) => (
                         <motion.div
                             key={i}
@@ -99,21 +99,23 @@ export default function Segments() {
                             onClick={() => setSelectedSegment({ ...s, id: i })}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
+                            transition={{ delay: i * 0.05 }}
                             viewport={{ once: true }}
-                            className="industrial-card group flex flex-col gap-8 h-full cursor-pointer hover:border-brand-green/40 transition-colors"
+                            className="industrial-card group flex flex-col gap-3 md:gap-8 h-full cursor-pointer hover:border-brand-green/40 transition-colors p-5 md:p-12"
                         >
-                            <div className="text-brand-green/40 group-hover:text-brand-green group-hover:drop-shadow-[0_0_20px_#39FF14] transition-all duration-500">
+                            <div className="text-brand-green/40 group-hover:text-brand-green group-hover:drop-shadow-[0_0_15px_#39FF14] transition-all duration-500 scale-75 md:scale-100 origin-left">
                                 {s.icon}
                             </div>
-                            <div className="space-y-4">
-                                <h3 className="text-2xl font-black uppercase text-white tracking-widest">{s.title}</h3>
-                                <p className="text-white/50 font-medium leading-relaxed">{s.desc}</p>
+                            <div className="space-y-1 md:space-y-4">
+                                <h3 className="text-[12px] md:text-2xl font-black uppercase text-white tracking-widest">{s.title}</h3>
+                                <p className="text-white/40 md:text-white/50 text-[10px] md:text-base font-medium leading-relaxed line-clamp-2 md:line-clamp-none">
+                                    {s.desc}
+                                </p>
                             </div>
 
-                            <div className="mt-auto pt-8 border-t border-white/5 flex justify-between items-center opacity-20 group-hover:opacity-100 transition-opacity">
-                                <span className="text-[8px] font-black uppercase tracking-widest text-brand-green">Ver Protocolo {s.details.protocol}</span>
-                                <div className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
+                            <div className="mt-auto pt-4 md:pt-8 border-t border-white/5 flex justify-between items-center opacity-30 md:opacity-20 group-hover:opacity-100 transition-opacity">
+                                <span className="text-[8px] font-black uppercase tracking-widest text-brand-green">Protocolo</span>
+                                <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brand-green animate-pulse" />
                             </div>
                         </motion.div>
                     ))}

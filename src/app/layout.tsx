@@ -3,7 +3,8 @@ import './globals.css'
 export const metadata = {
   title: 'BRUX – Limpeza Industrial (Stitch Fidelity)',
   icons: {
-    icon: '/textures/brux-emblem.png',
+    icon: '/textures/brux-logo-horizontal.png',
+    apple: '/textures/brux-logo-horizontal.png',
   }
 }
 

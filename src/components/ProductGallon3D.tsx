@@ -7,7 +7,7 @@ import * as THREE from 'three'
 
 function Gallon() {
     const meshRef = useRef<THREE.Group>(null!)
-    const label = useTexture('/textures/logo-brux.png')
+    const label = useTexture('/textures/brux-logo-horizontal.png')
 
     useFrame(() => {
         meshRef.current.rotation.y += 0.006

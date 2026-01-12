@@ -71,8 +71,8 @@ export default function Differentials() {
     ]
 
     return (
-        <section id="differentials" className="relative py-40 bg-[#060807] overflow-hidden px-8">
-            <div className="max-w-7xl mx-auto space-y-32">
+        <section id="differentials" className="relative py-4 md:py-20 bg-[#060807] overflow-hidden px-8">
+            <div className="max-w-7xl mx-auto space-y-12 md:space-y-24">
 
                 <div className="text-center space-y-6">
                     <h2 className="text-impact !text-4xl md:!text-7xl">Diferenciais <span className="text-neon">Brux</span></h2>
@@ -194,7 +194,7 @@ export default function Differentials() {
                 </AnimatePresence>
 
                 {/* LOGISTICS SECTION (NEW) */}
-                <div id="logistics" className="pt-24">
+                <div id="logistics" className="pt-12">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}

@@ -15,32 +15,33 @@ function ProductCard({ product, onOpenDetails }: ProductCardProps) {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="industrial-card group flex flex-col items-center text-center space-y-8 h-full"
+            className="industrial-card group flex flex-col items-center text-center gap-6 md:gap-8 h-full p-8 md:p-12"
         >
-            {/* 1:1 3D Thumbnails Frame */}
-            <div className="w-full aspect-[4/5] relative bg-[#0a0a0a] rounded-[32px] border border-white/5 overflow-hidden flex items-center justify-center p-8 group-hover:border-brand-green/30 transition-all">
+            <div className="w-full aspect-[4/5] relative bg-[#0a0a0a] rounded-[32px] border border-white/5 overflow-hidden flex items-center justify-center p-6 md:p-10 group-hover:border-brand-green/30 transition-all shrink-0 shadow-inner">
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <Image
                     src={product.image}
                     alt={product.title}
-                    width={240}
-                    height={300}
-                    className="relative z-10 transition-transform duration-700 group-hover:scale-110 group-hover:drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+                    width={320}
+                    height={400}
+                    className="relative z-10 transition-transform duration-700 group-hover:scale-110 group-hover:drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] object-contain"
                 />
             </div>
 
-            <div className="space-y-3 flex-grow">
-                <h3 className="text-xl md:text-2xl font-black uppercase text-white tracking-tight leading-tight px-4 h-[3em] flex items-center justify-center">
+            <div className="space-y-1 md:space-y-3 flex-grow min-w-0">
+                <h3 className="text-sm md:text-2xl font-black uppercase text-white tracking-tight leading-tight md:px-4 md:h-[3em] md:flex items-center justify-center truncate md:whitespace-normal">
                     {product.title}
                 </h3>
-                <div className="text-brand-green text-sm font-bold tracking-[0.3em] uppercase">
+                <div className="text-brand-green text-[9px] md:text-sm font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase opacity-70">
                     Industrial • {product.subtitle}
                 </div>
+
+                {/* Tags removed for cleaner "normal" look */}
             </div>
 
             <button
                 onClick={() => onOpenDetails(product)}
-                className="btn-stitch w-full py-5 text-sm uppercase font-black"
+                className="btn-stitch w-full py-4 text-xs uppercase font-black shrink-0"
             >
                 Visualizar Detalhes
             </button>
@@ -133,30 +134,21 @@ export default function Catalog() {
     ]
 
     return (
-        <section id="catalog" className="relative py-40 bg-[#080a09]">
-            <div className="max-w-7xl mx-auto px-8 space-y-32">
-                <div className="space-y-6 mb-12">
-                    <div className="text-center space-y-6">
-                        <h2 className="text-impact !text-4xl md:!text-7xl">
-                            Soluções Químicas <span className="text-neon">PARA LIMPEZA</span>
+        <section id="catalog" className="relative py-2 md:py-8 bg-[#080a09]">
+            <div className="max-w-7xl mx-auto px-4 md:px-8 space-y-12 md:space-y-20">
+                <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
+                    <div className="text-center space-y-4 md:space-y-6">
+                        <h2 className="text-impact !text-3xl md:!text-7xl leading-[1.1]">
+                            Soluções Químicas <br className="md:hidden" />
+                            <span className="text-neon">PARA LIMPEZA</span>
                         </h2>
-                        <div className="h-1 w-32 bg-brand-green/20 mx-auto rounded-full" />
+                        <div className="h-1 w-20 md:w-32 bg-brand-green/20 mx-auto rounded-full mt-4 md:mt-8" />
                     </div>
-
-                    {/* Mobile Swipe Hint */}
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 0.4 }}
-                        className="text-[10px] text-brand-green font-black uppercase tracking-[0.4em] text-center md:hidden"
-                    >
-                        Arraste para o lado para ver mais
-                    </motion.p>
                 </div>
 
-                {/* Grid on Desktop, Horizontal Scroll on Mobile */}
-                <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16 overflow-x-auto md:overflow-visible pb-12 md:pb-0 snap-x snap-mandatory no-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12 lg:gap-16">
                     {products.map((p, i) => (
-                        <div key={i} className="min-w-[85vw] md:min-w-0 snap-center">
+                        <div key={i} className="h-full">
                             <ProductCard
                                 product={p}
                                 onOpenDetails={(prod) => setSelectedProduct(prod)}

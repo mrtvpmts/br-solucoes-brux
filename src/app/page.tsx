@@ -7,6 +7,7 @@ import Segments from '@/components/Segments'
 import Catalog from '@/components/Catalog'
 import Differentials from '@/components/Differentials'
 import ContactForm from '@/components/ContactForm'
+import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import QuoteModal from '@/components/QuoteModal'
@@ -19,10 +20,11 @@ export default function Page() {
       <main className="relative selection:bg-brand-green selection:text-black">
         <Hero />
         <About />
-        <Segments />
         <Catalog />
-        <Differentials />
+        <Segments />
         <ContactForm />
+        <Differentials />
+        <FAQ />
       </main>
       <Footer />
       <WhatsAppButton />

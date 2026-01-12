@@ -11,7 +11,7 @@ interface Gallon3DProps {
 
 export default function Gallon3D({ scrollY = 0 }: Gallon3DProps) {
   const groupRef = useRef<THREE.Group>(null!)
-  const label = useTexture('/textures/logo-brux.png')
+  const label = useTexture('/textures/brux-logo-horizontal.png')
 
   useFrame((state) => {
     // Rotation reacts to scroll as requested

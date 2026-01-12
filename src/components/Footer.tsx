@@ -6,10 +6,10 @@ import { FileText, Download, Mail, Phone, MapPin } from 'lucide-react'
 
 export default function Footer() {
     return (
-        <footer id="contact" className="relative bg-[#050505] pt-40 pb-16 px-8 overflow-hidden">
+        <footer id="contact" className="relative bg-[#050505] pt-16 pb-16 px-8 overflow-hidden">
 
             {/* TECHNICAL DOCUMENTATION (NEW) */}
-            <div className="max-w-7xl mx-auto mb-40 border-t border-white/5 pt-32">
+            <div className="max-w-7xl mx-auto mb-16 border-t border-white/5 pt-16">
                 <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-20">
                     <div className="space-y-6 max-w-2xl">
                         <h2 className="text-impact !text-4xl md:!text-6xl">Apoio <span className="text-neon">Técnico</span></h2>
@@ -59,19 +59,24 @@ export default function Footer() {
 
             {/* FINAL CONTACT PANEL */}
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white/[0.03] border border-white/10 rounded-[64px] p-10 md:p-20 relative z-10 overflow-hidden shadow-2xl">
-                <div className="space-y-12">
-                    <div className="flex items-center gap-1 group relative">
-                        <div className="relative w-72 h-32 -ml-4">
-                            <Image
-                                src="/textures/logo-brux.png"
-                                alt="BRUX SOLUTIONS"
-                                fill
-                                className="brightness-125 object-contain"
-                            />
-                        </div>
+                <div className="flex flex-col justify-center items-start lg:border-r lg:border-white/5 lg:pr-12">
+                    <div className="relative w-full aspect-video md:aspect-square max-h-[400px] transform-gpu">
+                        <Image
+                            src="/textures/brux-logo-horizontal.png"
+                            alt="BRUX SOLUTIONS"
+                            fill
+                            className="object-contain drop-shadow-[0_0_50px_rgba(34,197,94,0.3)] brightness-110"
+                        />
                     </div>
 
-                    <div className="space-y-10">
+                    <div className="mt-8 space-y-2 opacity-50">
+                        <div className="h-px w-24 bg-gradient-to-r from-brand-green/50 to-transparent" />
+                        <p className="text-[8px] font-black uppercase tracking-[0.5em] text-white">Elite Industrial Chemistry</p>
+                    </div>
+                </div>
+
+                <div className="flex flex-col justify-between space-y-12">
+                    <div className="space-y-8">
                         <div className="flex items-center gap-6 group">
                             <div className="w-14 h-14 rounded-2xl bg-brand-green/10 flex items-center justify-center text-brand-green">
                                 <Mail size={24} />
@@ -103,26 +108,26 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className="pt-10 flex flex-col gap-4">
+                    <div className="pt-10 flex flex-col gap-4 border-t border-white/5">
                         <div className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">Dados Jurídicos</div>
                         <div className="text-white/60 font-black tracking-widest text-sm italic">CNPJ: 36.911.009/0001-00</div>
                     </div>
                 </div>
-
-                {/* MAP AREA */}
-                <div className="h-[500px] lg:h-full min-h-[500px] rounded-[48px] overflow-hidden border border-white/10 shadow-2xl grayscale saturate-[0.2] brightness-75">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117056.236195576!2d-46.74411135!3d-23.53377315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzM3LjkiUyA0NsKwMzknMTIuMyJX!5e0!3m2!1spt-BR!2sbr!4v1625000000000!5m2!1spt-BR!2sbr"
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0, filter: 'invert(100%) hue-rotate(180deg) brightness(0.8) contrast(1.2)' }}
-                        allowFullScreen
-                        loading="lazy"
-                    ></iframe>
-                </div>
             </div>
 
-            <div className="max-w-7xl mx-auto pt-24 border-t border-white/5 mt-32 flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] text-white/20 font-black uppercase tracking-[0.6em]">
+            {/* MAP AREA */}
+            <div className="max-w-7xl mx-auto mt-12 h-[500px] rounded-[48px] overflow-hidden border border-white/10 shadow-2xl grayscale saturate-[0.2] brightness-75">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117056.236195576!2d-46.74411135!3d-23.53377315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMzJzM3LjkiUyA0NsKwMzknMTIuMyJX!5e0!3m2!1spt-BR!2sbr!4v1625000000000!5m2!1spt-BR!2sbr"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, filter: 'invert(100%) hue-rotate(180deg) brightness(0.8) contrast(1.2)' }}
+                    allowFullScreen
+                    loading="lazy"
+                ></iframe>
+            </div>
+
+            <div className="max-w-7xl mx-auto pt-12 border-t border-white/5 mt-16 flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] text-white/20 font-black uppercase tracking-[0.6em]">
                 <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
                     <div className="flex items-center gap-4">
                         <span className="text-brand-green/30">●</span>
