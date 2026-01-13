@@ -35,7 +35,7 @@ export default function ProductCard({ title, subtitle }: ProductCardProps) {
 
             {/* Typography */}
             <div className="space-y-2">
-                <h3 className="text-xl font-black uppercase text-white leading-tight">
+                <h3 className="text-base md:text-xl font-black uppercase text-white leading-tight line-clamp-2 min-h-[2.5em] flex items-center justify-center">
                     {title}
                 </h3>
                 <span className="text-brand-green font-bold text-sm tracking-widest">

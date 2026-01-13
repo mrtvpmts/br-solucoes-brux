@@ -97,7 +97,7 @@ export default function Differentials() {
                             <div className="p-4 bg-brand-green/10 rounded-2xl text-brand-green group-hover:shadow-[0_0_20px_rgba(57,255,20,0.3)] transition-all">
                                 {d.icon}
                             </div>
-                            <span className="text-sm font-black text-white uppercase tracking-widest leading-tight">
+                            <span className="text-xs md:text-sm font-black text-white uppercase tracking-widest leading-tight text-center md:text-left break-words">
                                 {d.title}
                             </span>
                         </motion.div>
@@ -117,7 +117,7 @@ export default function Differentials() {
 
                             <motion.div
                                 layoutId={`diff-${selectedDiff.id}`}
-                                className="relative w-full max-w-xl bg-[#080b09] border border-white/10 rounded-[40px] p-8 md:p-12 overflow-hidden shadow-[0_0_80px_rgba(57,255,20,0.15)]"
+                                className="relative w-full max-w-xl bg-[#080b09] border border-white/10 rounded-[40px] p-8 md:p-12 max-h-[85vh] overflow-y-auto shadow-[0_0_80px_rgba(57,255,20,0.15)]"
                             >
                                 {/* Animated industrial background */}
                                 <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">

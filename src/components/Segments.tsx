@@ -91,7 +91,7 @@ export default function Segments() {
                     <div className="h-1 w-20 md:w-32 bg-brand-green/20 rounded-full" />
                 </div>
 
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-10">
                     {segments.map((s, i) => (
                         <motion.div
                             key={i}
@@ -107,7 +107,7 @@ export default function Segments() {
                                 {s.icon}
                             </div>
                             <div className="space-y-1 md:space-y-4">
-                                <h3 className="text-[12px] md:text-2xl font-black uppercase text-white tracking-widest">{s.title}</h3>
+                                <h3 className="text-sm md:text-2xl font-black uppercase text-white tracking-widest">{s.title}</h3>
                                 <p className="text-white/40 md:text-white/50 text-[10px] md:text-base font-medium leading-relaxed line-clamp-2 md:line-clamp-none">
                                     {s.desc}
                                 </p>
@@ -135,7 +135,7 @@ export default function Segments() {
 
                         <motion.div
                             layoutId={`segment-${selectedSegment.id}`}
-                            className="relative w-full max-w-2xl bg-[#0b0f0d] border border-white/10 rounded-[40px] p-8 md:p-12 overflow-hidden shadow-[0_0_100px_rgba(57,255,20,0.1)]"
+                            className="relative w-full max-w-2xl bg-[#0b0f0d] border border-white/10 rounded-[40px] p-8 md:p-12 max-h-[85vh] overflow-y-auto shadow-[0_0_100px_rgba(57,255,20,0.1)]"
                         >
                             {/* Neon Background Animations */}
                             <div className="absolute inset-0 z-0 pointer-events-none">

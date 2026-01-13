@@ -39,7 +39,7 @@ export default function GlowCard({ title, subtitle, image, tag }: GlowCardProps)
                 </div>
 
                 <div className="text-center">
-                    <h3 className="text-xl font-bold text-white group-hover:text-brand-green transition-colors leading-tight">
+                    <h3 className="text-[clamp(1rem,3vw,1.25rem)] font-bold text-white group-hover:text-brand-green transition-colors leading-tight break-words hyphens-auto">
                         {title}
                     </h3>
                     <p className="text-sm text-white/40 mt-1 uppercase tracking-tighter">

@@ -29,7 +29,7 @@ function ProductCard({ product, onOpenDetails }: ProductCardProps) {
             </div>
 
             <div className="space-y-1 md:space-y-3 flex-grow min-w-0">
-                <h3 className="text-sm md:text-2xl font-black uppercase text-white tracking-tight leading-tight md:px-4 md:h-[3em] md:flex items-center justify-center truncate md:whitespace-normal">
+                <h3 className="text-[clamp(1rem,4vw,1.5rem)] font-black uppercase text-white tracking-tight leading-tight md:px-4 md:h-[3em] flex items-center justify-center text-center break-words hyphens-auto w-full">
                     {product.title}
                 </h3>
                 <div className="text-brand-green text-[9px] md:text-sm font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase opacity-70">
