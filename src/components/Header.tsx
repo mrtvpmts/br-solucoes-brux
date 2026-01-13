@@ -12,10 +12,9 @@ export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const navItems = [
-        { label: 'Início', href: '#home' },
-        { label: 'Sobre', href: '#about' },
+        { label: 'Home', href: '#home' },
         { label: 'Produtos', href: '#catalog' },
-        { label: 'Segmentos', href: '#segments' },
+        { label: 'Indústria & Governo', href: '#government' },
         { label: 'Logística', href: '#logistics' },
         { label: 'Contato', href: '#contact' },
     ]
@@ -57,10 +56,10 @@ export default function Header() {
                     <div className="flex items-center gap-4 flex-shrink-0">
                         <button
                             onClick={() => setOpen(true)}
-                            className="btn-stitch btn-stitch-primary py-2 px-4 md:py-3 md:px-8 text-[9px] md:text-[10px] whitespace-nowrap"
+                            className="bg-[#39FF14] hover:bg-[#32e012] text-black font-black py-2 px-4 md:py-3 md:px-6 text-[9px] md:text-[10px] uppercase tracking-wider whitespace-nowrap rounded-lg transition-all shadow-[0_0_20px_rgba(57,255,20,0.4)]"
                         >
-                            <span className="sm:hidden">Orçamento</span>
-                            <span className="hidden sm:inline">Solicitar Orçamento</span>
+                            <span className="sm:hidden">Especialista</span>
+                            <span className="hidden sm:inline">Falar com Especialista</span>
                         </button>
 
                         {/* Botão Menu Mobile */}
@@ -82,26 +81,23 @@ export default function Header() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-[9999] lg:hidden"
-                        style={{ backgroundColor: '#000000' }}
+                        className="fixed inset-0 z-[9999] lg:hidden overflow-hidden"
+                        style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
                     >
                         {/* FUNDO PRETO SÓLIDO - TELA INTEIRA */}
-                        <div
-                            className="absolute inset-0 w-full h-full"
-                            style={{ backgroundColor: '#000000' }}
-                        />
+                        <div className="absolute inset-0 bg-[#060807]/92 backdrop-blur-2xl" />
 
                         {/* Botão Fechar */}
                         <button
                             onClick={() => setIsMenuOpen(false)}
-                            className="absolute top-6 right-6 p-2 text-white hover:text-brand-green transition-colors z-10"
+                            className="absolute top-6 right-6 p-2 text-white hover:text-brand-green transition-colors z-[10000] cursor-pointer bg-white/5 rounded-full"
                         >
                             <X size={32} />
                         </button>
 
                         {/* Conteúdo do Menu */}
-                        <div className="relative z-10 flex flex-col justify-center items-start h-full px-10">
-                            <nav className="flex flex-col gap-4">
+                        <div className="relative z-10 flex flex-col h-full max-h-screen overflow-y-auto pt-28 pb-8 px-8">
+                            <nav className="flex flex-col gap-2">
                                 {navItems.map((item, i) => (
                                     <motion.div
                                         key={item.href}

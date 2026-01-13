@@ -20,28 +20,28 @@ export default function About() {
 
     const slides = [
         {
-            label: "DNA Industrial",
-            title: "BRUX Limpeza Profissional",
-            desc: "Nascida na rigidez dos ambientes profissionais, a BRUX funde química avançada com eficiência bruta. Cada molécula é projetada para o impacto, garantindo performance inegociável onde outros falham.",
-            meta: "CHEM_STABILITY: ALPHA // YIELD_INDEX: MAX"
+            label: "Quem Somos",
+            title: "Tecnologia e Eficiência em Higiene Profissional",
+            desc: "A BRUX nasceu com a missão de transformar a limpeza técnica em um pilar de produtividade e segurança para as organizações. Mais do que fornecer saneantes, entregamos soluções inteligentes que unem alta performance química e economia.",
+            meta: "CHEMISTRY_LEVEL: ELITE // SCALE: ALL_SIZES"
         },
         {
-            label: "Soluções B2B",
-            title: "Diluições Extremas, Resultados Absolutos",
-            desc: "Desenvolvemos formulações de altíssimo rendimento para operações que exigem escala e economia real. Do faturamento flexível à entrega prioritária, somos o motor químico da sua empresa.",
-            meta: "B2B_PROTOCOL: ACTIVE // SCALE_READY"
+            label: "Versatilidade",
+            title: "Do Pequeno ao Grande: Alcance Total",
+            desc: "Nossa estrutura foi desenhada para atender com excelência a todos os portes de negócio. Atendemos desde a lanchonete do bairro até complexos hospitalares de alta responsabilidade e grandes centros comerciais.",
+            meta: "COVERAGE: FULL_SPECTRUM // B2B_READY"
         },
         {
-            label: "Segurança & Suporte",
-            title: "Rigor Técnico e Conformidade Total",
-            desc: "Segurança B2B é inegociável. Garantimos suporte técnico especializado e toda a documentação (FISPQ) rigorosamente atualizada, protegendo sua equipe e o meio ambiente com nível de excelência.",
-            meta: "COMPLIANCE_LEVEL: SECURED // TECH_SUPPORT: v24"
+            label: "Sustentabilidade",
+            title: "Compromisso com a Natureza",
+            desc: "Na BRUX, acreditamos que a limpeza impecável não deve vir às custas do meio ambiente. Toda a nossa linha é composta por fórmulas biodegradáveis, desenvolvidas para se decomporem naturalmente, garantindo conformidade ESG.",
+            meta: "ECO_COMPLIANCE: CERTIFIED // BIODEGRADABLE: 100%"
         },
         {
-            label: "Logística Alpha",
-            title: "Suprimento Contínuo e Veloz",
-            desc: "Operação logística otimizada para a Grande São Paulo. Entregamos agilidade no fornecimento para que sua operação nunca pare, mantendo o fluxo de limpeza sempre em sua potência máxima.",
-            meta: "LOG_STATUS: PRIORITY // REGION: SP_METRO"
+            label: "Parceria B2B",
+            title: "Compromisso com o Resultado",
+            desc: "Trabalhamos no modelo de parceria estratégica. Seja através de vendas diretas ou contratos de suprimentos para o setor público e privado, a BRUX garante que sua operação nunca pare por falta de higiene e cuidado.",
+            meta: "PARTNERSHIP_MODEL: STRATEGIC // SUPPLY: GUARANTEED"
         }
     ]
 
@@ -112,13 +112,13 @@ export default function About() {
                                     </span>
                                     <h2 className="text-white font-black italic uppercase tracking-tighter text-xl md:text-7xl leading-tight md:leading-[0.9]">
                                         {slides[activeSlide].title.split(':').map((part, idx) => (
-                                            <span key={idx} className={idx === 1 ? "text-neon block mt-1 md:mt-2" : ""}>{part}</span>
+                                            <span key={idx} className={idx === 1 ? "text-brand-green block mt-1 md:mt-2" : ""}>{part}</span>
                                         ))}
                                     </h2>
                                     <div className="h-[1px] md:h-[2px] w-12 md:w-40 bg-brand-green/40 mx-auto rounded-full shadow-[0_0_20px_#39FF14]" />
                                 </div>
 
-                                <p className="text-white/70 md:text-white/80 text-xs md:text-3xl font-medium leading-[1.6] md:leading-[1.4] max-w-4xl mx-auto tracking-tight px-2">
+                                <p className="text-white/90 md:text-white !text-3xl md:!text-5xl lg:!text-6xl font-bold leading-tight max-w-6xl mx-auto tracking-tight px-4 drop-shadow-2xl mt-8">
                                     {slides[activeSlide].desc}
                                 </p>
 

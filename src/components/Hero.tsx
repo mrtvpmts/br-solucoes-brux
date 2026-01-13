@@ -45,9 +45,9 @@ export default function Hero() {
                         transition={{ duration: 1, delay: 0.3 }}
                         className="text-impact !text-4xl md:!text-8xl"
                     >
-                        Limpeza Industrial<br />
+                        BRUX —<br />
                         <span className="text-neon block mt-4 md:mt-8 drop-shadow-[0_0_20px_rgba(57,255,20,0.4)]">
-                            de Alta Performance
+                            O Fim da Sujeira Impossível
                         </span>
                     </motion.h1>
 
@@ -55,9 +55,10 @@ export default function Hero() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1.5, delay: 0.8 }}
-                        className="max-w-4xl mx-auto text-white/40 md:text-white/50 text-sm md:text-3xl font-light tracking-[0.1em] md:tracking-[0.15em] uppercase leading-tight px-4"
+                        className="max-w-4xl mx-auto text-white/40 md:text-white/50 text-sm md:text-2xl font-light tracking-[0.1em] md:tracking-[0.15em] uppercase leading-tight px-4"
                     >
-                        Soluções Químicas para Resultados Absolutos
+                        Tecnologia química de elite para resultados absolutos<br className="hidden md:block" />
+                        em uso doméstico, industrial e governamental
                     </motion.p>
                 </div>
 

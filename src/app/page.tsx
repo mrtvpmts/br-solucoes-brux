@@ -4,6 +4,8 @@ import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Segments from '@/components/Segments'
+import Government from '@/components/Government'
+import Logistics from '@/components/Logistics'
 import Catalog from '@/components/Catalog'
 import Differentials from '@/components/Differentials'
 import ContactForm from '@/components/ContactForm'
@@ -23,6 +25,8 @@ export default function Page() {
         <About />
         <Catalog />
         <Segments />
+        <Government />
+        <Logistics />
         <ContactForm />
         <Differentials />
         <SocialProofCarousel />

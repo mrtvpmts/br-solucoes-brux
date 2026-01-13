@@ -9,69 +9,58 @@ export default function Segments() {
 
     const segments = [
         {
-            title: "Condomínios",
-            icon: <Building size={48} />,
-            desc: "Residenciais e comerciais com alta circulação.",
-            details: {
-                focus: "Higiene Vertical e Áreas Comuns",
-                protocol: "BRUX_CONDO_v4",
-                specs: ["Limpadores Neutros de Alto Rendimento", "Tratamento de Pisos de Pedras", "Sanitização de Elevadores e Halls"],
-                tech: "pH Balanceado / Zero Resíduos"
-            }
-        },
-        {
-            title: "Hotéis",
-            icon: <Hotel size={48} />,
-            desc: "Rede hoteleira que exige padrão de excelência.",
-            details: {
-                focus: "Experiência do Hóspede & Higiene Premium",
-                protocol: "HOSPITALITY_SAFE",
-                specs: ["Odorizadores Premium de Longa Duração", "Desinfetantes Hospitalares Inodoros", "Lavanderia Interna de Alta Performance"],
-                tech: "Fragrância Micro-encapsulada"
-            }
-        },
-        {
-            title: "Restaurantes",
+            title: "Cozinhas Profissionais",
             icon: <Utensils size={48} />,
-            desc: "Lanchonetes e áreas de manipulação de alimentos.",
+            desc: "Bares, restaurantes e áreas de manipulação de alimentos.",
             details: {
                 focus: "Segurança Alimentar & Desengorduramento",
                 protocol: "FOOD_GRADE_SAFE",
-                specs: ["Desengraxantes Alcalinos Alimentares", "Detergentes Clorados de Ação Rápida", "Sanitizantes de Contato Direto"],
+                specs: ["BRUX DESENGORD - Chapas, coifas e fornos", "BRUX LOUÇA CONC - Detergente alto rendimento", "BRUX VEGETAL - Sanitizante ANVISA", "BRUX MULTIUSO - Mesas e balcões", "BRUX CLORO GEL - Vasos e pisos"],
                 tech: "Certificação Grau Alimentar"
             }
         },
         {
-            title: "Comércios",
-            icon: <Store size={48} />,
-            desc: "Lojas e estabelecimentos de atendimento ao público.",
+            title: "Hospitalar & Clínicas",
+            icon: <Shield size={48} />,
+            desc: "Segurança biológica e assepsia total em todos os ambientes.",
             details: {
-                focus: "Estética e Conservação Diária",
-                protocol: "RETAIL_SHINE",
-                specs: ["Limpa-Vidros Anti-Embaçante", "Restauradores de Brilho Instantâneo", "Multiusos Concentrados"],
-                tech: "Secagem Ultra-Rápida"
+                focus: "Desinfecção de Alto Nível",
+                protocol: "HOSPITAL_GRADE",
+                specs: ["BRUX QUATERNÁRIO - Desinfetante 5ª Geração", "BRUX ÁLCOOL 70 - Antissepsia rápida", "BRUX ENZIMÁTICO - Pré-lavagem de instrumentos", "BRUX FLOOR NEUTRO - Pisos brilhantes", "BRUX SANIT. HOSP - Louças sanitárias"],
+                tech: "Conformidade ANVISA Total"
             }
         },
         {
-            title: "Indústrias",
-            icon: <Factory size={48} />,
-            desc: "Fábricas, galpões e ambientes de grande porte.",
+            title: "Condomínios & Hotelaria",
+            icon: <Building size={48} />,
+            desc: "Eficiência na manutenção de grandes áreas e conservação de patrimônio.",
             details: {
-                focus: "Pesados & Processos Produtivos",
+                focus: "Conservação & Fragrância Premium",
+                protocol: "CONDO_ELITE",
+                specs: ["BRUX PEDRA/PISO - Calçadas e pedras", "BRUX PERFUMADO - Fragrância 24h", "BRUX CERA ACRIL - Proteção de pisos", "BRUX TEXTIL - Estofados e carpetes", "BRUX ANTI-LIMBO - Fungos e mofo"],
+                tech: "Fragrância Micro-encapsulada"
+            }
+        },
+        {
+            title: "Indústria & Frotas",
+            icon: <Factory size={48} />,
+            desc: "Potência química para sujeiras extremas e manutenção pesada.",
+            details: {
+                focus: "Desengorduramento Industrial",
                 protocol: "HEAVY_DUTY_ALPHA",
-                specs: ["Desengraxantes à base de Água", "Removedores de Óleos e Graxas", "Limpadores de Máquinas Pesadas"],
+                specs: ["BRUX POWER IND - Desengraxante biodegradável", "BRUX SOLVENTE B - Peças e motores", "BRUX ALUMÍNIO - Baús e chassis", "BRUX PASTA MÃOS - Limpeza de pele", "BRUX HEAVY DUTY - Vestiários"],
                 tech: "Solventes Ecológicos Base Água"
             }
         },
         {
-            title: "Ambientes Corporativos",
+            title: "Escolas & Academias",
             icon: <Building2 size={48} />,
-            desc: "Escritórios e espaços empresariais diversos.",
+            desc: "Cuidado com a saúde, controle de odores e segurança infantil.",
             details: {
-                focus: "Qualidade do Ar & Ergonomia de Limpeza",
-                protocol: "CORP_HEALTH_S2",
-                specs: ["Limpeza de Estofados e Carpetes", "Higienização de Ar-Condicionado", "Desinfecção de Mobiliário Ergonômico"],
-                tech: "Ação Bactericida Prolongada"
+                focus: "Segurança Infantil & Esportiva",
+                protocol: "KIDS_SAFE",
+                specs: ["BRUX KIDS SANIT - Hipoalergênico para brinquedos", "BRUX SPORTS - Tatames e colchonetes", "BRUX MULTI-DRENO - Ralos de vestiários"],
+                tech: "Fórmulas Hipoalergênicas"
             }
         }
     ]
@@ -83,7 +72,7 @@ export default function Segments() {
                 <div className="flex flex-col items-center mb-8 md:mb-16 space-y-4 md:space-y-6">
                     <h2 className="text-impact !text-3xl md:!text-8xl leading-none">
                         Excelência em <br />
-                        <span className="text-neon block mt-3 md:mt-4">Cada Segmento</span>
+                        <span className="text-brand-green block mt-3 md:mt-4">Cada Segmento</span>
                     </h2>
                     <p className="text-white/30 font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-[10px] md:text-xs text-center">
                         Segmentos Atendidos pela Engenharia Brux
@@ -91,7 +80,7 @@ export default function Segments() {
                     <div className="h-1 w-20 md:w-32 bg-brand-green/20 rounded-full" />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-10">
+                <div className="flex flex-wrap justify-center gap-3 md:gap-10">
                     {segments.map((s, i) => (
                         <motion.div
                             key={i}
@@ -101,14 +90,14 @@ export default function Segments() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.05 }}
                             viewport={{ once: true }}
-                            className="industrial-card group flex flex-col gap-3 md:gap-8 h-full cursor-pointer hover:border-brand-green/40 transition-colors p-5 md:p-12"
+                            className="industrial-card group flex flex-col gap-3 md:gap-8 cursor-pointer hover:border-brand-green/40 transition-colors p-5 md:p-12 w-full md:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.7rem)] min-w-[300px]"
                         >
                             <div className="text-brand-green/40 group-hover:text-brand-green group-hover:drop-shadow-[0_0_15px_#39FF14] transition-all duration-500 scale-75 md:scale-100 origin-left">
                                 {s.icon}
                             </div>
                             <div className="space-y-1 md:space-y-4">
                                 <h3 className="text-sm md:text-2xl font-black uppercase text-white tracking-widest">{s.title}</h3>
-                                <p className="text-white/40 md:text-white/50 text-[10px] md:text-base font-medium leading-relaxed line-clamp-2 md:line-clamp-none">
+                                <p className="text-white/60 md:text-white/70 !text-xl md:!text-3xl font-bold leading-tight line-clamp-3 md:line-clamp-none">
                                     {s.desc}
                                 </p>
                             </div>

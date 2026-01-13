@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { FileText, Download, Mail, Phone, MapPin } from 'lucide-react'
+import { FileText, Download, Mail, Phone, MapPin, Shield, Leaf } from 'lucide-react'
 
 export default function Footer() {
     return (
@@ -127,19 +127,86 @@ export default function Footer() {
                 ></iframe>
             </div>
 
-            <div className="max-w-7xl mx-auto pt-12 border-t border-white/5 mt-16 flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] text-white/20 font-black uppercase tracking-[0.6em]">
-                <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
-                    <div className="flex items-center gap-4">
-                        <span className="text-brand-green/30">●</span>
-                        <span>BRUX ® SOLUÇÕES EM LIMPEZA PROFISSIONAL</span>
+            <div className="max-w-7xl mx-auto pt-12 border-t border-white/5 mt-16">
+                {/* CERTIFICATION SEALS */}
+                {/* CERTIFICATION SEALS - PREMIUM REALISTIC MEDALS */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 items-start justify-items-center">
+                    <div className="flex flex-col items-center gap-4 group">
+                        <div className="relative w-32 h-32 md:w-36 md:h-36 transition-transform duration-500 group-hover:scale-110">
+                            <Image
+                                src="/images/seal-premium-anvisa.png"
+                                alt="Anvisa Notificado"
+                                fill
+                                className="object-contain mix-blend-screen"
+                            />
+                        </div>
+                        <div className="text-center">
+                            <h4 className="text-white font-black uppercase tracking-wider text-xs md:text-sm mb-1">Anvisa</h4>
+                            <p className="text-brand-green/80 text-[10px] uppercase font-bold tracking-widest">Produto Notificado</p>
+                        </div>
                     </div>
-                    <span className="text-[8px] opacity-40 lowercase tracking-[0.2em] md:ml-4">
-                        BRUX ® é uma marca registrada em processo perante o INPI. Todos os direitos reservados.
-                    </span>
+
+                    <div className="flex flex-col items-center gap-4 group">
+                        <div className="relative w-32 h-32 md:w-36 md:h-36 transition-transform duration-500 group-hover:scale-110">
+                            <Image
+                                src="/images/seal-premium-bio.png"
+                                alt="100% Biodegradável"
+                                fill
+                                className="object-contain mix-blend-screen"
+                            />
+                        </div>
+                        <div className="text-center">
+                            <h4 className="text-white font-black uppercase tracking-wider text-xs md:text-sm mb-1">Biodegradável</h4>
+                            <p className="text-brand-green/80 text-[10px] uppercase font-bold tracking-widest">100% Ecológico</p>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col items-center gap-4 group">
+                        <div className="relative w-32 h-32 md:w-36 md:h-36 transition-transform duration-500 group-hover:scale-110">
+                            <Image
+                                src="/images/seal-premium-brazil.png"
+                                alt="Indústria Brasileira"
+                                fill
+                                className="object-contain mix-blend-screen"
+                            />
+                        </div>
+                        <div className="text-center">
+                            <h4 className="text-white font-black uppercase tracking-wider text-xs md:text-sm mb-1">Nacional</h4>
+                            <p className="text-brand-green/80 text-[10px] uppercase font-bold tracking-widest">Indústria Brasileira</p>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-col items-center gap-4 group">
+                        <div className="relative w-32 h-32 md:w-36 md:h-36 transition-transform duration-500 group-hover:scale-110">
+                            <Image
+                                src="/images/seal-premium-eco.png"
+                                alt="Tecnologia Ecoeficiente"
+                                fill
+                                className="object-contain mix-blend-screen"
+                            />
+                        </div>
+                        <div className="text-center">
+                            <h4 className="text-white font-black uppercase tracking-wider text-xs md:text-sm mb-1">Eco Tech</h4>
+                            <p className="text-brand-green/80 text-[10px] uppercase font-bold tracking-widest">Alta Performance</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="flex gap-12">
-                    <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
-                    <a href="#" className="hover:text-white transition-colors">Privacidade (LGPD)</a>
+
+                {/* COPYRIGHT */}
+                <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-[9px] text-white/20 font-black uppercase tracking-[0.6em]">
+                    <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+                        <div className="flex items-center gap-4">
+                            <span className="text-brand-green/30">●</span>
+                            <span>BRUX ® SOLUÇÕES EM LIMPEZA PROFISSIONAL</span>
+                        </div>
+                        <span className="text-[8px] opacity-40 lowercase tracking-[0.2em] md:ml-4">
+                            BRUX ® é uma marca registrada em processo perante o INPI. Todos os direitos reservados.
+                        </span>
+                    </div>
+                    <div className="flex gap-12">
+                        <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
+                        <a href="#" className="hover:text-white transition-colors">Privacidade (LGPD)</a>
+                    </div>
                 </div>
             </div>
         </footer>

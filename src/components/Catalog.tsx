@@ -39,12 +39,29 @@ function ProductCard({ product, onOpenDetails }: ProductCardProps) {
                 {/* Tags removed for cleaner "normal" look */}
             </div>
 
-            <button
-                onClick={() => onOpenDetails(product)}
-                className="btn-stitch w-full py-4 text-xs uppercase font-black shrink-0"
-            >
-                Visualizar Detalhes
-            </button>
+            {/* Packaging Badge */}
+            <div className="text-[10px] text-white/40 font-bold uppercase tracking-widest">
+                Disponível: 5L • 20L • 50L • 200L • 1000L
+            </div>
+
+            <div className="w-full space-y-3">
+                <button
+                    onClick={() => onOpenDetails(product)}
+                    className="btn-stitch w-full py-4 text-xs uppercase font-black"
+                >
+                    Visualizar Detalhes
+                </button>
+
+                {/* Wholesale Link */}
+                <a
+                    href="https://wa.me/551127768000?text=Olá, gostaria de preços diferenciados para Atacado e Licitações."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center text-[10px] text-brand-green/70 hover:text-brand-green underline underline-offset-2 transition-colors"
+                >
+                    Preços para Atacado e Licitações – Solicite Cotação
+                </a>
+            </div>
         </motion.div>
     )
 }
@@ -140,7 +157,7 @@ export default function Catalog() {
                     <div className="text-center space-y-4 md:space-y-6">
                         <h2 className="text-impact !text-3xl md:!text-7xl leading-[1.1]">
                             Soluções Químicas <br className="md:hidden" />
-                            <span className="text-neon">PARA LIMPEZA</span>
+                            <span className="text-brand-green">PARA LIMPEZA</span>
                         </h2>
                         <div className="h-1 w-20 md:w-32 bg-brand-green/20 mx-auto rounded-full mt-4 md:mt-8" />
                     </div>
