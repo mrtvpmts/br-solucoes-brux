@@ -1,8 +1,7 @@
-'use client'
-
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { X, FileText, Shield, Droplets, Zap, Eye, Download, Info } from 'lucide-react'
+import { X, FileText, Shield, Droplets, Zap, Eye, Download, Info, Minus, Plus, ShoppingCart } from 'lucide-react'
 import { useQuote } from './QuoteContext'
 
 interface ProductDetailModalProps {
@@ -12,9 +11,21 @@ interface ProductDetailModalProps {
 }
 
 export default function ProductDetailModal({ product, isOpen, onClose }: ProductDetailModalProps) {
-    const { setOpen: setQuoteOpen } = useQuote()
+    const { setOpen: setQuoteOpen, addToCart } = useQuote()
+    const [quantity, setQuantity] = useState(1)
+    const [volume, setVolume] = useState('20L')
 
     if (!product) return null
+
+    const handleAddToCart = () => {
+        addToCart({
+            product,
+            quantity,
+            volume
+        })
+        onClose()
+        setQuoteOpen(true)
+    }
 
     return (
         <AnimatePresence>
@@ -47,11 +58,8 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
                         {/* Left: Product Showcase (Pedestal) */}
                         <div className="md:w-1/2 relative bg-[#080a09] flex flex-col items-center justify-center p-12 overflow-hidden border-b md:border-b-0 md:border-r border-white/5">
                             <div className="absolute inset-0 scanlines opacity-10 pointer-events-none" />
-
-                            {/* Glow behind product */}
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand-green/20 blur-[120px] rounded-full animate-pulse" />
 
-                            {/* Product Image on Pedestal */}
                             <div className="relative z-10 space-y-12 flex flex-col items-center">
                                 <motion.div
                                     initial={{ y: 20, opacity: 0 }}
@@ -66,7 +74,6 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
                                         height={400}
                                         className="relative z-10 drop-shadow-[0_40px_60px_rgba(0,0,0,0.8)]"
                                     />
-                                    {/* Pedestal Shadow/Base */}
                                     <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full h-12 bg-black/60 blur-xl rounded-full" />
                                     <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[120%] h-4 bg-brand-green/10 blur-md rounded-full" />
                                 </motion.div>
@@ -81,7 +88,6 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
                         {/* Right: Technical Specs */}
                         <div className="md:w-1/2 p-10 md:p-16 flex flex-col justify-center space-y-10 relative bg-[#0b0f0d]">
                             <div className="space-y-6">
-                                {/* Tags */}
                                 <div className="flex flex-wrap gap-3">
                                     {product.tags?.map((tag: string, i: number) => (
                                         <span key={i} className="px-4 py-1.5 rounded-full bg-brand-green/10 border border-brand-green/20 text-brand-green text-[10px] font-black uppercase tracking-widest">
@@ -90,12 +96,10 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
                                     ))}
                                 </div>
 
-                                {/* Specifications Table */}
                                 <div className="space-y-4 pt-4">
                                     <h4 className="flex items-center gap-3 text-white/40 text-[10px] font-black uppercase tracking-[0.3em]">
                                         <Info size={14} className="text-brand-green" /> Ficha Técnica
                                     </h4>
-
                                     <div className="space-y-0 border border-white/5 rounded-2xl overflow-hidden bg-white/[0.02]">
                                         {[
                                             { label: "Diluição Recomendada", value: product.specs.dilution },
@@ -112,7 +116,6 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
                                     </div>
                                 </div>
 
-                                {/* PPE Section */}
                                 <div className="space-y-4">
                                     <h4 className="flex items-center gap-3 text-white/40 text-[10px] font-black uppercase tracking-[0.3em]">
                                         <Shield size={14} className="text-brand-green" /> EPI Recomendado
@@ -126,33 +129,67 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
                                     </div>
                                 </div>
 
-                                {/* Document Links */}
                                 <div className="flex flex-col gap-4 pt-6">
                                     <button className="flex items-center gap-3 text-brand-green/60 hover:text-brand-green transition-colors text-[10px] font-black uppercase tracking-widest">
                                         <Download size={14} /> Technical Data Sheet (PDF)
                                     </button>
-                                    <button className="flex items-center gap-3 text-brand-green/60 hover:text-brand-green transition-colors text-[10px] font-black uppercase tracking-widest">
-                                        <Download size={14} /> FISPQ / MSDS (PDF)
-                                    </button>
                                 </div>
                             </div>
 
-                            {/* Action Button */}
-                            <button
-                                onClick={() => {
-                                    onClose()
-                                    setQuoteOpen(true)
-                                }}
-                                className="btn-stitch btn-stitch-primary w-full py-6 text-lg uppercase tracking-widest flex items-center justify-center gap-4 group"
-                            >
-                                Solicitar Orçamento Personalizado
-                                <motion.div
-                                    animate={{ x: [0, 5, 0] }}
-                                    transition={{ repeat: Infinity, duration: 1.5 }}
+                            {/* VOLUME & QUANTITY & ACTION */}
+                            <div className="space-y-6 pt-6 border-t border-white/10">
+
+                                {/* Volume Selector */}
+                                <div className="space-y-3">
+                                    <span className="text-xs font-bold text-white uppercase tracking-widest block">Volume (Embalagem):</span>
+                                    <div className="flex flex-wrap gap-3">
+                                        {['5L', '20L', '50L', '200L', '1000L'].map((vol) => (
+                                            <button
+                                                key={vol}
+                                                onClick={() => setVolume(vol)}
+                                                className={`px-4 py-2 rounded-xl text-sm font-bold border transition-all ${volume === vol
+                                                    ? 'bg-brand-green text-black border-brand-green shadow-[0_0_15px_rgba(57,255,20,0.4)]'
+                                                    : 'bg-white/5 border-white/10 text-white hover:border-brand-green/50'
+                                                    }`}
+                                            >
+                                                {vol}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-between">
+                                    <span className="text-xs font-bold text-white uppercase tracking-widest">Quantidade:</span>
+                                    <div className="flex items-center gap-4 bg-white/5 rounded-xl p-2 border border-white/10">
+                                        <button
+                                            onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                            className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/10 text-white transition-colors"
+                                        >
+                                            <Minus size={16} />
+                                        </button>
+                                        <span className="font-mono text-xl font-bold text-brand-green min-w-[2ch] text-center">{quantity}</span>
+                                        <button
+                                            onClick={() => setQuantity(quantity + 1)}
+                                            className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/10 text-white transition-colors"
+                                        >
+                                            <Plus size={16} />
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <button
+                                    onClick={handleAddToCart}
+                                    className="btn-stitch btn-stitch-primary w-full py-6 text-lg uppercase tracking-widest flex items-center justify-center gap-4 group"
                                 >
-                                    <Zap size={18} fill="currentColor" />
-                                </motion.div>
-                            </button>
+                                    Adicionar à Cotação
+                                    <motion.div
+                                        animate={{ x: [0, 5, 0] }}
+                                        transition={{ repeat: Infinity, duration: 1.5 }}
+                                    >
+                                        <ShoppingCart size={18} fill="currentColor" />
+                                    </motion.div>
+                                </button>
+                            </div>
                         </div>
                     </motion.div>
                 </div>

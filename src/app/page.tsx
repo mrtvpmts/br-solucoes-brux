@@ -23,12 +23,12 @@ export default function Page() {
       <main className="relative selection:bg-brand-green selection:text-black">
         <Hero />
         <About />
-        <Catalog />
         <Segments />
+        <Catalog />
         <Government />
         <Logistics />
-        <ContactForm />
         <Differentials />
+        <ContactForm />
         <SocialProofCarousel />
         <FAQ />
       </main>

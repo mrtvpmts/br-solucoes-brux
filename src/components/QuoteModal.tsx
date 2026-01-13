@@ -6,7 +6,7 @@ import { useQuote } from './QuoteContext'
 import { X, CheckCircle, Send, Loader2, Phone } from 'lucide-react'
 
 export default function QuoteModal() {
-    const { open, setOpen, success, setSuccess } = useQuote()
+    const { open, setOpen, success, setSuccess, cart, removeFromCart } = useQuote()
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
@@ -29,10 +29,18 @@ export default function QuoteModal() {
             const response = await fetch('/api/send', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+                body: JSON.stringify({ ...formData, cart })
             })
 
             if (response.ok) {
+                // Build items list for WhatsApp
+                let itemsList = ''
+                if (cart.length > 0) {
+                    itemsList = '\n\n*ITENS DA COTAÇÃO:*\n' + cart.map(item =>
+                        `▪️ ${item.product.title} (${item.volume}) x ${item.quantity}`
+                    ).join('\n')
+                }
+
                 // Formatting WhatsApp message
                 const waMessage = encodeURIComponent(
                     `*NOVO ORÇAMENTO - BRUX*\n\n` +
@@ -41,6 +49,7 @@ export default function QuoteModal() {
                     `*E-mail:* ${formData.email}\n` +
                     `*WhatsApp:* ${formData.whatsapp || 'Não informado'}\n` +
                     `*Segmento:* ${formData.segment}\n` +
+                    itemsList + '\n\n' +
                     `*Demanda:* ${formData.message || 'Sem mensagem adicional'}`
                 )
 
@@ -79,7 +88,7 @@ export default function QuoteModal() {
                         initial={{ scale: 0.9, opacity: 0, y: 20 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                        className="relative z-10 bg-[#0b0f0d] border border-white/10 rounded-[32px] p-8 md:p-10 w-full max-w-lg shadow-[0_0_50px_rgba(44,255,122,0.1)] overflow-hidden"
+                        className="relative z-10 bg-[#0b0f0d] border border-white/10 rounded-[32px] p-8 md:p-10 w-full max-w-lg shadow-[0_0_50px_rgba(44,255,122,0.1)] overflow-hidden max-h-[90vh] overflow-y-auto custom-scrollbar"
                     >
                         {/* Scanlines Effect */}
                         <div className="absolute inset-0 scanlines opacity-5 pointer-events-none" />
@@ -105,6 +114,34 @@ export default function QuoteModal() {
                                         Preencha os dados abaixo para receber um atendimento técnico personalizado.
                                     </p>
                                 </div>
+
+                                {/* CART SUMMARY */}
+                                {cart.length > 0 && (
+                                    <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-4 space-y-3">
+                                        <h4 className="text-[10px] font-black text-white/40 uppercase tracking-widest flex items-center gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-brand-green" /> Itens Selecionados ({cart.length})
+                                        </h4>
+                                        <div className="space-y-2 max-h-[150px] overflow-y-auto pr-2 custom-scrollbar">
+                                            {cart.map((item, index) => (
+                                                <div key={index} className="flex items-center justify-between text-sm bg-black/20 p-2 rounded-lg border border-white/5">
+                                                    <div>
+                                                        <div className="text-white font-bold text-xs">{item.product.title}</div>
+                                                        <div className="text-brand-green font-mono text-[10px]">
+                                                            {item.volume} • Qtd: {item.quantity}
+                                                        </div>
+                                                    </div>
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => removeFromCart(item.product.title)}
+                                                        className="text-white/20 hover:text-red-500 transition-colors p-1"
+                                                    >
+                                                        <X size={14} />
+                                                    </button>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
 
                                 <div className="space-y-4">
                                     <div className="space-y-1">
@@ -230,6 +267,7 @@ export default function QuoteModal() {
                                 <div className="flex flex-col gap-3 mt-8">
                                     <button
                                         onClick={() => {
+                                            // Re-build message for "chat now" button if needed, or rely on automatic open
                                             const waMessage = encodeURIComponent(`*NOVO ORÇAMENTO - BRUX*\n\n*Nome:* ${formData.name}\n*Empresa:* ${formData.company}\n*Segmento:* ${formData.segment}`)
                                             window.open(`https://wa.me/551127768000?text=${waMessage}`, '_blank')
                                         }}
