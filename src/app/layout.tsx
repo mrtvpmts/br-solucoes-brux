@@ -2,10 +2,7 @@ import './globals.css'
 
 export const metadata = {
   title: 'BRUX – Limpeza Industrial (Stitch Fidelity)',
-  icons: {
-    icon: '/textures/brux-logo-horizontal.png',
-    apple: '/textures/brux-logo-horizontal.png',
-  }
+  // icons are handled by src/app/icon.png automatically
 }
 
 import FloatingWhatsApp from '@/components/FloatingWhatsApp'

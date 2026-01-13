@@ -218,17 +218,27 @@ export default function QuoteModal() {
                                         />
                                     </div>
 
-                                    <button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                        className="btn-stitch btn-stitch-primary w-full py-5 text-sm uppercase font-black tracking-widest flex items-center justify-center gap-3 mt-4 disabled:opacity-50"
-                                    >
-                                        {isSubmitting ? (
-                                            <>Enviando <Loader2 className="w-4 h-4 animate-spin" /></>
-                                        ) : (
-                                            <>Solicitar Cotação <Send size={16} /></>
-                                        )}
-                                    </button>
+                                    <div className="flex flex-col gap-3 pt-4">
+                                        <button
+                                            type="button"
+                                            onClick={() => setOpen(false)}
+                                            className="w-full py-4 text-xs font-bold uppercase tracking-widest text-white/50 hover:text-white border border-white/10 hover:bg-white/5 rounded-xl transition-all"
+                                        >
+                                            + Adicionar Mais Produtos
+                                        </button>
+
+                                        <button
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="btn-stitch btn-stitch-primary w-full py-5 text-sm uppercase font-black tracking-widest flex items-center justify-center gap-3 disabled:opacity-50"
+                                        >
+                                            {isSubmitting ? (
+                                                <>Enviando <Loader2 className="w-4 h-4 animate-spin" /></>
+                                            ) : (
+                                                <>Solicitar Cotação <Send size={16} /></>
+                                            )}
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
                         ) : (

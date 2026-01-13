@@ -4,11 +4,11 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ShoppingBag } from 'lucide-react'
 import { useQuote } from './QuoteContext'
 
 export default function Header() {
-    const { setOpen } = useQuote()
+    const { setOpen, cart } = useQuote()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const navItems = [
@@ -60,6 +60,19 @@ export default function Header() {
                         >
                             <span className="sm:hidden">Especialista</span>
                             <span className="hidden sm:inline">Falar com Especialista</span>
+                        </button>
+
+                        {/* Cart Icon */}
+                        <button
+                            onClick={() => setOpen(true)}
+                            className="relative p-2 text-white/50 hover:text-brand-green transition-colors"
+                        >
+                            <ShoppingBag size={24} />
+                            {cart.length > 0 && (
+                                <span className="absolute -top-1 -right-1 bg-brand-green text-black text-[9px] font-black w-4 h-4 flex items-center justify-center rounded-full animate-pulse shadow-[0_0_10px_rgba(57,255,20,0.8)]">
+                                    {cart.length}
+                                </span>
+                            )}
                         </button>
 
                         {/* Botão Menu Mobile */}

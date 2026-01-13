@@ -88,15 +88,15 @@ main {
 }
 
 .btn-stitch:hover {
-  border-color: #2cff7a;
-  box-shadow: 0 0 40px rgba(44, 255, 122, 0.4), inset 0 0 10px rgba(44, 255, 122, 0.2);
+  border-color: #39FF14;
+  box-shadow: 0 0 40px rgba(57, 255, 20, 0.4), inset 0 0 10px rgba(57, 255, 20, 0.2);
   transform: translateY(-5px);
-  background: rgba(44, 255, 122, 0.08);
+  background: rgba(57, 255, 20, 0.08);
 }
 
 .btn-stitch-primary {
-  background: rgba(44, 255, 122, 0.12);
-  border-color: #2cff7a;
+  background: rgba(57, 255, 20, 0.12);
+  border-color: #39FF14;
   color: white;
 }
 
@@ -111,10 +111,10 @@ main {
 }
 
 .industrial-card:hover {
-  border-color: #2cff7a;
-  background: rgba(44, 255, 122, 0.06);
+  border-color: #39FF14;
+  background: rgba(57, 255, 20, 0.06);
   transform: translateY(-12px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(44, 255, 122, 0.1);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(57, 255, 20, 0.1);
 }
 
 /* --- TYPOGRAPHY: STITCH IMPACT (ELITE) --- */
@@ -130,8 +130,8 @@ main {
 }
 
 .text-neon {
-  color: #2cff7a;
-  text-shadow: 0 0 40px rgba(44, 255, 122, 0.6), 0 0 10px rgba(44, 255, 122, 0.4);
+  color: #39FF14;
+  text-shadow: 0 0 40px rgba(57, 255, 20, 0.6), 0 0 10px rgba(57, 255, 20, 0.4);
 }
 
 /* --- TYPOGRAPHY SCALE (CONSISTENT SIZING) --- */

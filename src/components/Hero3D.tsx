@@ -18,7 +18,7 @@ export default function Hero3D() {
         <Canvas camera={{ position: [0, 0, 6], fov: 45 }} shadows dpr={[1, 2]}>
             <ambientLight intensity={0.9} />
             <directionalLight position={[4, 6, 4]} intensity={1.6} castShadow />
-            <pointLight position={[-10, -10, -10]} intensity={0.5} color="#2cff7a" />
+            <pointLight position={[-10, -10, -10]} intensity={0.5} color="#39FF14" />
 
             <Environment preset="city" />
 

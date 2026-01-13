@@ -72,7 +72,9 @@ export default function Segments() {
                 <div className="flex flex-col items-center mb-8 md:mb-16 space-y-4 md:space-y-6">
                     <h2 className="text-impact !text-3xl md:!text-8xl leading-none">
                         Excelência em <br />
-                        <span className="text-brand-green block mt-3 md:mt-4">Cada Segmento</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] block mt-3 md:mt-4">
+                            Cada Segmento
+                        </span>
                     </h2>
                     <p className="text-white/30 font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-[10px] md:text-xs text-center">
                         Segmentos Atendidos pela Engenharia Brux

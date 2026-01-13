@@ -75,7 +75,7 @@ export default function Differentials() {
             <div className="max-w-7xl mx-auto space-y-12 md:space-y-24">
 
                 <div className="text-center space-y-6">
-                    <h2 className="text-impact !text-4xl md:!text-7xl">Diferenciais <span className="text-neon">Brux</span></h2>
+                    <h2 className="text-impact !text-4xl md:!text-7xl">Diferenciais <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)]">Brux</span></h2>
                     <p className="text-white/40 font-black uppercase tracking-[0.4em] text-xs">
                         Clique em um diferencial para ver os detalhes técnicos
                     </p>
@@ -211,7 +211,9 @@ export default function Differentials() {
                             </div>
                             <h3 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter italic">
                                 Entrega Rápida em Toda a<br />
-                                <span className="text-neon">Grande São Paulo</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)]">
+                                    Grande São Paulo
+                                </span>
                             </h3>
                             <p className="text-white/60 text-lg md:text-xl font-medium leading-relaxed">
                                 Operação logística otimizada para garantir o suprimento contínuo de sua empresa na capital e região metropolitana.
