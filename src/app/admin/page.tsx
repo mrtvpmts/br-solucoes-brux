@@ -11,8 +11,12 @@ export default function AdminLogin() {
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault()
-        // Simple Demo PIN - In prod use real auth
-        if (pin === '1234') {
+
+        // Check for custom password in localStorage (simulated persistence)
+        const storedPwd = typeof window !== 'undefined' ? localStorage.getItem('admin_custom_pwd') : null
+        const validPwd = storedPwd || '123456'
+
+        if (pin === validPwd) {
             document.cookie = "admin_auth=true; path=/"
             router.push('/admin/dashboard')
         } else {
@@ -29,7 +33,7 @@ export default function AdminLogin() {
                         <Lock className="text-brand-green w-8 h-8" />
                     </div>
                     <h1 className="text-3xl font-black text-white uppercase tracking-tighter">Área Restrita</h1>
-                    <p className="text-white/40 font-medium">Digite o PIN de acesso administrativo</p>
+                    <p className="text-white/40 font-medium">Digite a senha de acesso administrativo</p>
                 </div>
 
                 <form onSubmit={handleLogin} className="space-y-6">
@@ -41,9 +45,8 @@ export default function AdminLogin() {
                                 setPin(e.target.value)
                                 setError(false)
                             }}
-                            maxLength={4}
-                            className={`w-full bg-white/5 border ${error ? 'border-red-500 text-red-500' : 'border-white/10 text-white'} rounded-xl px-4 py-4 text-center text-4xl font-mono tracking-[1em] focus:outline-none focus:border-brand-green/50 transition-colors placeholder:text-white/10`}
-                            placeholder="••••"
+                            className={`w-full bg-white/5 border ${error ? 'border-red-500 text-red-500' : 'border-white/10 text-white'} rounded-xl px-4 py-4 text-center text-4xl font-mono tracking-[0.2em] focus:outline-none focus:border-brand-green/50 transition-colors placeholder:text-white/10`}
+                            placeholder="*******"
                             autoFocus
                         />
                         {error && (

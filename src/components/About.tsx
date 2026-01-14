@@ -118,7 +118,7 @@ export default function About() {
                                     <div className="h-[1px] md:h-[2px] w-12 md:w-40 bg-brand-green/40 mx-auto rounded-full shadow-[0_0_20px_#39FF14]" />
                                 </div>
 
-                                <p className="text-white/90 md:text-white !text-3xl md:!text-5xl lg:!text-6xl font-bold leading-tight max-w-6xl mx-auto tracking-tight px-4 drop-shadow-2xl mt-8">
+                                <p className="text-white/90 md:text-white !text-xl md:!text-3xl lg:!text-4xl font-bold leading-tight max-w-6xl mx-auto tracking-tight px-4 drop-shadow-2xl mt-8">
                                     {slides[activeSlide].desc}
                                 </p>
 

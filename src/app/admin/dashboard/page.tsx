@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { BarChart3, Users, ShoppingCart, MousePointer2, RefreshCw, ArrowUpRight } from 'lucide-react'
+import { BarChart3, Users, ShoppingCart, MousePointer2, RefreshCw, ArrowUpRight, Settings } from 'lucide-react'
 
 interface AnalyticsData {
     pageViews: number
@@ -36,6 +36,34 @@ export default function AdminDashboard() {
 
     if (loading) return <div className="min-h-screen bg-[#050505] flex items-center justify-center text-brand-green font-mono">Carregando dados...</div>
 
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+    const [newPassword, setNewPassword] = useState('')
+
+    const handleExport = () => {
+        if (!data) return
+
+        const csvContent = "data:text/csv;charset=utf-8,"
+            + "Evento,Produto,Origem,Data\n"
+            + data.recentEvents.map(e => `${e.event},${e.product || '-'},${e.referrer || 'Direto'},${new Date(e.timestamp).toLocaleString()}`).join("\n")
+
+        const encodedUri = encodeURI(csvContent)
+        const link = document.createElement("a")
+        link.setAttribute("href", encodedUri)
+        link.setAttribute("download", `brux_relatorio_${new Date().toISOString().slice(0, 10)}.csv`)
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+    }
+
+    const handleUpdatePassword = (e: React.FormEvent) => {
+        e.preventDefault()
+        if (newPassword.length < 4) return alert("Senha muito curta")
+        localStorage.setItem('admin_custom_pwd', newPassword)
+        setIsSettingsOpen(false)
+        setNewPassword('')
+        alert("Senha atualizada com sucesso! Use a nova senha no próximo login.")
+    }
+
     return (
         <div className="min-h-screen bg-[#050505] text-white p-6 md:p-12">
             <div className="max-w-7xl mx-auto space-y-12">
@@ -47,12 +75,20 @@ export default function AdminDashboard() {
                         </h1>
                         <p className="text-white/40 text-sm font-medium mt-2">Monitoramento em Tempo Real</p>
                     </div>
-                    <button
-                        onClick={fetchData}
-                        className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-bold uppercase tracking-widest transition-colors border border-white/10"
-                    >
-                        <RefreshCw size={14} /> Atualizar
-                    </button>
+                    <div className="flex gap-4">
+                        <button
+                            onClick={handleExport}
+                            className="flex items-center gap-2 px-4 py-2 bg-brand-green/10 hover:bg-brand-green/20 text-brand-green rounded-lg text-xs font-bold uppercase tracking-widest transition-colors border border-brand-green/20"
+                        >
+                            <ArrowUpRight size={14} /> Exportar CSV
+                        </button>
+                        <button
+                            onClick={() => setIsSettingsOpen(true)}
+                            className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-bold uppercase tracking-widest transition-colors border border-white/10"
+                        >
+                            <Settings size={14} /> Configurações
+                        </button>
+                    </div>
                 </div>
 
                 {/* KPI Cards */}
@@ -175,6 +211,36 @@ export default function AdminDashboard() {
                     </div>
                 </div>
             </div>
+
+            {/* Settings Modal */}
+            {isSettingsOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+                    <div className="bg-[#0b0f0d] border border-white/10 rounded-2xl p-8 max-w-sm w-full space-y-6">
+                        <h3 className="text-xl font-black uppercase tracking-tight">Configurações</h3>
+
+                        <form onSubmit={handleUpdatePassword} className="space-y-4">
+                            <div className="space-y-2">
+                                <label className="text-xs font-bold uppercase tracking-widest text-white/50">Nova Senha de Acesso</label>
+                                <input
+                                    type="text"
+                                    value={newPassword}
+                                    onChange={e => setNewPassword(e.target.value)}
+                                    className="w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-brand-green outline-none"
+                                    placeholder="Digite a nova senha"
+                                />
+                            </div>
+                            <button className="w-full btn-stitch py-3 text-xs uppercase">Salvar Alterações</button>
+                        </form>
+
+                        <button
+                            onClick={() => setIsSettingsOpen(false)}
+                            className="w-full text-white/30 hover:text-white text-xs uppercase tracking-widest mt-4"
+                        >
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

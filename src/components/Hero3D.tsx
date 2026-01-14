@@ -1,4 +1,3 @@
-```javascript
 'use client'
 
 import { Canvas } from '@react-three/fiber'
@@ -26,10 +25,10 @@ export default function Hero3D() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.9] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] italic"
                 >
-                    Limpeza de <br/>
+                    Limpeza de <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.6)] animate-pulse-slow">
                         Alta Performance
-                    </span><br/>
+                    </span><br />
                     e parceria para
                     <span className="block text-3xl md:text-6xl text-white/90 mt-2 not-italic tracking-normal">o seu negócio</span>
                 </motion.h1>
@@ -78,4 +77,3 @@ export default function Hero3D() {
         </>
     )
 }
-```

@@ -76,7 +76,7 @@ export default function Government() {
                         <div className="w-12 h-[2px] bg-gradient-to-l from-transparent to-brand-green" />
                     </div>
 
-                    <h2 className="text-5xl md:text-8xl font-black uppercase italic text-white tracking-tighter leading-[0.9] mb-6">
+                    <h2 className="text-impact !text-3xl md:!text-8xl mb-6">
                         Autoridade<br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)]">
                             Governamental
@@ -98,11 +98,11 @@ export default function Government() {
                     >
                         {/* FRESH IMPLEMENTATION - MASSIVE TYPOGRAPHY */}
                         <div className="space-y-12">
-                            <h3 className="text-white text-6xl md:text-8xl font-black uppercase italic tracking-tighter leading-[0.9] drop-shadow-2xl">
+                            <h3 className="text-white text-2xl md:text-4xl font-black uppercase italic tracking-tighter leading-[0.9] drop-shadow-2xl">
                                 A <span className="text-brand-green">BRUX</span> É PARCEIRA ESTRATÉGICA DE ÓRGÃOS PÚBLICOS E AUTARQUIAS.
                             </h3>
 
-                            <h3 className="text-white/90 text-3xl md:text-5xl font-black uppercase italic tracking-tighter leading-[0.9]">
+                            <h3 className="text-white/90 text-xl md:text-3xl font-black uppercase italic tracking-tighter leading-[0.9]">
                                 OFERECEMOS SOLUÇÕES QUÍMICAS DE ALTO RENDIMENTO QUE ATENDEM RIGOROSAMENTE AOS EDITAIS E NORMAS DE SEGURANÇA VIGENTES.
                             </h3>
                         </div>
