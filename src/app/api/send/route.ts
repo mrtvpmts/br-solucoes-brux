@@ -8,9 +8,7 @@ export async function POST(request: Request) {
         const { name, company, email, whatsapp, segment, message } = await request.json();
 
         if (!resend) {
-            console.log('Resend API key missing. Simulating success for:', { name, company })
-            // Return success simulation so the UI works
-            return NextResponse.json({ success: true, simulated: true });
+            return NextResponse.json({ error: 'Resend API key not configured' }, { status: 500 });
         }
 
         const { data: resendData, error: resendError } = await resend.emails.send({
