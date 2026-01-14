@@ -72,7 +72,7 @@ export default function Segments() {
                 <div className="flex flex-col items-center mb-8 md:mb-16 space-y-4 md:space-y-6">
                     <h2 className="text-impact !text-3xl md:!text-8xl leading-none">
                         Excelência em <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] block mt-3 md:mt-4">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] block mt-3 md:mt-4 pr-2">
                             Cada Segmento
                         </span>
                     </h2>
@@ -92,7 +92,7 @@ export default function Segments() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.05 }}
                             viewport={{ once: true }}
-                            className="industrial-card group flex flex-col gap-3 md:gap-8 cursor-pointer hover:border-brand-green/40 transition-colors p-5 md:p-12 w-full md:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.7rem)] min-w-[300px]"
+                            className="industrial-card group flex flex-col gap-3 md:gap-8 cursor-pointer hover:border-brand-green/40 transition-colors p-5 md:p-12 w-full md:w-[calc(50%-1.25rem)] lg:w-[calc(33.333%-1.7rem)]"
                         >
                             <div className="text-brand-green/40 group-hover:text-brand-green group-hover:drop-shadow-[0_0_15px_#39FF14] transition-all duration-500 scale-75 md:scale-100 origin-left">
                                 {s.icon}
@@ -126,7 +126,7 @@ export default function Segments() {
 
                         <motion.div
                             layoutId={`segment-${selectedSegment.id}`}
-                            className="relative w-full max-w-2xl bg-[#0b0f0d] border border-white/10 rounded-[40px] p-8 md:p-12 max-h-[85vh] overflow-y-auto shadow-[0_0_100px_rgba(57,255,20,0.1)]"
+                            className="relative w-full max-w-2xl bg-[#0b0f0d] border border-white/10 rounded-[40px] p-6 md:p-12 max-h-[85vh] overflow-y-auto shadow-[0_0_100px_rgba(57,255,20,0.1)]"
                         >
                             {/* Neon Background Animations */}
                             <div className="absolute inset-0 z-0 pointer-events-none">

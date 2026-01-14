@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useQuote } from './QuoteContext'
 import { X, CheckCircle, Send, Loader2, Phone } from 'lucide-react'
 
+import { trackEvent } from '@/lib/analytics'
+
 export default function QuoteModal() {
     const { open, setOpen, success, setSuccess, cart, removeFromCart } = useQuote()
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -33,6 +35,8 @@ export default function QuoteModal() {
             })
 
             if (response.ok) {
+                trackEvent('quote_sent', { segment: formData.segment, cartSize: cart.length })
+
                 // Build items list for WhatsApp
                 let itemsList = ''
                 if (cart.length > 0) {
@@ -55,6 +59,7 @@ export default function QuoteModal() {
 
                 // Open WhatsApp in a new tab
                 window.open(`https://wa.me/551127768000?text=${waMessage}`, '_blank')
+                trackEvent('whatsapp_click', { source: 'quote_success' })
 
                 setSuccess(true)
                 setFormData({ name: '', company: '', email: '', whatsapp: '', segment: '', message: '' })

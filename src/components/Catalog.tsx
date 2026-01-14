@@ -108,7 +108,7 @@ export default function Catalog() {
                     <div className="text-center space-y-4 md:space-y-6">
                         <h2 className="text-impact !text-3xl md:!text-7xl leading-[1.1]">
                             Soluções Químicas <br className="md:hidden" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)]">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] pr-2">
                                 PARA LIMPEZA
                             </span>
                         </h2>

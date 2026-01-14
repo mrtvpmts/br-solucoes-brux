@@ -27,9 +27,9 @@ export default function Logistics() {
                     >
                         <div className="space-y-6">
                             <span className="text-brand-green text-xs font-black uppercase tracking-[0.4em]">Logística & Distribuição</span>
-                            <h2 className="text-6xl md:text-8xl font-black uppercase text-white italic tracking-tighter leading-[0.9] mb-8">
+                            <h2 className="text-5xl md:text-8xl font-black uppercase text-white italic tracking-tighter leading-[0.9] mb-8">
                                 Entrega Rápida <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)]">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] pr-2">
                                     Sem Fronteiras
                                 </span>
                             </h2>

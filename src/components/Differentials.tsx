@@ -75,7 +75,7 @@ export default function Differentials() {
             <div className="max-w-7xl mx-auto space-y-12 md:space-y-24">
 
                 <div className="text-center space-y-6">
-                    <h2 className="text-impact !text-4xl md:!text-7xl">Diferenciais <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)]">Brux</span></h2>
+                    <h2 className="text-impact !text-4xl md:!text-7xl">Diferenciais <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] pr-4">Brux</span></h2>
                     <p className="text-white/40 font-black uppercase tracking-[0.4em] text-xs">
                         Clique em um diferencial para ver os detalhes técnicos
                     </p>
@@ -117,7 +117,7 @@ export default function Differentials() {
 
                             <motion.div
                                 layoutId={`diff-${selectedDiff.id}`}
-                                className="relative w-full max-w-xl bg-[#080b09] border border-white/10 rounded-[40px] p-8 md:p-12 max-h-[85vh] overflow-y-auto shadow-[0_0_80px_rgba(57,255,20,0.15)]"
+                                className="relative w-full max-w-xl bg-[#080b09] border border-white/10 rounded-[40px] p-6 md:p-12 max-h-[85vh] overflow-y-auto shadow-[0_0_80px_rgba(57,255,20,0.15)]"
                             >
                                 {/* Animated industrial background */}
                                 <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
@@ -211,7 +211,7 @@ export default function Differentials() {
                             </div>
                             <h3 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter italic">
                                 Entrega Rápida em Toda a<br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)]">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] pr-2">
                                     Grande São Paulo
                                 </span>
                             </h3>

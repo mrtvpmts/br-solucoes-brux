@@ -1,15 +1,21 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Menu, X, ShoppingBag } from 'lucide-react'
 import { useQuote } from './QuoteContext'
+import { trackEvent } from '@/lib/analytics'
 
 export default function Header() {
     const { setOpen, cart } = useQuote()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+    useEffect(() => {
+        // Track Page View on Mount
+        trackEvent('page_view')
+    }, [])
 
     const navItems = [
         { label: 'Home', href: '#home' },
@@ -26,7 +32,14 @@ export default function Header() {
 
                     {/* LOGO */}
                     <div className="flex-shrink-0">
-                        <Link href="#home" className="block group">
+                        <a
+                            href="/"
+                            onClick={(e) => {
+                                e.preventDefault()
+                                window.location.href = '/'
+                            }}
+                            className="block group cursor-pointer"
+                        >
                             <div className="relative w-[220px] h-[70px] md:w-[380px] md:h-[122px] transform-gpu transition-all duration-500 group-hover:scale-105">
                                 <Image
                                     src="/textures/brux-logo-horizontal.png"
@@ -36,7 +49,7 @@ export default function Header() {
                                     priority
                                 />
                             </div>
-                        </Link>
+                        </a>
                     </div>
 
                     {/* NAVIGATION DESKTOP */}
@@ -55,7 +68,10 @@ export default function Header() {
                     {/* CTA + MOBILE BUTTON */}
                     <div className="flex items-center gap-4 flex-shrink-0">
                         <button
-                            onClick={() => setOpen(true)}
+                            onClick={() => {
+                                setOpen(true)
+                                trackEvent('click_cta_header')
+                            }}
                             className="bg-[#39FF14] hover:bg-[#32e012] text-black font-black py-2 px-4 md:py-3 md:px-6 text-[9px] md:text-[10px] uppercase tracking-wider whitespace-nowrap rounded-lg transition-all shadow-[0_0_20px_rgba(57,255,20,0.4)]"
                         >
                             <span className="sm:hidden">Especialista</span>

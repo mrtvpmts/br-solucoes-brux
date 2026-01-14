@@ -112,7 +112,7 @@ export default function About() {
                                     </span>
                                     <h2 className="text-white font-black italic uppercase tracking-tighter text-xl md:text-7xl leading-tight md:leading-[0.9]">
                                         {slides[activeSlide].title.split(':').map((part, idx) => (
-                                            <span key={idx} className={idx === 1 ? "text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] block mt-1 md:mt-2" : ""}>{part}</span>
+                                            <span key={idx} className={idx === 1 ? "text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] block mt-1 md:mt-2 pr-2" : ""}>{part}</span>
                                         ))}
                                     </h2>
                                     <div className="h-[1px] md:h-[2px] w-12 md:w-40 bg-brand-green/40 mx-auto rounded-full shadow-[0_0_20px_#39FF14]" />
