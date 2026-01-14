@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { X, Shield, Info, Minus, Plus, ShoppingCart, Download } from 'lucide-react'
+import { X, Shield, Info, Minus, Plus, ShoppingCart, Download, Hand, Glasses, Shirt, Footprints, HardHat } from 'lucide-react'
 import { useQuote } from './QuoteContext'
 import { trackEvent } from '@/lib/analytics'
 
@@ -147,14 +147,26 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
                                         </h4>
                                         <div className="flex gap-3 md:gap-4 flex-wrap">
                                             {product.epis && product.epis.length > 0 ? (
-                                                product.epis.map((epi: string, i: number) => (
-                                                    <div key={i} className="flex flex-col items-center gap-2 group">
-                                                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-white/20 group-hover:border-brand-green/40 group-hover:text-brand-green transition-all shadow-lg hover:shadow-brand-green/10">
-                                                            <Shield size={18} className="md:w-6 md:h-6" strokeWidth={1.5} />
+                                                product.epis.map((epi: string, i: number) => {
+                                                    const getEpiIcon = (name: string) => {
+                                                        const n = name.toLowerCase()
+                                                        if (n.includes('luva')) return <Hand size={18} className="md:w-6 md:h-6" />
+                                                        if (n.includes('óculos') || n.includes('oculos')) return <Glasses size={18} className="md:w-6 md:h-6" />
+                                                        if (n.includes('avental') || n.includes('jaleco')) return <Shirt size={18} className="md:w-6 md:h-6" />
+                                                        if (n.includes('bota')) return <Footprints size={18} className="md:w-6 md:h-6" />
+                                                        if (n.includes('capacete')) return <HardHat size={18} className="md:w-6 md:h-6" />
+                                                        return <Shield size={18} className="md:w-6 md:h-6" /> // Fallback
+                                                    }
+
+                                                    return (
+                                                        <div key={i} className="flex flex-col items-center gap-2 group">
+                                                            <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-white/20 group-hover:border-brand-green/40 group-hover:text-brand-green transition-all shadow-lg hover:shadow-brand-green/10">
+                                                                {getEpiIcon(epi)}
+                                                            </div>
+                                                            <span className="text-[8px] md:text-[9px] font-bold text-white/30 uppercase tracking-wider group-hover:text-white transition-colors">{epi}</span>
                                                         </div>
-                                                        <span className="text-[8px] md:text-[9px] font-bold text-white/30 uppercase tracking-wider group-hover:text-white transition-colors">{epi}</span>
-                                                    </div>
-                                                ))
+                                                    )
+                                                })
                                             ) : (
                                                 <span className="text-white/20 text-xs italic pl-2 border-l-2 border-white/10">
                                                     Nenhum EPI obrigatório.

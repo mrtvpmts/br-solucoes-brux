@@ -99,6 +99,8 @@ import { products } from '../data/products'
 
 export default function Catalog() {
     const [selectedProduct, setSelectedProduct] = useState<any>(null)
+    const [showFullCatalog, setShowFullCatalog] = useState(false)
+    const [activeCategory, setActiveCategory] = useState('Todos')
     const scrollRef = useRef<HTMLDivElement>(null)
 
     const [isDragging, setIsDragging] = useState(false)
@@ -176,7 +178,7 @@ export default function Catalog() {
                     onMouseUp={stopDragging}
                     onMouseMove={onDrag}
                 >
-                    {products.map((p, i) => (
+                    {products.slice(0, 8).map((p, i) => ( /* Show only featured in carousel initially */
                         <div key={i} className="min-w-[85vw] md:min-w-[400px] lg:min-w-[450px] snap-center flex-shrink-0 pointer-events-auto select-none">
                             <ProductCard
                                 product={p}
@@ -189,11 +191,101 @@ export default function Catalog() {
                     ))}
                 </div>
 
+                {/* View All Button */}
+                <div className="flex justify-center mt-[-10px] mb-8 relative z-20">
+                    <button
+                        onClick={() => setShowFullCatalog(true)}
+                        className="btn-stitch px-12 py-4 text-sm font-black uppercase tracking-[0.2em] hover:scale-105 transition-transform shadow-[0_0_20px_rgba(57,255,20,0.3)]"
+                    >
+                        Ver Catálogo Completo
+                    </button>
+                </div>
+
                 <ProductDetailModal
                     product={selectedProduct}
                     isOpen={!!selectedProduct}
                     onClose={() => setSelectedProduct(null)}
                 />
+
+                {/* Full Catalog Modal */}
+                <AnimatePresence>
+                    {showFullCatalog && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl overflow-y-auto"
+                        >
+                            <div className="max-w-[1800px] mx-auto p-6 md:p-12 relative min-h-screen">
+                                <button
+                                    onClick={() => setShowFullCatalog(false)}
+                                    className="fixed top-8 right-8 z-[110] p-4 bg-white/5 hover:bg-white/10 rounded-full text-white/50 hover:text-white transition-all backdrop-blur-md border border-white/5"
+                                >
+                                    <span className="sr-only">Fechar</span>
+                                    ✕
+                                </button>
+
+                                <div className="space-y-12">
+                                    <div className="text-center space-y-4 pt-12">
+                                        <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white">
+                                            Catálogo <span className="text-brand-green">Completo</span>
+                                        </h2>
+                                        <p className="text-white/40 max-w-2xl mx-auto">
+                                            Explore nossa linha completa de soluções profissionais.
+                                        </p>
+                                    </div>
+
+                                    {/* Filters */}
+                                    <div className="flex flex-wrap justify-center gap-2 md:gap-4 sticky top-4 z-50 py-4 backdrop-blur-md rounded-2xl bg-black/50 border border-white/5 px-6 mx-auto w-fit">
+                                        {['Todos', 'Industrial', 'Cozinha', 'Hospitalar', 'Geral', 'Escolar'].map(cat => (
+                                            <button
+                                                key={cat}
+                                                onClick={() => setActiveCategory(cat)}
+                                                className={`px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all border ${activeCategory === cat
+                                                    ? 'bg-brand-green text-black border-brand-green shadow-[0_0_20px_rgba(37,211,102,0.3)]'
+                                                    : 'bg-white/5 text-white/50 border-white/5 hover:bg-white/10 hover:text-white'
+                                                    }`}
+                                            >
+                                                {cat}
+                                            </button>
+                                        ))}
+                                    </div>
+
+                                    {/* Grid */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+                                        {products
+                                            .filter(p => activeCategory === 'Todos' || p.tags.some(t => t.includes(activeCategory)))
+                                            .map((p, i) => (
+                                                <motion.div
+                                                    key={i}
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: i * 0.05 }}
+                                                    onClick={() => setSelectedProduct(p)}
+                                                    className="group cursor-pointer bg-[#0b0f0d] border border-white/5 rounded-3xl p-6 hover:border-brand-green/30 transition-all hover:bg-white/[0.02]"
+                                                >
+                                                    <div className="aspect-[4/5] bg-black/40 rounded-2xl mb-6 relative overflow-hidden flex items-center justify-center p-4">
+                                                        <Image
+                                                            src={p.image}
+                                                            alt={p.title}
+                                                            width={200}
+                                                            height={250}
+                                                            className="object-contain transition-transform duration-500 group-hover:scale-110"
+                                                            style={{ filter: getProductFilter(p.tags) }}
+                                                        />
+                                                    </div>
+                                                    <div className="text-center space-y-2">
+                                                        <h3 className="text-white font-black uppercase text-lg leading-tight">{p.title}</h3>
+                                                        <div className="text-brand-green text-[10px] font-bold uppercase tracking-widest">{p.subtitle}</div>
+                                                    </div>
+                                                </motion.div>
+                                            ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </section>
     )
