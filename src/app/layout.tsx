@@ -5,7 +5,7 @@ export const metadata = {
   // icons are handled by src/app/icon.png automatically
 }
 
-import FloatingWhatsApp from '@/components/FloatingWhatsApp'
+
 
 export default function RootLayout({
   children,
@@ -16,7 +16,6 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className="antialiased selection:bg-brand-green selection:text-black">
         {children}
-        <FloatingWhatsApp />
       </body>
     </html>
   )

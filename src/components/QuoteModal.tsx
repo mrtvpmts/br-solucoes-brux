@@ -199,7 +199,7 @@ export default function QuoteModal() {
                                                 required
                                                 value={formData.segment}
                                                 onChange={(e) => setFormData({ ...formData, segment: e.target.value })}
-                                                className="w-full p-4 rounded-2xl bg-[#0b0f0d] border border-white/10 focus:border-brand-green/50 focus:bg-brand-green/[0.02] focus:outline-none transition-all text-white/70 appearance-none cursor-pointer text-sm"
+                                                className="w-full p-4 rounded-2xl bg-[#0b0f0d] border border-white/10 focus:border-brand-green/50 focus:bg-brand-green/[0.02] focus:outline-none transition-all text-white appearance-none cursor-pointer text-sm [&>option]:text-black"
                                             >
                                                 <option value="" disabled>Selecione um segmento</option>
                                                 <option value="Condomínios">Condomínios</option>
