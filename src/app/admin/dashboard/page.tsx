@@ -15,6 +15,8 @@ interface AnalyticsData {
 export default function AdminDashboard() {
     const [data, setData] = useState<AnalyticsData | null>(null)
     const [loading, setLoading] = useState(true)
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+    const [newPassword, setNewPassword] = useState('')
 
     const fetchData = async () => {
         try {
@@ -36,15 +38,13 @@ export default function AdminDashboard() {
 
     if (loading) return <div className="min-h-screen bg-[#050505] flex items-center justify-center text-brand-green font-mono">Carregando dados...</div>
 
-    const [isSettingsOpen, setIsSettingsOpen] = useState(false)
-    const [newPassword, setNewPassword] = useState('')
 
     const handleExport = () => {
         if (!data) return
 
         const csvContent = "data:text/csv;charset=utf-8,"
             + "Evento,Produto,Origem,Data\n"
-            + data.recentEvents.map(e => `${e.event},${e.product || '-'},${e.referrer || 'Direto'},${new Date(e.timestamp).toLocaleString()}`).join("\n")
+            + data.recentEvents.map(e => `${e.event},${e.product || '-'},${e.referrer || 'Direto'},${new Date(e.timestamp || e.id).toLocaleString()}`).join("\n")
 
         const encodedUri = encodeURI(csvContent)
         const link = document.createElement("a")
@@ -199,7 +199,7 @@ export default function AdminDashboard() {
                     <div className="bg-black/40 rounded-xl border border-white/5 p-4 h-48 overflow-y-auto font-mono text-xs space-y-2 custom-scrollbar">
                         {data?.recentEvents.map((ev) => (
                             <div key={ev.id} className="flex gap-4 text-white/50 border-b border-white/5 pb-2 last:border-0">
-                                <span className="text-brand-green/60">{new Date(ev.timestamp).toLocaleTimeString()}</span>
+                                <span className="text-brand-green/60">{new Date(ev.timestamp || ev.id).toLocaleTimeString()}</span>
                                 <span className="text-white font-bold">{ev.event}</span>
                                 <span className="truncate flex-1 text-white/30">
                                     {ev.product ? `Produto: ${ev.product}` : ''}
