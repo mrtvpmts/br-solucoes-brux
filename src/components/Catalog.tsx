@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useQuote } from './QuoteContext'
 import ProductDetailModal from './ProductDetailModal'
 
@@ -98,12 +99,43 @@ import { products } from '../data/products'
 
 export default function Catalog() {
     const [selectedProduct, setSelectedProduct] = useState<any>(null)
-    const [visibleCount, setVisibleCount] = useState(9)
+    const scrollRef = useRef<HTMLDivElement>(null)
 
+    const [isDragging, setIsDragging] = useState(false)
+    const [startX, setStartX] = useState(0)
+    const [scrollLeft, setScrollLeft] = useState(0)
+
+    const scroll = (direction: 'left' | 'right') => {
+        if (scrollRef.current) {
+            const { current } = scrollRef
+            const scrollAmount = direction === 'left' ? -current.offsetWidth : current.offsetWidth
+            current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
+        }
+    }
+
+    const startDragging = (e: React.MouseEvent) => {
+        setIsDragging(true)
+        setStartX(e.pageX - (scrollRef.current?.offsetLeft || 0))
+        setScrollLeft(scrollRef.current?.scrollLeft || 0)
+    }
+
+    const stopDragging = () => {
+        setIsDragging(false)
+    }
+
+    const onDrag = (e: React.MouseEvent) => {
+        if (!isDragging) return
+        e.preventDefault()
+        if (scrollRef.current) {
+            const x = e.pageX - scrollRef.current.offsetLeft
+            const walk = (x - startX) * 2 // Scroll-fast
+            scrollRef.current.scrollLeft = scrollLeft - walk
+        }
+    }
 
     return (
-        <section id="catalog" className="relative py-2 md:py-8 bg-[#080a09]">
-            <div className="max-w-7xl mx-auto px-4 md:px-8 space-y-12 md:space-y-20">
+        <section id="catalog" className="relative py-2 md:py-8 bg-[#080a09] group/carousel">
+            <div className="max-w-[1600px] mx-auto px-4 md:px-8 space-y-12 md:space-y-20 relative">
                 <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
                     <div className="text-center space-y-4 md:space-y-6">
                         <h2 className="text-impact !text-3xl md:!text-7xl leading-[1.1]">
@@ -116,29 +148,46 @@ export default function Catalog() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12 lg:gap-16">
-                    {products.slice(0, visibleCount).map((p, i) => (
-                        <div key={i} className="h-full">
+                {/* Left Arrow */}
+                <button
+                    onClick={() => scroll('left')}
+                    className="hidden lg:flex absolute left-4 top-[60%] -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-0 group-hover/carousel:opacity-100 duration-500 hover:scale-110"
+                    aria-label="Previous slide"
+                >
+                    <ChevronLeft className="w-6 h-6 group-hover:text-brand-green transition-colors" />
+                </button>
+
+                {/* Right Arrow */}
+                <button
+                    onClick={() => scroll('right')}
+                    className="hidden lg:flex absolute right-4 top-[60%] -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-0 group-hover/carousel:opacity-100 duration-500 hover:scale-110"
+                    aria-label="Next slide"
+                >
+                    <ChevronRight className="w-6 h-6 group-hover:text-brand-green transition-colors" />
+                </button>
+
+                {/* Carousel */}
+                <div
+                    ref={scrollRef}
+                    className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 md:gap-8 px-4 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    onMouseDown={startDragging}
+                    onMouseLeave={stopDragging}
+                    onMouseUp={stopDragging}
+                    onMouseMove={onDrag}
+                >
+                    {products.map((p, i) => (
+                        <div key={i} className="min-w-[85vw] md:min-w-[400px] lg:min-w-[450px] snap-center flex-shrink-0 pointer-events-auto select-none">
                             <ProductCard
                                 product={p}
-                                onOpenDetails={(prod) => setSelectedProduct(prod)}
+                                onOpenDetails={(prod) => {
+                                    if (!isDragging) setSelectedProduct(prod)
+                                }}
                                 colorFilter={getProductFilter(p.tags)}
                             />
                         </div>
                     ))}
                 </div>
-
-                {visibleCount < products.length && (
-                    <div className="flex justify-center pt-12">
-                        <button
-                            onClick={() => setVisibleCount(prev => prev + 9)}
-                            className="btn-stitch px-12 py-4 text-sm font-bold tracking-widest uppercase hover:bg-brand-green/20 transition-all border border-brand-green/30 hover:border-brand-green flex items-center gap-3"
-                        >
-                            Carregar Mais Produtos
-                            <div className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
-                        </button>
-                    </div>
-                )}
 
                 <ProductDetailModal
                     product={selectedProduct}

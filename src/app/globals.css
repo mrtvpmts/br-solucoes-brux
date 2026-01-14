@@ -218,3 +218,12 @@ p,
 ::-webkit-scrollbar-thumb:hover {
   background: #2cff7a;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
