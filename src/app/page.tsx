@@ -7,6 +7,7 @@ import Segments from '@/components/Segments'
 import Government from '@/components/Government'
 import Logistics from '@/components/Logistics'
 import Catalog from '@/components/Catalog'
+import TechnicalStructure from '@/components/TechnicalStructure'
 import Differentials from '@/components/Differentials'
 import ContactForm from '@/components/ContactForm'
 import FAQ from '@/components/FAQ'
@@ -25,6 +26,7 @@ export default function Page() {
         <About />
         <Segments />
         <Catalog />
+        <TechnicalStructure />
         <Government />
         <Logistics />
         <Differentials />

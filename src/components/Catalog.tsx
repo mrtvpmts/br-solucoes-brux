@@ -23,7 +23,7 @@ function ProductCard({ product, onOpenDetails, colorFilter }: ProductCardProps) 
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <Image
                     src={product.image}
-                    alt={product.title}
+                    alt={`Galão BRUX ${product.title} 5L - Limpeza Industrial`}
                     width={320}
                     height={400}
                     className={`relative z-10 transition-transform duration-700 group-hover:scale-110 group-hover:drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)] object-contain ${colorFilter ? '' : ''}`}
@@ -171,7 +171,7 @@ export default function Catalog() {
                 {/* Carousel */}
                 <div
                     ref={scrollRef}
-                    className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 md:gap-8 px-4 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
+                    className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 md:gap-8 px-0 md:px-4 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     onMouseDown={startDragging}
                     onMouseLeave={stopDragging}
@@ -179,7 +179,7 @@ export default function Catalog() {
                     onMouseMove={onDrag}
                 >
                     {products.slice(0, 8).map((p, i) => ( /* Show only featured in carousel initially */
-                        <div key={i} className="min-w-[85vw] md:min-w-[400px] lg:min-w-[450px] snap-center flex-shrink-0 pointer-events-auto select-none">
+                        <div key={i} className="min-w-full md:min-w-[400px] lg:min-w-[450px] snap-center flex-shrink-0 pointer-events-auto select-none px-4 md:px-0">
                             <ProductCard
                                 product={p}
                                 onOpenDetails={(prod) => {
@@ -267,7 +267,7 @@ export default function Catalog() {
                                                     <div className="aspect-[4/5] bg-black/40 rounded-2xl mb-6 relative overflow-hidden flex items-center justify-center p-4">
                                                         <Image
                                                             src={p.image}
-                                                            alt={p.title}
+                                                            alt={`Galão BRUX ${p.title} 5L - Limpeza Industrial`}
                                                             width={200}
                                                             height={250}
                                                             className="object-contain transition-transform duration-500 group-hover:scale-110"

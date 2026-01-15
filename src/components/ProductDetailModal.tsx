@@ -82,7 +82,7 @@ export default function ProductDetailModal({ product, isOpen, onClose }: Product
                                 >
                                     <Image
                                         src={product.image}
-                                        alt={product.title}
+                                        alt={`Galão BRUX ${product.title} 5L - Limpeza Industrial`}
                                         width={320}
                                         height={400}
                                         className="relative z-10 drop-shadow-[0_40px_60px_rgba(0,0,0,0.8)] object-contain h-[180px] md:h-[400px] w-auto"

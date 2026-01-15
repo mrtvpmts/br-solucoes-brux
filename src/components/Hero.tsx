@@ -45,21 +45,21 @@ export default function Hero() {
                         transition={{ duration: 1, delay: 0.3 }}
                         className="text-impact !text-4xl md:!text-8xl"
                     >
-                        Limpeza de<br />
+                        Liderança e Tecnologia em<br />
                         <span className="text-neon block mt-4 md:mt-8 drop-shadow-[0_0_20px_rgba(57,255,20,0.4)]">
-                            Alta Performance
+                            Higiene Profissional
                         </span>
-                        e parceria para <span className="text-white">o seu negócio</span>
+                        e Industrial
                     </motion.h1>
 
-                    <motion.p
+                    <motion.h2
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1.5, delay: 0.8 }}
                         className="max-w-4xl mx-auto text-white/40 md:text-white/50 text-sm md:text-2xl font-light tracking-[0.1em] md:tracking-[0.15em] uppercase leading-tight px-4"
                     >
-                        Soluções químicas completas para alimentação, saúde, condomínios e indústrias.
-                    </motion.p>
+                        Parceira Estratégica para Órgãos Públicos, Autarquias e Grandes Indústrias
+                    </motion.h2>
                 </div>
 
                 {/* COMPLIANT CTAs */}

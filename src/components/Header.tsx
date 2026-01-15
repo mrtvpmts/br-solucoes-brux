@@ -28,7 +28,7 @@ export default function Header() {
     return (
         <>
             <header className="fixed top-0 left-0 w-full z-[100] bg-[#060807]/92 backdrop-blur-xl border-b border-white/5">
-                <div className="max-w-7xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between gap-8">
+                <div className="max-w-7xl mx-auto px-3 md:px-6 h-16 md:h-24 flex items-center justify-between gap-2 md:gap-8">
 
                     {/* LOGO */}
                     <div className="flex-shrink-0">
@@ -40,12 +40,12 @@ export default function Header() {
                             }}
                             className="block group cursor-pointer"
                         >
-                            <div className="relative w-[220px] h-[70px] md:w-[380px] md:h-[122px] transform-gpu transition-all duration-500 group-hover:scale-105">
+                            <div className="relative w-[140px] h-[45px] md:w-[380px] md:h-[122px] transform-gpu transition-all duration-500 group-hover:scale-105">
                                 <Image
-                                    src="/textures/brux-logo-horizontal.png"
-                                    alt="BRUX SOLUTIONS"
+                                    src="/textures/brux-solucoes-limpeza-profissional.png"
+                                    alt="Logotipo BRUX - Soluções em Higiene Profissional e Limpeza Técnica"
                                     fill
-                                    className="object-cover object-center scale-110 drop-shadow-[0_0_40px_rgba(34,197,94,0.4)] brightness-110"
+                                    className="object-contain object-left scale-110 drop-shadow-[0_0_40px_rgba(34,197,94,0.4)] brightness-110"
                                     priority
                                 />
                             </div>
@@ -66,24 +66,24 @@ export default function Header() {
                     </nav>
 
                     {/* CTA + MOBILE BUTTON */}
-                    <div className="flex items-center gap-4 flex-shrink-0">
+                    <div className="flex items-center gap-1.5 md:gap-4 flex-shrink-0">
                         <button
                             onClick={() => {
                                 setOpen(true)
                                 trackEvent('click_cta_header')
                             }}
-                            className="bg-[#39FF14] hover:bg-[#32e012] text-black font-black py-2 px-4 md:py-3 md:px-6 text-[9px] md:text-[10px] uppercase tracking-wider whitespace-nowrap rounded-lg transition-all shadow-[0_0_20px_rgba(57,255,20,0.4)]"
+                            className="hidden sm:flex bg-[#39FF14] hover:bg-[#32e012] text-black font-black py-2 px-3 md:py-3 md:px-6 text-[9px] md:text-[10px] uppercase tracking-wider whitespace-nowrap rounded-lg transition-all shadow-[0_0_20px_rgba(57,255,20,0.4)]"
                         >
-                            <span className="sm:hidden">Especialista</span>
-                            <span className="hidden sm:inline">Falar com Especialista</span>
+                            <span className="sm:inline">Falar com Especialista</span>
                         </button>
 
                         {/* Cart Icon */}
                         <button
                             onClick={() => setOpen(true)}
-                            className="relative p-2 text-white/50 hover:text-brand-green transition-colors"
+                            className="relative p-2 text-white/50 hover:text-brand-green transition-colors flex-shrink-0"
+                            aria-label="Carrinho de compras"
                         >
-                            <ShoppingBag size={24} />
+                            <ShoppingBag size={20} className="md:w-6 md:h-6" />
                             {cart.length > 0 && (
                                 <span className="absolute -top-1 -right-1 bg-brand-green text-black text-[9px] font-black w-4 h-4 flex items-center justify-center rounded-full animate-pulse shadow-[0_0_10px_rgba(57,255,20,0.8)]">
                                     {cart.length}
@@ -94,9 +94,10 @@ export default function Header() {
                         {/* Botão Menu Mobile */}
                         <button
                             onClick={() => setIsMenuOpen(true)}
-                            className="lg:hidden p-2 text-white hover:text-brand-green transition-colors"
+                            className="lg:hidden p-2 text-white hover:text-brand-green transition-colors flex-shrink-0"
+                            aria-label="Abrir menu"
                         >
-                            <Menu size={24} />
+                            <Menu size={20} className="md:w-6 md:h-6" />
                         </button>
                     </div>
                 </div>
