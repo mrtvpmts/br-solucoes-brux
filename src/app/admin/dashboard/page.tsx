@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { BarChart3, Users, ShoppingCart, MousePointer2, RefreshCw, ArrowUpRight, Settings } from 'lucide-react'
+import { BarChart3, Users, ShoppingCart, MousePointer2, RefreshCw, ArrowUpRight, Settings, Calendar } from 'lucide-react'
 
 interface AnalyticsData {
     pageViews: number
@@ -14,9 +14,15 @@ interface AnalyticsData {
 
 export default function AdminDashboard() {
     const [data, setData] = useState<AnalyticsData | null>(null)
+    const [filteredData, setFilteredData] = useState<AnalyticsData | null>(null)
     const [loading, setLoading] = useState(true)
     const [isSettingsOpen, setIsSettingsOpen] = useState(false)
     const [newPassword, setNewPassword] = useState('')
+
+    // Date filter states
+    const [dateFilter, setDateFilter] = useState<'all' | 'today' | 'week' | 'month' | '3months' | 'custom'>('all')
+    const [customStartDate, setCustomStartDate] = useState('')
+    const [customEndDate, setCustomEndDate] = useState('')
 
     const fetchData = async () => {
         try {
@@ -35,6 +41,59 @@ export default function AdminDashboard() {
         const interval = setInterval(fetchData, 5000) // Poll every 5s
         return () => clearInterval(interval)
     }, [])
+
+    // Filter data by date
+    useEffect(() => {
+        if (!data) return
+
+        const now = new Date()
+        let startDate: Date | null = null
+
+        switch (dateFilter) {
+            case 'today':
+                startDate = new Date(now.setHours(0, 0, 0, 0))
+                break
+            case 'week':
+                startDate = new Date(now.setDate(now.getDate() - 7))
+                break
+            case 'month':
+                startDate = new Date(now.setMonth(now.getMonth() - 1))
+                break
+            case '3months':
+                startDate = new Date(now.setMonth(now.getMonth() - 3))
+                break
+            case 'custom':
+                if (customStartDate) startDate = new Date(customStartDate)
+                break
+            default:
+                setFilteredData(data)
+                return
+        }
+
+        const endDate = dateFilter === 'custom' && customEndDate ? new Date(customEndDate) : new Date()
+
+        const filtered = data.recentEvents.filter(event => {
+            const eventDate = new Date(event.timestamp || event.id)
+            return (!startDate || eventDate >= startDate) && eventDate <= endDate
+        })
+
+        // Recalculate stats based on filtered events
+        const newData: AnalyticsData = {
+            pageViews: filtered.filter(e => e.event === 'pageview').length,
+            clicks: filtered.filter(e => e.event === 'whatsapp_click').length,
+            quotes: filtered.filter(e => e.event === 'quote_request').length,
+            referrers: {},
+            topProducts: {},
+            recentEvents: filtered
+        }
+
+        filtered.forEach(e => {
+            if (e.referrer) newData.referrers[e.referrer] = (newData.referrers[e.referrer] || 0) + 1
+            if (e.product) newData.topProducts[e.product] = (newData.topProducts[e.product] || 0) + 1
+        })
+
+        setFilteredData(newData)
+    }, [data, dateFilter, customStartDate, customEndDate])
 
     if (loading) return <div className="min-h-screen bg-[#050505] flex items-center justify-center text-brand-green font-mono">Carregando dados...</div>
 
@@ -91,30 +150,118 @@ export default function AdminDashboard() {
                     </div>
                 </div>
 
+                {/* Date Filters */}
+                <div className="bg-[#0b0f0d] border border-white/10 rounded-2xl p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                        <Calendar className="text-brand-green w-5 h-5" />
+                        <h3 className="text-sm font-black uppercase tracking-wide">Filtrar por Período</h3>
+                    </div>
+
+                    <div className="flex flex-wrap gap-3">
+                        <button
+                            onClick={() => setDateFilter('all')}
+                            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${dateFilter === 'all'
+                                ? 'bg-brand-green text-black'
+                                : 'bg-white/5 text-white/60 hover:bg-white/10'
+                                }`}
+                        >
+                            Todos
+                        </button>
+                        <button
+                            onClick={() => setDateFilter('today')}
+                            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${dateFilter === 'today'
+                                ? 'bg-brand-green text-black'
+                                : 'bg-white/5 text-white/60 hover:bg-white/10'
+                                }`}
+                        >
+                            Hoje
+                        </button>
+                        <button
+                            onClick={() => setDateFilter('week')}
+                            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${dateFilter === 'week'
+                                ? 'bg-brand-green text-black'
+                                : 'bg-white/5 text-white/60 hover:bg-white/10'
+                                }`}
+                        >
+                            Última Semana
+                        </button>
+                        <button
+                            onClick={() => setDateFilter('month')}
+                            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${dateFilter === 'month'
+                                ? 'bg-brand-green text-black'
+                                : 'bg-white/5 text-white/60 hover:bg-white/10'
+                                }`}
+                        >
+                            Último Mês
+                        </button>
+                        <button
+                            onClick={() => setDateFilter('3months')}
+                            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${dateFilter === '3months'
+                                ? 'bg-brand-green text-black'
+                                : 'bg-white/5 text-white/60 hover:bg-white/10'
+                                }`}
+                        >
+                            Últimos 3 Meses
+                        </button>
+                        <button
+                            onClick={() => setDateFilter('custom')}
+                            className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all ${dateFilter === 'custom'
+                                ? 'bg-brand-green text-black'
+                                : 'bg-white/5 text-white/60 hover:bg-white/10'
+                                }`}
+                        >
+                            Personalizado
+                        </button>
+                    </div>
+
+                    {dateFilter === 'custom' && (
+                        <div className="flex gap-4 mt-4">
+                            <div className="flex-1">
+                                <label className="text-xs text-white/40 uppercase tracking-wider block mb-2">Data Início</label>
+                                <input
+                                    type="date"
+                                    value={customStartDate}
+                                    onChange={(e) => setCustomStartDate(e.target.value)}
+                                    className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-white text-sm focus:border-brand-green outline-none"
+                                />
+                            </div>
+                            <div className="flex-1">
+                                <label className="text-xs text-white/40 uppercase tracking-wider block mb-2">Data Fim</label>
+                                <input
+                                    type="date"
+                                    value={customEndDate}
+                                    onChange={(e) => setCustomEndDate(e.target.value)}
+                                    className="w-full bg-white/5 border border-white/10 rounded-lg p-2 text-white text-sm focus:border-brand-green outline-none"
+                                />
+                            </div>
+                        </div>
+                    )}
+                </div>
+
                 {/* KPI Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <KpiCard
                         title="Visitas Totais"
-                        value={data?.pageViews || 0}
+                        value={filteredData?.pageViews || data?.pageViews || 0}
                         icon={<Users className="text-brand-green" />}
                         subtitle="Pageviews nesta sessão"
                     />
                     <KpiCard
                         title="Orçamentos"
-                        value={data?.quotes || 0}
+                        value={filteredData?.quotes || data?.quotes || 0}
                         icon={<ShoppingCart className="text-purple-400" />}
                         subtitle="Solicitações enviadas"
                         highlight
                     />
                     <KpiCard
                         title="Cliques no WhatsApp"
-                        value={data?.clicks || 0}
+                        value={filteredData?.clicks || data?.clicks || 0}
                         icon={<MousePointer2 className="text-blue-400" />}
                         subtitle="Intenção de contato"
                     />
                     <KpiCard
                         title="Taxa de Conversão"
-                        value={`${data?.pageViews ? ((data.quotes / data.pageViews) * 100).toFixed(1) : 0}%`}
+                        value={`${(filteredData || data)?.pageViews ? (((filteredData || data)!.quotes / (filteredData || data)!.pageViews) * 100).toFixed(1) : 0}%`}
                         icon={<BarChart3 className="text-yellow-400" />}
                         subtitle="Visitas x Orçamentos"
                     />
@@ -131,8 +278,8 @@ export default function AdminDashboard() {
                         </div>
 
                         <div className="space-y-4">
-                            {data?.referrers && Object.keys(data.referrers).length > 0 ? (
-                                Object.entries(data.referrers)
+                            {(filteredData || data)?.referrers && Object.keys((filteredData || data)!.referrers).length > 0 ? (
+                                Object.entries((filteredData || data)!.referrers)
                                     .sort(([, a], [, b]) => b - a)
                                     .map(([source, count], i) => (
                                         <div key={source} className="flex items-center justify-between group">
@@ -144,7 +291,7 @@ export default function AdminDashboard() {
                                                 <div className="w-32 h-2 bg-white/5 rounded-full overflow-hidden">
                                                     <div
                                                         className="h-full bg-brand-green rounded-full"
-                                                        style={{ width: `${(count / (data.pageViews || 1)) * 100}%` }}
+                                                        style={{ width: `${(count / ((filteredData || data)!.pageViews || 1)) * 100}%` }}
                                                     />
                                                 </div>
                                                 <span className="font-mono text-brand-green w-8 text-right">{count}</span>
@@ -169,8 +316,8 @@ export default function AdminDashboard() {
                         </div>
 
                         <div className="space-y-4">
-                            {data?.topProducts && Object.keys(data.topProducts).length > 0 ? (
-                                Object.entries(data.topProducts)
+                            {(filteredData || data)?.topProducts && Object.keys((filteredData || data)!.topProducts).length > 0 ? (
+                                Object.entries((filteredData || data)!.topProducts)
                                     .sort(([, a], [, b]) => b - a)
                                     .slice(0, 5)
                                     .map(([product, count], i) => (
@@ -197,7 +344,7 @@ export default function AdminDashboard() {
                 <div className="border-t border-white/5 pt-8">
                     <h4 className="text-xs font-black uppercase tracking-widest text-white/30 mb-6">Log de Eventos (Últimos 50)</h4>
                     <div className="bg-black/40 rounded-xl border border-white/5 p-4 h-48 overflow-y-auto font-mono text-xs space-y-2 custom-scrollbar">
-                        {data?.recentEvents.map((ev) => (
+                        {(filteredData || data)?.recentEvents.map((ev) => (
                             <div key={ev.id} className="flex gap-4 text-white/50 border-b border-white/5 pb-2 last:border-0">
                                 <span className="text-brand-green/60">{new Date(ev.timestamp || ev.id).toLocaleTimeString()}</span>
                                 <span className="text-white font-bold">{ev.event}</span>
