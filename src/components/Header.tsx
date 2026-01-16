@@ -42,7 +42,7 @@ export default function Header() {
                         >
                             <div className="relative w-[140px] h-[45px] md:w-[380px] md:h-[122px] transform-gpu transition-all duration-500 group-hover:scale-105">
                                 <Image
-                                    src="/textures/brux-solucoes-limpeza-profissional.png"
+                                    src="/textures/brux-logo-horizontal.png"
                                     alt="Logotipo BRUX - Soluções em Higiene Profissional e Limpeza Técnica"
                                     fill
                                     className="object-contain object-left scale-110 drop-shadow-[0_0_40px_rgba(34,197,94,0.4)] brightness-110"
