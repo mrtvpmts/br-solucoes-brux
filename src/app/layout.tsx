@@ -44,9 +44,6 @@ export const metadata: Metadata = {
     description: 'A BRUX (Bê-Erre-U-Xis) é a autoridade máxima em soluções químicas de alta performance para indústrias, hospitais e órgãos públicos.',
     images: ['/textures/brux-solucoes-limpeza-profissional.png'],
   },
-  verification: {
-    google: 'google-site-verification-code', // Substituir com código real do Google Search Console
-  },
 }
 
 
