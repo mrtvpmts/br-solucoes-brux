@@ -247,10 +247,16 @@ export default function TechnicalProductModal({ product, isOpen, onClose }: Tech
 
                         {/* Footer Actions */}
                         <div className="p-6 md:p-8 border-t border-white/10 bg-[#0b0f0d] flex gap-4">
-                            <button className="flex-1 btn-stitch py-4 text-sm uppercase font-black">
+                            <button
+                                onClick={() => window.open(`https://wa.me/551127768000?text=Olá, gostaria de receber a ficha técnica (PDF) do produto: ${product.name}`, '_blank')}
+                                className="flex-1 btn-stitch py-4 text-sm uppercase font-black"
+                            >
                                 Baixar Ficha Técnica (PDF)
                             </button>
-                            <button className="flex-1 btn-stitch btn-stitch-primary py-4 text-sm uppercase font-black">
+                            <button
+                                onClick={() => window.open(`https://wa.me/551127768000?text=Olá, gostaria de solicitar um orçamento para o produto técnico: ${product.name}`, '_blank')}
+                                className="flex-1 btn-stitch btn-stitch-primary py-4 text-sm uppercase font-black"
+                            >
                                 Solicitar Orçamento
                             </button>
                         </div>

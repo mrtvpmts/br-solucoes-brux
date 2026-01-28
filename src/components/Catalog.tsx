@@ -153,7 +153,7 @@ export default function Catalog() {
                 {/* Left Arrow */}
                 <button
                     onClick={() => scroll('left')}
-                    className="hidden lg:flex absolute left-4 top-[60%] -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-0 group-hover/carousel:opacity-100 duration-500 hover:scale-110"
+                    className="flex absolute left-2 md:left-4 top-[60%] -translate-y-1/2 z-20 w-10 h-10 md:w-14 md:h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-100 lg:opacity-0 lg:group-hover/carousel:opacity-100 duration-500 active:scale-95"
                     aria-label="Previous slide"
                 >
                     <ChevronLeft className="w-6 h-6 group-hover:text-brand-green transition-colors" />
@@ -162,7 +162,7 @@ export default function Catalog() {
                 {/* Right Arrow */}
                 <button
                     onClick={() => scroll('right')}
-                    className="hidden lg:flex absolute right-4 top-[60%] -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-0 group-hover/carousel:opacity-100 duration-500 hover:scale-110"
+                    className="flex absolute right-2 md:right-4 top-[60%] -translate-y-1/2 z-20 w-10 h-10 md:w-14 md:h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-100 lg:opacity-0 lg:group-hover/carousel:opacity-100 duration-500 active:scale-95"
                     aria-label="Next slide"
                 >
                     <ChevronRight className="w-6 h-6 group-hover:text-brand-green transition-colors" />
@@ -178,7 +178,7 @@ export default function Catalog() {
                     onMouseUp={stopDragging}
                     onMouseMove={onDrag}
                 >
-                    {products.slice(0, 8).map((p, i) => ( /* Show only featured in carousel initially */
+                    {products.map((p, i) => ( /* Show all products in carousel */
                         <div key={i} className="min-w-full md:min-w-[400px] lg:min-w-[450px] snap-center flex-shrink-0 pointer-events-auto select-none px-4 md:px-0">
                             <ProductCard
                                 product={p}

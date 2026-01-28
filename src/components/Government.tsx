@@ -10,7 +10,7 @@ export default function Government() {
 
     const authorityItems = [
         {
-            icon: <Shield className="w-8 h-8" />,
+            icon: <Shield className="w-full h-full" />,
             title: "Conformidade Legal",
             desc: "Produtos notificados e registrados na ANVISA",
             details: {
@@ -21,7 +21,7 @@ export default function Government() {
             }
         },
         {
-            icon: <Leaf className="w-8 h-8" />,
+            icon: <Leaf className="w-full h-full" />,
             title: "Química Verde",
             desc: "Fórmulas biodegradáveis e ecoeficientes",
             details: {
@@ -32,7 +32,7 @@ export default function Government() {
             }
         },
         {
-            icon: <Scale className="w-8 h-8" />,
+            icon: <Scale className="w-full h-full" />,
             title: "Capacidade de Escala",
             desc: "Estrutura preparada para suprimento em larga escala",
             details: {
@@ -98,11 +98,11 @@ export default function Government() {
                     >
                         {/* FRESH IMPLEMENTATION - MASSIVE TYPOGRAPHY */}
                         <div className="space-y-12">
-                            <h3 className="text-white text-2xl md:text-4xl font-black uppercase italic tracking-tighter leading-[0.9] drop-shadow-2xl">
+                            <h3 className="text-white text-lg md:text-4xl font-black uppercase italic tracking-tighter leading-[1.1] md:leading-[0.9] drop-shadow-2xl">
                                 A <span className="text-brand-green">BRUX</span> É PARCEIRA ESTRATÉGICA DE ÓRGÃOS PÚBLICOS E AUTARQUIAS.
                             </h3>
 
-                            <h3 className="text-white/90 text-xl md:text-3xl font-black uppercase italic tracking-tighter leading-[0.9]">
+                            <h3 className="text-white/90 text-sm md:text-3xl font-black uppercase italic tracking-tighter leading-[1.2] md:leading-[0.9] text-justify md:text-left">
                                 OFERECEMOS SOLUÇÕES QUÍMICAS DE ALTO RENDIMENTO QUE ATENDEM RIGOROSAMENTE AOS EDITAIS E NORMAS DE SEGURANÇA VIGENTES.
                             </h3>
                         </div>
@@ -126,7 +126,7 @@ export default function Government() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
-                        className="lg:col-span-3 space-y-5"
+                        className="lg:col-span-3 space-y-3 md:space-y-4 lg:space-y-5"
                     >
                         {authorityItems.map((item, i) => (
                             <motion.div
@@ -136,23 +136,25 @@ export default function Government() {
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.4 + i * 0.1 }}
                                 onClick={() => setSelectedAuthority(item)}
-                                className="group relative bg-gradient-to-r from-white/[0.03] to-transparent border border-white/10 rounded-3xl p-8 overflow-hidden hover:border-brand-green/40 transition-all duration-500 cursor-pointer"
+                                className="group relative bg-gradient-to-r from-white/[0.03] to-transparent border border-white/10 rounded-3xl p-5 md:p-6 lg:p-8 overflow-hidden hover:border-brand-green/40 transition-all duration-500 cursor-pointer"
                             >
                                 {/* Hover Glow */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                                <div className="relative flex items-center gap-6">
-                                    <div className="p-4 bg-brand-green/10 rounded-2xl text-brand-green group-hover:bg-brand-green group-hover:text-black transition-all duration-500 shadow-[0_0_30px_rgba(57,255,20,0.2)]">
-                                        {item.icon}
+                                <div className="relative flex items-center gap-4 md:gap-6">
+                                    <div className="p-3 md:p-4 bg-brand-green/10 rounded-2xl text-brand-green group-hover:bg-brand-green group-hover:text-black transition-all duration-500 shadow-[0_0_30px_rgba(57,255,20,0.2)]">
+                                        <div className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center">
+                                            {item.icon}
+                                        </div>
                                     </div>
-                                    <div className="flex-1">
-                                        <h3 className="text-white font-black text-xl uppercase tracking-wide mb-2 group-hover:text-brand-green transition-colors">
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="text-white font-black text-base md:text-lg lg:text-xl uppercase tracking-wide mb-1 md:mb-2 group-hover:text-brand-green transition-colors truncate">
                                             {item.title}
                                         </h3>
-                                        <p className="text-white/50 text-sm">{item.desc}</p>
+                                        <p className="text-white/50 text-xs md:text-sm line-clamp-2">{item.desc}</p>
                                     </div>
-                                    <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/20 group-hover:border-brand-green group-hover:bg-brand-green group-hover:text-black transition-all">
-                                        <ChevronRight size={16} />
+                                    <div className="w-6 h-6 md:w-8 md:h-8 rounded-full border border-white/10 flex items-center justify-center text-white/20 group-hover:border-brand-green group-hover:bg-brand-green group-hover:text-black transition-all shrink-0">
+                                        <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
                                     </div>
                                 </div>
                             </motion.div>
@@ -170,11 +172,11 @@ export default function Government() {
                 >
                     <button
                         onClick={() => window.open('https://wa.me/551127768000?text=Olá, gostaria de solicitar a documentação técnica e FISPQ dos produtos BRUX.', '_blank')}
-                        className="relative group inline-flex items-center gap-4 bg-gradient-to-r from-brand-green/20 to-brand-green/10 hover:from-brand-green hover:to-[#32e012] border border-brand-green/30 hover:border-brand-green rounded-2xl px-12 py-6 text-white hover:text-black font-black uppercase tracking-wider text-sm transition-all duration-500 shadow-[0_0_40px_rgba(57,255,20,0.2)] hover:shadow-[0_0_60px_rgba(57,255,20,0.5)]"
+                        className="relative group inline-flex items-center gap-2 md:gap-4 bg-gradient-to-r from-brand-green/20 to-brand-green/10 hover:from-brand-green hover:to-[#32e012] border border-brand-green/30 hover:border-brand-green rounded-2xl px-6 py-4 md:px-12 md:py-6 text-white hover:text-black font-black uppercase tracking-wider text-[10px] md:text-sm transition-all duration-500 shadow-[0_0_40px_rgba(57,255,20,0.2)] hover:shadow-[0_0_60px_rgba(57,255,20,0.5)] w-full md:w-auto justify-center"
                     >
-                        <FileText className="w-6 h-6" />
-                        Solicitar Documentação Técnica e FISPQ
-                        <div className="absolute -top-2 -right-2 w-4 h-4 bg-brand-green rounded-full animate-ping" />
+                        <FileText className="w-5 h-5 md:w-6 md:h-6" />
+                        <span className="whitespace-nowrap">Solicitar Documentação Técnica e FISPQ</span>
+                        <div className="absolute -top-2 -right-2 w-3 h-3 md:w-4 md:h-4 bg-brand-green rounded-full animate-ping" />
                     </button>
                 </motion.div>
             </div>
