@@ -17,6 +17,8 @@ interface QuoteContextType {
     addToCart: (item: CartItem) => void
     removeFromCart: (productId: string) => void
     clearCart: () => void
+    isCatalogOpen: boolean
+    setIsCatalogOpen: (isOpen: boolean) => void
 }
 
 const QuoteContext = createContext<QuoteContextType | null>(null)
@@ -25,6 +27,7 @@ export function QuoteProvider({ children }: { children: React.ReactNode }) {
     const [open, setOpen] = useState(false)
     const [success, setSuccess] = useState(false)
     const [cart, setCart] = useState<CartItem[]>([])
+    const [isCatalogOpen, setIsCatalogOpen] = useState(false)
 
     const addToCart = (item: CartItem) => {
         setCart(prev => {
@@ -49,7 +52,8 @@ export function QuoteProvider({ children }: { children: React.ReactNode }) {
         <QuoteContext.Provider value={{
             open, setOpen,
             success, setSuccess,
-            cart, addToCart, removeFromCart, clearCart
+            cart, addToCart, removeFromCart, clearCart,
+            isCatalogOpen, setIsCatalogOpen
         }}>
             {children}
         </QuoteContext.Provider>

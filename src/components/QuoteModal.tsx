@@ -8,7 +8,7 @@ import { X, CheckCircle, Send, Loader2, Phone } from 'lucide-react'
 import { trackEvent } from '@/lib/analytics'
 
 export default function QuoteModal() {
-    const { open, setOpen, success, setSuccess, cart, removeFromCart } = useQuote()
+    const { open, setOpen, success, setSuccess, cart, removeFromCart, setIsCatalogOpen } = useQuote()
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
@@ -226,7 +226,10 @@ export default function QuoteModal() {
                                     <div className="flex flex-col gap-3 pt-4">
                                         <button
                                             type="button"
-                                            onClick={() => setOpen(false)}
+                                            onClick={() => {
+                                                setOpen(false)
+                                                setIsCatalogOpen(true)
+                                            }}
                                             className="w-full py-4 text-xs font-bold uppercase tracking-widest text-white/50 hover:text-white border border-white/10 hover:bg-white/5 rounded-xl transition-all"
                                         >
                                             + Adicionar Mais Produtos

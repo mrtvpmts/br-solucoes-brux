@@ -99,7 +99,7 @@ import { products } from '../data/products'
 
 export default function Catalog() {
     const [selectedProduct, setSelectedProduct] = useState<any>(null)
-    const [showFullCatalog, setShowFullCatalog] = useState(false)
+    const { isCatalogOpen, setIsCatalogOpen } = useQuote()
     const [activeCategory, setActiveCategory] = useState('Todos')
     const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -202,7 +202,7 @@ export default function Catalog() {
                 {/* View All Button */}
                 <div className="flex justify-center mt-[-10px] mb-8 relative z-20">
                     <button
-                        onClick={() => setShowFullCatalog(true)}
+                        onClick={() => setIsCatalogOpen(true)}
                         className="btn-stitch px-12 py-4 text-sm font-black uppercase tracking-[0.2em] hover:scale-105 transition-transform shadow-[0_0_20px_rgba(57,255,20,0.3)]"
                     >
                         Ver Catálogo Completo
@@ -217,16 +217,16 @@ export default function Catalog() {
 
                 {/* Full Catalog Modal */}
                 <AnimatePresence>
-                    {showFullCatalog && (
+                    {isCatalogOpen && (
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl overflow-y-auto"
+                            className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-xl overflow-y-auto"
                         >
                             <div className="max-w-[1800px] mx-auto p-6 md:p-12 relative min-h-screen">
                                 <button
-                                    onClick={() => setShowFullCatalog(false)}
+                                    onClick={() => setIsCatalogOpen(false)}
                                     className="fixed top-8 right-8 z-[110] p-4 bg-white/5 hover:bg-white/10 rounded-full text-white/50 hover:text-white transition-all backdrop-blur-md border border-white/5"
                                 >
                                     <span className="sr-only">Fechar</span>
