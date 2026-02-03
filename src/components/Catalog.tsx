@@ -17,7 +17,7 @@ function ProductCard({ product, onOpenDetails, colorFilter }: ProductCardProps) 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="industrial-card group flex flex-col items-center text-center gap-6 md:gap-8 h-full p-4 md:p-12"
+            className="industrial-card group flex flex-col items-center text-center gap-4 md:gap-8 h-full p-4 pb-8 md:p-12 relative"
         >
             <div className="w-full aspect-[4/5] relative bg-[#0a0a0a] rounded-[32px] border border-white/5 overflow-hidden flex items-center justify-center p-6 md:p-10 group-hover:border-brand-green/30 transition-all shrink-0 shadow-inner">
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -171,15 +171,18 @@ export default function Catalog() {
                 {/* Carousel */}
                 <div
                     ref={scrollRef}
-                    className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 md:gap-8 px-0 md:px-4 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
-                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                    className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 px-[7.5vw] md:px-0 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
+                    style={{
+                        scrollbarWidth: 'none',
+                        msOverflowStyle: 'none'
+                    }}
                     onMouseDown={startDragging}
                     onMouseLeave={stopDragging}
                     onMouseUp={stopDragging}
                     onMouseMove={onDrag}
                 >
                     {products.map((p, i) => ( /* Show all products in carousel */
-                        <div key={i} className="min-w-full md:min-w-[400px] lg:min-w-[450px] snap-center flex-shrink-0 pointer-events-auto select-none px-4 md:px-0">
+                        <div key={i} className="min-w-[85vw] sm:min-w-[400px] lg:min-w-[450px] snap-center flex-shrink-0 pointer-events-auto select-none">
                             <ProductCard
                                 product={p}
                                 onOpenDetails={(prod) => {
