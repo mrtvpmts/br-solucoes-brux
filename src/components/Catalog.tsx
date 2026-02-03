@@ -182,7 +182,7 @@ export default function Catalog() {
                     onMouseMove={onDrag}
                 >
                     {products.map((p, i) => ( /* Show all products in carousel */
-                        <div key={i} className="w-[85vw] md:min-w-[400px] lg:min-w-[450px] snap-center flex-shrink-0 pointer-events-auto select-none">
+                        <div key={i} className="w-[85vw] md:w-[300px] lg:w-[350px] snap-center flex-shrink-0 pointer-events-auto select-none">
                             <ProductCard
                                 product={p}
                                 onOpenDetails={(prod) => {
