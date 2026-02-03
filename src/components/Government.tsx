@@ -60,7 +60,7 @@ export default function Government() {
             {/* Radial Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(57,255,20,0.08)_0%,transparent_60%)]" />
 
-            <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-12">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
                 {/* Header with Impact */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -87,7 +87,7 @@ export default function Government() {
                 </motion.div>
 
                 {/* Content Grid - Asymmetric Layout */}
-                <div className="grid lg:grid-cols-5 gap-12 items-start">
+                <div className="flex flex-col lg:grid lg:grid-cols-5 gap-12 items-center lg:items-start w-full">
                     {/* Left - Text Block */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -108,7 +108,7 @@ export default function Government() {
                         </div>
 
                         {/* Stats */}
-                        <div className="grid grid-cols-2 gap-8 pt-4 border-t border-white/10">
+                        <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10 w-full">
                             <div className="text-center">
                                 <div className="text-4xl md:text-7xl font-black text-brand-green mb-2">100%</div>
                                 <div className="text-[10px] md:text-base text-white/40 uppercase tracking-[0.2em] font-bold">Conformidade</div>
@@ -141,7 +141,7 @@ export default function Government() {
                                 {/* Hover Glow */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                                <div className="relative flex items-center gap-4 md:gap-6">
+                                <div className="relative flex items-center gap-3 md:gap-6">
                                     <div className="p-3 md:p-4 bg-brand-green/10 rounded-2xl text-brand-green group-hover:bg-brand-green group-hover:text-black transition-all duration-500 shadow-[0_0_30px_rgba(57,255,20,0.2)]">
                                         <div className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center">
                                             {item.icon}
