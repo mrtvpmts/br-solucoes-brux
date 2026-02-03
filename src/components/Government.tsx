@@ -90,19 +90,19 @@ export default function Government() {
                 <div className="grid lg:grid-cols-5 gap-12 items-start">
                     {/* Left - Text Block */}
                     <motion.div
-                        initial={{ opacity: 0, x: -40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
                         className="lg:col-span-2 space-y-16"
                     >
                         {/* FRESH IMPLEMENTATION - MASSIVE TYPOGRAPHY */}
-                        <div className="space-y-12">
-                            <h3 className="text-white text-lg md:text-4xl font-black uppercase italic tracking-tighter leading-[1.1] md:leading-[0.9] drop-shadow-2xl">
+                        <div className="space-y-8 md:space-y-12 text-center md:text-left">
+                            <h3 className="text-white text-lg md:text-4xl font-black uppercase italic tracking-tighter leading-[1.1] md:leading-[0.9] drop-shadow-2xl px-2">
                                 A <span className="text-brand-green">BRUX</span> É PARCEIRA ESTRATÉGICA DE ÓRGÃOS PÚBLICOS E AUTARQUIAS.
                             </h3>
 
-                            <h3 className="text-white/90 text-sm md:text-3xl font-black uppercase italic tracking-tighter leading-[1.2] md:leading-[0.9] text-justify md:text-left">
+                            <h3 className="text-white/90 text-sm md:text-3xl font-black uppercase italic tracking-tighter leading-[1.2] md:leading-[0.9] px-2">
                                 OFERECEMOS SOLUÇÕES QUÍMICAS DE ALTO RENDIMENTO QUE ATENDEM RIGOROSAMENTE AOS EDITAIS E NORMAS DE SEGURANÇA VIGENTES.
                             </h3>
                         </div>
@@ -122,8 +122,8 @@ export default function Government() {
 
                     {/* Right - Authority Cards */}
                     <motion.div
-                        initial={{ opacity: 0, x: 40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
                         className="lg:col-span-3 space-y-3 md:space-y-4 lg:space-y-5"
