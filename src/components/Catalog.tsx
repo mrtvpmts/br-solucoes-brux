@@ -157,7 +157,7 @@ export default function Catalog() {
                     {/* Left Arrow */}
                     <button
                         onClick={() => scroll('left')}
-                        className="hidden md:flex absolute -left-4 lg:-left-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-[#0a0a0a] border border-brand-green/30 text-white hover:bg-brand-green hover:text-black hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] items-center justify-center group"
+                        className="flex absolute -left-4 lg:-left-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-[#0a0a0a] border border-brand-green/30 text-white hover:bg-brand-green hover:text-black hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] items-center justify-center group"
                         aria-label="Previous slide"
                     >
                         <ChevronLeft className="w-6 h-6 lg:w-8 lg:h-8 transition-transform group-hover:-translate-x-1" />
@@ -166,7 +166,7 @@ export default function Catalog() {
                     {/* Right Arrow */}
                     <button
                         onClick={() => scroll('right')}
-                        className="hidden md:flex absolute -right-4 lg:-right-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-[#0a0a0a] border border-brand-green/30 text-white hover:bg-brand-green hover:text-black hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] items-center justify-center group"
+                        className="flex absolute -right-4 lg:-right-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-[#0a0a0a] border border-brand-green/30 text-white hover:bg-brand-green hover:text-black hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] items-center justify-center group"
                         aria-label="Next slide"
                     >
                         <ChevronRight className="w-6 h-6 lg:w-8 lg:h-8 transition-transform group-hover:translate-x-1" />
