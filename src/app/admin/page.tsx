@@ -2,26 +2,39 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Lock, ArrowRight } from 'lucide-react'
+import { Lock, ArrowRight, Loader2 } from 'lucide-react'
+import { supabase } from '@/lib/supabase'
 
 export default function AdminLogin() {
-    const [pin, setPin] = useState('')
-    const [error, setError] = useState(false)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
     const router = useRouter()
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
+        setLoading(true)
+        setError(null)
 
-        // Check for custom password in localStorage (simulated persistence)
-        const storedPwd = typeof window !== 'undefined' ? localStorage.getItem('admin_custom_pwd') : null
-        const validPwd = storedPwd || '123456'
+        try {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password
+            })
 
-        if (pin === validPwd) {
-            document.cookie = "admin_auth=true; path=/"
-            router.push('/admin/dashboard')
-        } else {
-            setError(true)
-            setPin('')
+            if (error) throw error
+
+            if (data.user) {
+                // Determine redirect path (could be based on role later)
+                document.cookie = "admin_auth=true; path=/" // Keep cookie for middleware if needed
+                router.push('/admin/dashboard')
+            }
+        } catch (err: any) {
+            console.error('Login error:', err)
+            setError(err.message === 'Invalid login credentials' ? 'E-mail ou senha incorretos' : 'Erro ao realizar login')
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -33,34 +46,47 @@ export default function AdminLogin() {
                         <Lock className="text-brand-green w-8 h-8" />
                     </div>
                     <h1 className="text-3xl font-black text-white uppercase tracking-tighter">Área Restrita</h1>
-                    <p className="text-white/40 font-medium">Digite a senha de acesso administrativo</p>
+                    <p className="text-white/40 font-medium">Acesso Equipe BRUX</p>
                 </div>
 
                 <form onSubmit={handleLogin} className="space-y-6">
-                    <div className="space-y-2">
-                        <input
-                            type="password"
-                            value={pin}
-                            onChange={(e) => {
-                                setPin(e.target.value)
-                                setError(false)
-                            }}
-                            className={`w-full bg-white/5 border ${error ? 'border-red-500 text-red-500' : 'border-white/10 text-white'} rounded-xl px-4 py-4 text-center text-4xl font-mono tracking-[0.2em] focus:outline-none focus:border-brand-green/50 transition-colors placeholder:text-white/10`}
-                            placeholder="*******"
-                            autoFocus
-                        />
+                    <div className="space-y-4">
+                        <div className="space-y-1">
+                            <label className="text-xs font-bold uppercase tracking-widest text-white/50 ml-1">E-mail</label>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green/50 transition-colors placeholder:text-white/10"
+                                placeholder="usuario@brux.com.br"
+                                required
+                            />
+                        </div>
+                        <div className="space-y-1">
+                            <label className="text-xs font-bold uppercase tracking-widest text-white/50 ml-1">Senha</label>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-green/50 transition-colors placeholder:text-white/10"
+                                placeholder="••••••••"
+                                required
+                            />
+                        </div>
+
                         {error && (
-                            <p className="text-red-500 text-xs text-center font-bold uppercase tracking-widest animate-pulse">
-                                PIN Incorreto
+                            <p className="text-red-500 text-xs text-center font-bold uppercase tracking-widest animate-pulse p-2 bg-red-500/10 rounded-lg">
+                                {error}
                             </p>
                         )}
                     </div>
 
                     <button
                         type="submit"
-                        className="w-full bg-brand-green text-black font-black uppercase text-sm tracking-widest py-4 rounded-xl hover:bg-[#32e012] transition-colors flex items-center justify-center gap-2"
+                        disabled={loading}
+                        className="w-full bg-brand-green text-black font-black uppercase text-sm tracking-widest py-4 rounded-xl hover:bg-[#32e012] transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        Acessar Dashboard <ArrowRight size={16} />
+                        {loading ? <Loader2 className="animate-spin w-5 h-5" /> : <>Acessar Sistema <ArrowRight size={16} /></>}
                     </button>
                 </form>
             </div>

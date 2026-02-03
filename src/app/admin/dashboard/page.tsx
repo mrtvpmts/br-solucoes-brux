@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { BarChart3, Users, ShoppingCart, MousePointer2, RefreshCw, ArrowUpRight, Settings, Calendar } from 'lucide-react'
+import { supabase } from '@/lib/supabase'
 
 interface AnalyticsData {
     pageViews: number
@@ -26,11 +27,36 @@ export default function AdminDashboard() {
 
     const fetchData = async () => {
         try {
+            // 1. Fetch Analytics (PageViews, Clicks)
             const res = await fetch('/api/track')
-            const json = await res.json()
-            setData(json)
+            const analyticsJson = await res.json()
+
+            // 2. Fetch Real Quotes from Database
+            const { data: quotesData, error: quotesError } = await supabase
+                .from('quotes')
+                .select('*')
+                .order('created_at', { ascending: false })
+
+            if (quotesError) throw quotesError
+
+            // Merge Data
+            setData({
+                ...analyticsJson,
+                quotes: quotesData?.length || 0, // Override event-based quotes with real DB count
+                recentEvents: [
+                    ...(quotesData?.map(q => ({
+                        id: q.id,
+                        event: 'quote_received',
+                        product: 'Geral/Vários', // Could parse items
+                        timestamp: q.created_at,
+                        referrer: 'Sistema'
+                    })) || []),
+                    ...(analyticsJson.recentEvents || [])
+                ].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()).slice(0, 50)
+            })
+
         } catch (error) {
-            console.error('Failed to fetch stats')
+            console.error('Failed to fetch stats', error)
         } finally {
             setLoading(false)
         }
