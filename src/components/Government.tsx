@@ -60,7 +60,7 @@ export default function Government() {
             {/* Radial Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(57,255,20,0.08)_0%,transparent_60%)]" />
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
+            <div className="relative z-10 max-w-7xl mx-auto px-8 md:px-12">
                 {/* Header with Impact */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -76,7 +76,7 @@ export default function Government() {
                         <div className="w-12 h-[2px] bg-gradient-to-l from-transparent to-brand-green" />
                     </div>
 
-                    <h2 className="text-impact mb-6 leading-[0.9] break-words hyphens-auto w-full" style={{ fontSize: 'clamp(1.75rem, 8vw, 6rem)' }}>
+                    <h2 className="text-impact mb-6 leading-[0.9] break-words w-full" style={{ fontSize: 'clamp(1.5rem, 7vw, 4rem)' }}>
                         Autoridade<br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] block">
                             Governamental
@@ -148,7 +148,7 @@ export default function Government() {
                                         </div>
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <h3 className="text-white font-black text-sm md:text-lg lg:text-xl uppercase tracking-wide mb-1 md:mb-2 group-hover:text-brand-green transition-colors break-words hyphens-auto leading-tight">
+                                        <h3 className="text-white font-black text-sm md:text-base lg:text-lg uppercase tracking-wide mb-1 md:mb-2 group-hover:text-brand-green transition-colors whitespace-normal break-words leading-tight">
                                             {item.title}
                                         </h3>
                                         <p className="text-white/50 text-xs md:text-sm line-clamp-2">{item.desc}</p>

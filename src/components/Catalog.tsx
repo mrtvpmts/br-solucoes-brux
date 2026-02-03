@@ -17,7 +17,7 @@ function ProductCard({ product, onOpenDetails, colorFilter }: ProductCardProps) 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="industrial-card group flex flex-col items-center text-center gap-4 md:gap-8 h-full p-4 pb-8 md:p-12 relative"
+            className="industrial-card group flex flex-col items-center text-center gap-4 md:gap-8 h-full p-4 pb-12 relative"
         >
             <div className="w-full aspect-[4/5] relative bg-[#0a0a0a] rounded-[32px] border border-white/5 overflow-hidden flex items-center justify-center p-6 md:p-10 group-hover:border-brand-green/30 transition-all shrink-0 shadow-inner">
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -137,10 +137,10 @@ export default function Catalog() {
 
     return (
         <section id="catalog" className="relative py-2 md:py-8 bg-[#080a09] group/carousel">
-            <div className="max-w-[1600px] mx-auto px-4 md:px-8 space-y-12 md:space-y-20 relative">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 space-y-12 md:space-y-20 relative">
                 <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
                     <div className="text-center space-y-4 md:space-y-6">
-                        <h2 className="text-impact !text-3xl md:!text-7xl leading-[1.1]">
+                        <h2 className="text-impact mb-6 leading-[0.9] break-words hyphens-auto w-full" style={{ fontSize: 'clamp(1.5rem, 6vw, 6rem)' }}>
                             Soluções Químicas <br className="md:hidden" />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] pr-2">
                                 PARA LIMPEZA
@@ -171,7 +171,7 @@ export default function Catalog() {
                 {/* Carousel */}
                 <div
                     ref={scrollRef}
-                    className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 px-[7.5vw] md:px-0 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
+                    className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 -mx-6 px-[7.5vw] md:px-0 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
                     style={{
                         scrollbarWidth: 'none',
                         msOverflowStyle: 'none'
@@ -182,7 +182,7 @@ export default function Catalog() {
                     onMouseMove={onDrag}
                 >
                     {products.map((p, i) => ( /* Show all products in carousel */
-                        <div key={i} className="min-w-[85vw] sm:min-w-[400px] lg:min-w-[450px] snap-center flex-shrink-0 pointer-events-auto select-none">
+                        <div key={i} className="w-[85vw] md:min-w-[400px] lg:min-w-[450px] snap-center flex-shrink-0 pointer-events-auto select-none">
                             <ProductCard
                                 product={p}
                                 onOpenDetails={(prod) => {
