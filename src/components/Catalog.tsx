@@ -157,25 +157,25 @@ export default function Catalog() {
                     {/* Left Arrow */}
                     <button
                         onClick={() => scroll('left')}
-                        className="hidden lg:flex absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-0 hover:opacity-100 duration-300"
+                        className="hidden md:flex absolute -left-4 lg:-left-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-[#0a0a0a] border border-brand-green/30 text-white hover:bg-brand-green hover:text-black hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] items-center justify-center group"
                         aria-label="Previous slide"
                     >
-                        <ChevronLeft className="w-6 h-6 group-hover:text-brand-green transition-colors" />
+                        <ChevronLeft className="w-6 h-6 lg:w-8 lg:h-8 transition-transform group-hover:-translate-x-1" />
                     </button>
 
                     {/* Right Arrow */}
                     <button
                         onClick={() => scroll('right')}
-                        className="hidden lg:flex absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-0 hover:opacity-100 duration-300"
+                        className="hidden md:flex absolute -right-4 lg:-right-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-[#0a0a0a] border border-brand-green/30 text-white hover:bg-brand-green hover:text-black hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] items-center justify-center group"
                         aria-label="Next slide"
                     >
-                        <ChevronRight className="w-6 h-6 group-hover:text-brand-green transition-colors" />
+                        <ChevronRight className="w-6 h-6 lg:w-8 lg:h-8 transition-transform group-hover:translate-x-1" />
                     </button>
 
                     {/* Scroll View */}
                     <div
                         ref={scrollRef}
-                        className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-6 -mx-6 px-6 md:mx-0 md:px-0 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
+                        className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 md:gap-6 -mx-6 px-6 md:mx-0 md:px-0 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
                         style={{
                             scrollbarWidth: 'none',
                             msOverflowStyle: 'none'
