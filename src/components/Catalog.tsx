@@ -149,11 +149,14 @@ export default function Catalog() {
                         <div className="h-1 w-20 md:w-32 bg-gradient-to-r from-transparent via-brand-green to-transparent mx-auto rounded-full mt-4 md:mt-8 shadow-[0_0_20px_rgba(57,255,20,0.5)]" />
                     </div>
                 </div>
+            </div>
 
-                {/* Left Arrow */}
+            {/* Carousel - Full Width Bleed */}
+            <div className="relative w-full mb-12">
+                {/* Left Arrow - Positioned relative to screen */}
                 <button
                     onClick={() => scroll('left')}
-                    className="flex absolute left-2 md:left-4 top-[60%] -translate-y-1/2 z-20 w-10 h-10 md:w-14 md:h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-100 lg:opacity-0 lg:group-hover/carousel:opacity-100 duration-500 active:scale-95"
+                    className="hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-0 hover:opacity-100 duration-300"
                     aria-label="Previous slide"
                 >
                     <ChevronLeft className="w-6 h-6 group-hover:text-brand-green transition-colors" />
@@ -162,16 +165,15 @@ export default function Catalog() {
                 {/* Right Arrow */}
                 <button
                     onClick={() => scroll('right')}
-                    className="flex absolute right-2 md:right-4 top-[60%] -translate-y-1/2 z-20 w-10 h-10 md:w-14 md:h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-100 lg:opacity-0 lg:group-hover/carousel:opacity-100 duration-500 active:scale-95"
+                    className="hidden lg:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-0 hover:opacity-100 duration-300"
                     aria-label="Next slide"
                 >
                     <ChevronRight className="w-6 h-6 group-hover:text-brand-green transition-colors" />
                 </button>
 
-                {/* Carousel */}
                 <div
                     ref={scrollRef}
-                    className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-6 -mx-6 px-6 md:mx-0 md:px-4 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
+                    className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-6 px-6 md:px-[max(2rem,calc(50vw-42rem))] pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
                     style={{
                         scrollbarWidth: 'none',
                         msOverflowStyle: 'none'
@@ -193,9 +195,11 @@ export default function Catalog() {
                         </div>
                     ))}
                 </div>
+            </div>
 
+            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
                 {/* View All Button */}
-                <div className="flex justify-center mt-[-10px] mb-8 relative z-20">
+                <div className="flex justify-center relative z-20">
                     <button
                         onClick={() => setShowFullCatalog(true)}
                         className="btn-stitch px-12 py-4 text-sm font-black uppercase tracking-[0.2em] hover:scale-105 transition-transform shadow-[0_0_20px_rgba(57,255,20,0.3)]"
