@@ -1,275 +1,140 @@
 'use client'
 
+import { motion } from 'framer-motion'
+import { Shield, Scale, FileCheck, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
-import { Shield, Leaf, Scale, FileText, CheckCircle2, X, Zap, ChevronRight } from 'lucide-react'
 
 export default function Government() {
     const [selectedAuthority, setSelectedAuthority] = useState<any>(null)
 
     const authorityItems = [
         {
-            icon: <Shield className="w-full h-full" />,
             title: "Conformidade Legal",
             desc: "Produtos notificados e registrados na ANVISA",
-            details: {
-                subtitle: "Segurança Jurídica e Sanitária",
-                longDesc: "Todos os produtos BRUX são rigorosamente notificados e registrados na ANVISA, garantindo total conformidade com as normas sanitárias vigentes. Nossa documentação técnica é auditável e atende a todos os requisitos de editais públicos.",
-                points: ["Registro ANVISA para todos os lotes", "Laudos técnicos detalhados e FISPQ", "Conformidade com RDC 59/2000", "Responsabilidade Técnica Química Ativa"],
-                badge: "CERTIFICAÇÃO: GRAU 1 E 2"
-            }
+            icon: <Shield className="w-full h-full" />,
+            detail: "Documentação completa para processos licitatórios e fiscalização sanitária."
         },
         {
-            icon: <Leaf className="w-full h-full" />,
             title: "Química Verde",
             desc: "Fórmulas biodegradáveis e ecoeficientes",
-            details: {
-                subtitle: "Sustentabilidade com Alta Performance",
-                longDesc: "Compromisso inegociável com o meio ambiente. Desenvolvemos fórmulas de alta performance que minimizam o impacto ambiental sem sacrificar o poder de limpeza, alinhado com as diretrizes ESG.",
-                points: ["Tensoativos 100% Biodegradáveis", "Fórmulas Isentas de Fosfatos", "Embalagens 100% Recicláveis", "Processo produtivo com reuso de água"],
-                badge: "SELO: ECO-FRIENDLY"
-            }
+            icon: <FileCheck className="w-full h-full" />,
+            detail: "Atendimento às normas de sustentabilidade exigidas em editais públicos."
         },
         {
-            icon: <Scale className="w-full h-full" />,
             title: "Capacidade de Escala",
             desc: "Estrutura preparada para suprimento em larga escala",
-            details: {
-                subtitle: "Logística e Produção Industrial",
-                longDesc: "Infraestrutura robusta preparada para atender grandes demandas governamentais e industriais com agilidade e precisão. Garantimos o abastecimento contínuo mesmo em picos de demanda.",
-                points: ["Capacidade Produtiva: +50.000L/dia", "Frota própria e homologada", "Estoque regulador estratégico", "Logística reversa de embalagens"],
-                badge: "SCALE: INDUSTRIAL"
-            }
+            icon: <Scale className="w-full h-full" />,
+            detail: "Logística integrada para atender grandes volumes com pontualidade."
         }
     ]
 
     return (
-        <section id="government" className="relative py-24 md:py-40 overflow-hidden">
-            {/* DARK INDUSTRIAL BACKGROUND */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#040504] via-[#0a0d0b] to-[#050605]" />
+        <section id="government" className="relative py-12 md:py-24 bg-[#080a09] overflow-hidden">
 
-            {/* Animated Grid Pattern */}
-            <div className="absolute inset-0 opacity-10">
-                <div className="absolute inset-0" style={{
-                    backgroundImage: 'linear-gradient(rgba(57,255,20,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(57,255,20,0.1) 1px, transparent 1px)',
-                    backgroundSize: '60px 60px'
-                }} />
+            {/* Background Effects */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200vw] h-[200vw] max-w-[1000px] max-h-[1000px] bg-[radial-gradient(circle,rgba(57,255,20,0.05)_0%,transparent_70%)]" />
             </div>
 
-            {/* Radial Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(57,255,20,0.08)_0%,transparent_60%)]" />
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center">
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
-                {/* Header with Impact */}
+                {/* Header Title */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-20"
+                    className="flex flex-col items-center text-center mb-12 w-full"
                 >
-                    <div className="inline-flex items-center gap-3 mb-6">
-                        <div className="w-12 h-[2px] bg-gradient-to-r from-transparent to-brand-green" />
-                        <span className="text-brand-green text-xs font-black uppercase tracking-[0.5em]">
-                            Setor Público e Indústria
-                        </span>
-                        <div className="w-12 h-[2px] bg-gradient-to-l from-transparent to-brand-green" />
+                    <div className="flex items-center gap-3 mb-4 opacity-80">
+                        <div className="w-8 h-[2px] bg-brand-green" />
+                        <span className="text-brand-green text-[10px] font-black uppercase tracking-[0.3em]">Setor Público</span>
+                        <div className="w-8 h-[2px] bg-brand-green" />
                     </div>
 
-                    <h2 className="text-impact mb-6 leading-[0.9] break-words w-full" style={{ fontSize: 'clamp(1.5rem, 7vw, 4rem)' }}>
-                        Autoridade<br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] block">
-                            Governamental
-                        </span>
+                    <h2 className="text-4xl md:text-7xl font-black text-white leading-none uppercase italic tracking-tighter">
+                        Autoridade <br />
+                        <span className="text-brand-green drop-shadow-[0_0_15px_rgba(57,255,20,0.5)]">Governamental</span>
                     </h2>
-
-                    <div className="h-1 w-32 bg-gradient-to-r from-transparent via-brand-green to-transparent mx-auto rounded-full shadow-[0_0_20px_rgba(57,255,20,0.5)]" />
                 </motion.div>
 
-                {/* Content Grid - Asymmetric Layout */}
-                <div className="flex flex-col lg:grid lg:grid-cols-5 gap-12 items-center lg:items-start w-full">
-                    {/* Left - Text Block */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="lg:col-span-2 space-y-16"
-                    >
-                        {/* FRESH IMPLEMENTATION - MASSIVE TYPOGRAPHY */}
-                        <div className="space-y-8 md:space-y-12 text-center md:text-left">
-                            <h3 className="text-white text-lg md:text-4xl font-black uppercase italic tracking-tighter leading-[1.1] md:leading-[0.9] drop-shadow-2xl px-2">
-                                A <span className="text-brand-green">BRUX</span> É PARCEIRA ESTRATÉGICA DE ÓRGÃOS PÚBLICOS E AUTARQUIAS.
-                            </h3>
+                {/* Main Content Container - Flex Col on Mobile, Grid on Desktop */}
+                <div className="w-full flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20">
 
-                            <h3 className="text-white/90 text-sm md:text-3xl font-black uppercase italic tracking-tighter leading-[1.2] md:leading-[0.9] px-2">
-                                OFERECEMOS SOLUÇÕES QUÍMICAS DE ALTO RENDIMENTO QUE ATENDEM RIGOROSAMENTE AOS EDITAIS E NORMAS DE SEGURANÇA VIGENTES.
+                    {/* Left Side: Text & Stats */}
+                    <div className="flex flex-col gap-8 text-center lg:text-left">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="space-y-6"
+                        >
+                            <h3 className="text-lg md:text-3xl font-black text-white leading-tight uppercase italic">
+                                A <span className="text-brand-green">BRUX</span> é parceira estratégica de órgãos públicos.
                             </h3>
-                        </div>
+                            <p className="text-white/70 text-sm md:text-lg font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
+                                Oferecemos soluções químicas de alto rendimento que atendem rigorosamente aos editais e normas de segurança vigentes.
+                            </p>
+                        </motion.div>
 
-                        {/* Stats */}
-                        <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10 w-full">
-                            <div className="text-center">
-                                <div className="text-4xl md:text-7xl font-black text-brand-green mb-2">100%</div>
-                                <div className="text-[10px] md:text-base text-white/40 uppercase tracking-[0.2em] font-bold">Conformidade</div>
+                        <div className="grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
+                            <div className="flex flex-col items-center lg:items-start p-4 bg-white/5 rounded-2xl">
+                                <span className="text-3xl md:text-5xl font-black text-brand-green">100%</span>
+                                <span className="text-[10px] md:text-xs text-white/50 uppercase tracking-widest mt-1">Conformidade</span>
                             </div>
-                            <div className="text-center">
-                                <div className="text-4xl md:text-7xl font-black text-brand-green mb-2">31+</div>
-                                <div className="text-[10px] md:text-base text-white/40 uppercase tracking-[0.2em] font-bold">Produtos</div>
+                            <div className="flex flex-col items-center lg:items-start p-4 bg-white/5 rounded-2xl">
+                                <span className="text-3xl md:text-5xl font-black text-brand-green">31+</span>
+                                <span className="text-[10px] md:text-xs text-white/50 uppercase tracking-widest mt-1">Produtos</span>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
 
-                    {/* Right - Authority Cards */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                        className="lg:col-span-3 space-y-3 md:space-y-4 lg:space-y-5"
-                    >
+                    {/* Right Side: Cards */}
+                    <div className="flex flex-col gap-4 w-full">
                         {authorityItems.map((item, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: 0.4 + i * 0.1 }}
-                                onClick={() => setSelectedAuthority(item)}
-                                className="group relative bg-gradient-to-r from-white/[0.03] to-transparent border border-white/10 rounded-3xl p-3 md:p-6 lg:p-8 overflow-hidden hover:border-brand-green/40 transition-all duration-500 cursor-pointer"
+                                transition={{ delay: i * 0.1 }}
+                                className="group w-full bg-white/[0.03] border border-white/10 hover:border-brand-green/50 rounded-2xl p-4 md:p-6 transition-all duration-300"
                             >
-                                {/* Hover Glow */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                                <div className="relative flex items-center gap-3 md:gap-6">
-                                    <div className="p-3 md:p-4 bg-brand-green/10 rounded-2xl text-brand-green group-hover:bg-brand-green group-hover:text-black transition-all duration-500 shadow-[0_0_30px_rgba(57,255,20,0.2)]">
-                                        <div className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center">
-                                            {item.icon}
-                                        </div>
+                                <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-brand-green/10 text-brand-green flex items-center justify-center shrink-0 group-hover:bg-brand-green group-hover:text-black transition-colors">
+                                        {item.icon}
                                     </div>
-                                    <div className="flex-1 min-w-0">
-                                        <h3 className="text-white font-black text-sm md:text-base lg:text-lg uppercase tracking-wide mb-1 md:mb-2 group-hover:text-brand-green transition-colors whitespace-normal break-words leading-tight">
+                                    <div className="flex-1 text-left">
+                                        <h4 className="text-white font-bold text-sm md:text-lg uppercase tracking-wide mb-1 group-hover:text-brand-green transition-colors">
                                             {item.title}
-                                        </h3>
-                                        <p className="text-white/50 text-xs md:text-sm line-clamp-2">{item.desc}</p>
-                                    </div>
-                                    <div className="w-6 h-6 md:w-8 md:h-8 rounded-full border border-white/10 flex items-center justify-center text-white/20 group-hover:border-brand-green group-hover:bg-brand-green group-hover:text-black transition-all shrink-0">
-                                        <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
+                                        </h4>
+                                        <p className="text-white/50 text-xs md:text-sm leading-relaxed">
+                                            {item.desc}
+                                        </p>
                                     </div>
                                 </div>
                             </motion.div>
                         ))}
-                    </motion.div>
+                    </div>
+
                 </div>
 
-                {/* CTA Button - Premium Style */}
+                {/* CTA Button */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.6 }}
-                    className="mt-20 text-center"
+                    className="mt-12 w-full md:w-auto"
                 >
                     <button
-                        onClick={() => window.open('https://wa.me/551127768000?text=Olá, gostaria de solicitar a documentação técnica e FISPQ dos produtos BRUX.', '_blank')}
-                        className="relative group inline-flex items-center gap-2 md:gap-4 bg-gradient-to-r from-brand-green/20 to-brand-green/10 hover:from-brand-green hover:to-[#32e012] border border-brand-green/30 hover:border-brand-green rounded-2xl px-4 py-4 md:px-12 md:py-6 text-white hover:text-black font-black uppercase tracking-wider text-[10px] md:text-sm transition-all duration-500 shadow-[0_0_40px_rgba(57,255,20,0.2)] hover:shadow-[0_0_60px_rgba(57,255,20,0.5)] w-full md:w-auto justify-center"
+                        onClick={() => window.open('https://wa.me/551127768000?text=Solicitar documentação técnica', '_blank')}
+                        className="w-full md:w-auto btn-stitch py-4 px-8 text-sm font-bold flex items-center justify-center gap-2"
                     >
-                        <FileText className="w-5 h-5 md:w-6 md:h-6 shrink-0" />
-                        <span className="whitespace-normal text-center leading-tight">Solicitar Documentação Técnica e FISPQ</span>
-                        <div className="absolute -top-2 -right-2 w-3 h-3 md:w-4 md:h-4 bg-brand-green rounded-full animate-ping" />
+                        <Shield className="w-4 h-4" />
+                        Solicitar Documentação Técnica
                     </button>
                 </motion.div>
+
             </div>
-
-            {/* AUTHORITY DETAIL MODAL */}
-            <AnimatePresence>
-                {selectedAuthority && (
-                    <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={() => setSelectedAuthority(null)}
-                            className="absolute inset-0 bg-black/90 backdrop-blur-2xl"
-                        />
-
-                        <motion.div
-                            layoutId={`authority-${selectedAuthority.title}`}
-                            className="relative w-full max-w-3xl bg-[#0b0f0d] border border-white/10 rounded-[40px] p-8 md:p-12 overflow-hidden shadow-[0_0_100px_rgba(57,255,20,0.1)]"
-                        >
-                            {/* Background Effects */}
-                            <div className="absolute inset-0 z-0 opacity-20">
-                                <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-brand-green/20 blur-[100px] rounded-full" />
-                                <div className="absolute top-0 right-0 p-12 opacity-10 scale-150 text-brand-green">
-                                    {selectedAuthority.icon}
-                                </div>
-                            </div>
-
-                            <div className="relative z-10 flex flex-col h-full">
-                                {/* Header */}
-                                <div className="flex justify-between items-start mb-10">
-                                    <div className="flex gap-6 items-center">
-                                        <div className="w-20 h-20 rounded-2xl bg-brand-green/10 flex items-center justify-center text-brand-green border border-brand-green/20 shadow-[0_0_20px_rgba(57,255,20,0.2)]">
-                                            {selectedAuthority.icon}
-                                        </div>
-                                        <div>
-                                            <span className="text-brand-green font-black uppercase tracking-[0.3em] text-[10px] mb-2 block">
-                                                {selectedAuthority.details.subtitle}
-                                            </span>
-                                            <h3 className="text-3xl md:text-5xl font-black uppercase text-white tracking-tighter italic leading-none">
-                                                {selectedAuthority.title}
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <button
-                                        onClick={() => setSelectedAuthority(null)}
-                                        className="p-3 bg-white/5 hover:bg-white/10 rounded-full border border-white/10 text-white/50 hover:text-white transition-all"
-                                    >
-                                        <X size={20} />
-                                    </button>
-                                </div>
-
-                                {/* Content */}
-                                <div className="space-y-8">
-                                    <p className="text-white/80 text-xl font-medium leading-relaxed border-l-4 border-brand-green/50 pl-6">
-                                        {selectedAuthority.details.longDesc}
-                                    </p>
-
-                                    <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-8">
-                                        <h4 className="flex items-center gap-3 text-white/40 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
-                                            <Zap size={14} className="text-brand-green" /> Pontos Chave
-                                        </h4>
-                                        <ul className="grid md:grid-cols-2 gap-4">
-                                            {selectedAuthority.details.points.map((point: string, idx: number) => (
-                                                <li key={idx} className="flex items-center gap-4">
-                                                    <div className="min-w-[6px] h-1.5 rounded-full bg-brand-green shadow-[0_0_10px_#39FF14]" />
-                                                    <span className="text-white font-bold text-sm tracking-tight">{point}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                {/* Footer */}
-                                <div className="mt-10 pt-8 border-t border-white/5 flex justify-between items-center">
-                                    <div className="flex items-center gap-3 opacity-50">
-                                        <CheckCircle2 size={16} className="text-brand-green" />
-                                        <span className="text-[10px] font-black uppercase tracking-widest text-white">
-                                            Status: <span className="text-brand-green">{selectedAuthority.details.badge}</span>
-                                        </span>
-                                    </div>
-                                    <button
-                                        onClick={() => window.open('https://wa.me/551127768000?text=Olá, preciso de mais informações sobre: ' + selectedAuthority.title, '_blank')}
-                                        className="text-brand-green hover:text-white text-xs font-black uppercase tracking-widest transition-colors flex items-center gap-2 group"
-                                    >
-                                        Saiba Mais <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                                    </button>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                )}
-            </AnimatePresence>
         </section>
     )
 }
