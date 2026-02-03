@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { BarChart3, Users, ShoppingCart, MousePointer2, RefreshCw, ArrowUpRight, Settings, Calendar } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
+import RegisterUserModal from '@/components/RegisterUserModal'
 
 interface AnalyticsData {
     pageViews: number
@@ -18,12 +19,64 @@ export default function AdminDashboard() {
     const [filteredData, setFilteredData] = useState<AnalyticsData | null>(null)
     const [loading, setLoading] = useState(true)
     const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+    const [isUserModalOpen, setIsUserModalOpen] = useState(false)
     const [newPassword, setNewPassword] = useState('')
 
     // Date filter states
     const [dateFilter, setDateFilter] = useState<'all' | 'today' | 'week' | 'month' | '3months' | 'custom'>('all')
     const [customStartDate, setCustomStartDate] = useState('')
     const [customEndDate, setCustomEndDate] = useState('')
+    const [users, setUsers] = useState<any[]>([])
+    const [currentUserRole, setCurrentUserRole] = useState<string | null>(null)
+
+    const fetchUsers = async () => {
+        try {
+            const res = await fetch('/api/admin/users')
+            const usersData = await res.json()
+            if (!res.ok) throw new Error(usersData.error)
+            setUsers(usersData)
+        } catch (err) {
+            console.error('Failed to fetch users', err)
+        }
+    }
+
+    const handleDeleteUser = async (userId: string) => {
+        if (!confirm('Tem certeza que deseja remover este usuário? Esta ação é irreversível.')) return
+
+        try {
+            const res = await fetch(`/api/admin/users?id=${userId}`, { method: 'DELETE' })
+            const result = await res.json()
+            if (!res.ok) throw new Error(result.error)
+            alert('Usuário removido com sucesso')
+            fetchUsers()
+        } catch (err: any) {
+            alert(`Erro: ${err.message}`)
+        }
+    }
+
+    const handleEditRole = async (userId: string, currentRole: string) => {
+        const newRole = prompt('Novo nível de acesso (master, admin, editor, viewer):', currentRole)
+        if (!newRole || newRole === currentRole) return
+
+        if (!['master', 'admin', 'editor', 'viewer'].includes(newRole)) {
+            alert('Nível inválido')
+            return
+        }
+
+        try {
+            const res = await fetch('/api/admin/users', {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: userId, role: newRole })
+            })
+            const result = await res.json()
+            if (!res.ok) throw new Error(result.error)
+            alert('Usuário atualizado com sucesso')
+            fetchUsers()
+        } catch (err: any) {
+            alert(`Erro: ${err.message}`)
+        }
+    }
 
     const fetchData = async () => {
         try {
@@ -63,8 +116,37 @@ export default function AdminDashboard() {
     }
 
     useEffect(() => {
-        fetchData()
-        const interval = setInterval(fetchData, 5000) // Poll every 5s
+        const checkSession = async () => {
+            try {
+                const { data: { session } } = await supabase.auth.getSession()
+                if (!session) {
+                    document.cookie = "admin_auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
+                    window.location.href = '/admin'
+                    return
+                }
+
+                // Get current user role
+                const { data: profile, error } = await supabase
+                    .from('profiles')
+                    .select('role')
+                    .eq('id', session.user.id)
+                    .single()
+
+                if (error) console.error('Error fetching profile:', error)
+                setCurrentUserRole(profile?.role || 'admin')
+
+                await Promise.all([fetchData(), fetchUsers()])
+            } catch (err) {
+                console.error('Session check error:', err)
+                setLoading(false)
+            }
+        }
+
+        checkSession()
+        const interval = setInterval(() => {
+            fetchData()
+            fetchUsers()
+        }, 10000) // Poll every 10s
         return () => clearInterval(interval)
     }, [])
 
@@ -151,6 +233,8 @@ export default function AdminDashboard() {
 
     return (
         <div className="min-h-screen bg-[#050505] text-white p-6 md:p-12">
+            <RegisterUserModal isOpen={isUserModalOpen} onClose={() => setIsUserModalOpen(false)} />
+
             <div className="max-w-7xl mx-auto space-y-12">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-white/10 pb-8">
@@ -160,7 +244,15 @@ export default function AdminDashboard() {
                         </h1>
                         <p className="text-white/40 text-sm font-medium mt-2">Monitoramento em Tempo Real</p>
                     </div>
-                    <div className="flex gap-4">
+                    <div className="flex flex-wrap gap-4">
+                        {currentUserRole === 'master' && (
+                            <button
+                                onClick={() => setIsUserModalOpen(true)}
+                                className="flex items-center gap-2 px-4 py-2 bg-brand-green text-black rounded-lg text-xs font-black uppercase tracking-widest transition-all hover:scale-105 shadow-[0_0_20px_rgba(57,255,20,0.2)]"
+                            >
+                                <Users size={14} strokeWidth={2.5} /> Novo Usuário
+                            </button>
+                        )}
                         <button
                             onClick={handleExport}
                             className="flex items-center gap-2 px-4 py-2 bg-brand-green/10 hover:bg-brand-green/20 text-brand-green rounded-lg text-xs font-bold uppercase tracking-widest transition-colors border border-brand-green/20"
@@ -365,6 +457,67 @@ export default function AdminDashboard() {
                         </div>
                     </div>
                 </div>
+
+                {/* Users Management (Only for Master) */}
+                {currentUserRole === 'master' && (
+                    <div className="bg-[#0b0f0d] border border-white/10 rounded-3xl p-8 space-y-6">
+                        <div className="flex items-center justify-between gap-3 mb-6">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                                    <Users className="text-blue-400 w-5 h-5" />
+                                </div>
+                                <h3 className="text-xl font-black uppercase tracking-tight">Gestão de Equipe (Master)</h3>
+                            </div>
+                        </div>
+
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left">
+                                <thead>
+                                    <tr className="text-[10px] font-black uppercase tracking-widest text-white/30 border-b border-white/5">
+                                        <th className="pb-4 px-4 font-black">E-mail</th>
+                                        <th className="pb-4 px-4 font-black">Nível</th>
+                                        <th className="pb-4 px-4 font-black">Último Acesso</th>
+                                        <th className="pb-4 px-4 font-black text-right">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="text-sm">
+                                    {users.map((user) => (
+                                        <tr key={user.id} className="border-b border-white/[0.02] hover:bg-white/[0.01] transition-colors">
+                                            <td className="py-4 px-4 text-white font-medium">{user.email}</td>
+                                            <td className="py-4 px-4">
+                                                <span className={`px-2 py-1 rounded-md text-[9px] font-black uppercase tracking-widest ${user.role === 'master' ? 'bg-yellow-500/10 text-yellow-500 border border-yellow-500/20' : 'bg-brand-green/10 text-brand-green border border-brand-green/20'
+                                                    }`}>
+                                                    {user.role}
+                                                </span>
+                                            </td>
+                                            <td className="py-4 px-4 text-white/40 font-mono text-xs">
+                                                {user.last_login ? new Date(user.last_login).toLocaleDateString() : 'Nunca'}
+                                            </td>
+                                            <td className="py-4 px-4 text-right space-x-4">
+                                                {user.role !== 'master' && (
+                                                    <>
+                                                        <button
+                                                            onClick={() => handleEditRole(user.id, user.role)}
+                                                            className="text-blue-500/50 hover:text-blue-400 text-[10px] font-black uppercase tracking-widest transition-colors"
+                                                        >
+                                                            Editar
+                                                        </button>
+                                                        <button
+                                                            onClick={() => handleDeleteUser(user.id)}
+                                                            className="text-red-500/50 hover:text-red-500 text-[10px] font-black uppercase tracking-widest transition-colors"
+                                                        >
+                                                            Remover
+                                                        </button>
+                                                    </>
+                                                )}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                )}
 
                 {/* Recent Events Log (Mini) */}
                 <div className="border-t border-white/5 pt-8">

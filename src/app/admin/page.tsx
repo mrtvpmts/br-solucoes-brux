@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Lock, ArrowRight, Loader2 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
+import Link from 'next/link'
 
 export default function AdminLogin() {
     const [email, setEmail] = useState('')
@@ -32,7 +33,8 @@ export default function AdminLogin() {
             }
         } catch (err: any) {
             console.error('Login error:', err)
-            setError(err.message === 'Invalid login credentials' ? 'E-mail ou senha incorretos' : 'Erro ao realizar login')
+            // Show the actual error message from Supabase for debugging
+            setError(err.message || 'Erro ao realizar login')
         } finally {
             setLoading(false)
         }
@@ -79,6 +81,15 @@ export default function AdminLogin() {
                                 {error}
                             </p>
                         )}
+
+                        <div className="flex justify-end">
+                            <Link
+                                href="/admin/recovery"
+                                className="text-[10px] font-bold uppercase tracking-widest text-white/20 hover:text-brand-green transition-colors"
+                            >
+                                Esqueci minha senha
+                            </Link>
+                        </div>
                     </div>
 
                     <button
