@@ -51,7 +51,7 @@ export default function Government() {
                         <div className="w-8 h-[2px] bg-brand-green" />
                     </div>
 
-                    <h2 className="text-4xl md:text-7xl font-black text-white leading-none uppercase italic tracking-tighter">
+                    <h2 className="text-3xl md:text-7xl font-black text-white leading-none uppercase italic tracking-tighter break-words max-w-full">
                         Autoridade <br />
                         <span className="text-brand-green drop-shadow-[0_0_15px_rgba(57,255,20,0.5)]">Governamental</span>
                     </h2>
