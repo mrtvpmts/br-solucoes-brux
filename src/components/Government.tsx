@@ -47,11 +47,11 @@ export default function Government() {
                 >
                     <div className="flex items-center gap-3 mb-4 opacity-80">
                         <div className="w-8 h-[2px] bg-brand-green" />
-                        <span className="text-brand-green text-[10px] font-black uppercase tracking-[0.3em]">Setor Público</span>
+                        <span className="text-brand-green text-[10px] font-black uppercase tracking-[0.3em]">Setor Público (v2.0)</span>
                         <div className="w-8 h-[2px] bg-brand-green" />
                     </div>
 
-                    <h2 className="text-3xl md:text-7xl font-black text-white leading-none uppercase italic tracking-tighter break-words max-w-full">
+                    <h2 className="font-black text-white leading-none uppercase italic tracking-tighter break-words max-w-full" style={{ fontSize: 'clamp(1.5rem, 6vw, 3.5rem)' }}>
                         Autoridade <br />
                         <span className="text-brand-green drop-shadow-[0_0_15px_rgba(57,255,20,0.5)]">Governamental</span>
                     </h2>
