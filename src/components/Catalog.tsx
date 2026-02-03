@@ -138,6 +138,8 @@ export default function Catalog() {
     return (
         <section id="catalog" className="relative py-2 md:py-8 bg-[#080a09] group/carousel">
             <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 space-y-12 md:space-y-20 relative">
+
+                {/* Header */}
                 <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
                     <div className="text-center space-y-4 md:space-y-6">
                         <h2 className="text-impact mb-6 leading-[0.9] break-words hyphens-auto w-full" style={{ fontSize: 'clamp(1.5rem, 6vw, 6rem)' }}>
@@ -149,151 +151,150 @@ export default function Catalog() {
                         <div className="h-1 w-20 md:w-32 bg-gradient-to-r from-transparent via-brand-green to-transparent mx-auto rounded-full mt-4 md:mt-8 shadow-[0_0_20px_rgba(57,255,20,0.5)]" />
                     </div>
                 </div>
-            </div>
 
-            <div
-                ref={scrollRef}
-                className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-6 -mx-6 px-6 md:mx-0 md:px-0 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
-                style={{
-                    scrollbarWidth: 'none',
-                    msOverflowStyle: 'none'
-                }}
-                onMouseDown={startDragging}
-                onMouseLeave={stopDragging}
-                onMouseUp={stopDragging}
-                onMouseMove={onDrag}
-            >
-                {products.map((p, i) => ( /* Show all products in carousel */
-                    <div key={i} className="w-[85vw] md:w-[300px] lg:w-[350px] snap-center flex-shrink-0 pointer-events-auto select-none">
-                        <ProductCard
-                            product={p}
-                            onOpenDetails={(prod) => {
-                                if (!isDragging) setSelectedProduct(prod)
-                            }}
-                            colorFilter={getProductFilter(p.tags)}
-                        />
-                    </div>
-                ))}
-            </div>
-        </div>
+                {/* Carousel Container */}
+                <div className="relative">
+                    {/* Left Arrow */}
+                    <button
+                        onClick={() => scroll('left')}
+                        className="hidden lg:flex absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-0 hover:opacity-100 duration-300"
+                        aria-label="Previous slide"
+                    >
+                        <ChevronLeft className="w-6 h-6 group-hover:text-brand-green transition-colors" />
+                    </button>
 
-                </div >
+                    {/* Right Arrow */}
+                    <button
+                        onClick={() => scroll('right')}
+                        className="hidden lg:flex absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-0 hover:opacity-100 duration-300"
+                        aria-label="Next slide"
+                    >
+                        <ChevronRight className="w-6 h-6 group-hover:text-brand-green transition-colors" />
+                    </button>
 
-        {/* Left Arrow */ }
-        < button
-    onClick = {() => scroll('left')
-}
-className = "hidden lg:flex absolute -left-4 md:-left-12 top-[60%] -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-0 hover:opacity-100 duration-300"
-aria - label="Previous slide"
-    >
-    <ChevronLeft className="w-6 h-6 group-hover:text-brand-green transition-colors" />
-                </button >
-
-    {/* Right Arrow */ }
-    < button
-onClick = {() => scroll('right')}
-className = "hidden lg:flex absolute -right-4 md:-right-12 top-[60%] -translate-y-1/2 z-20 w-14 h-14 rounded-full bg-black/50 border border-white/10 backdrop-blur-xl items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group opacity-0 hover:opacity-100 duration-300"
-aria - label="Next slide"
-    >
-    <ChevronRight className="w-6 h-6 group-hover:text-brand-green transition-colors" />
-                </button >
-
-    {/* View All Button */ }
-    < div className = "flex justify-center mt-[-10px] mb-8 relative z-20" >
-        <button
-            onClick={() => setShowFullCatalog(true)}
-            className="btn-stitch px-12 py-4 text-sm font-black uppercase tracking-[0.2em] hover:scale-105 transition-transform shadow-[0_0_20px_rgba(57,255,20,0.3)]"
-        >
-            Ver Catálogo Completo
-        </button>
-                </div >
-
-    <ProductDetailModal
-        product={selectedProduct}
-        isOpen={!!selectedProduct}
-        onClose={() => setSelectedProduct(null)}
-    />
-
-{/* Full Catalog Modal */ }
-<AnimatePresence>
-    {showFullCatalog && (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl overflow-y-auto"
-        >
-            <div className="max-w-[1800px] mx-auto p-6 md:p-12 relative min-h-screen">
-                <button
-                    onClick={() => setShowFullCatalog(false)}
-                    className="fixed top-8 right-8 z-[110] p-4 bg-white/5 hover:bg-white/10 rounded-full text-white/50 hover:text-white transition-all backdrop-blur-md border border-white/5"
-                >
-                    <span className="sr-only">Fechar</span>
-                    ✕
-                </button>
-
-                <div className="space-y-12">
-                    <div className="text-center space-y-4 pt-12">
-                        <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white">
-                            Catálogo <span className="text-brand-green">Completo</span>
-                        </h2>
-                        <p className="text-white/40 max-w-2xl mx-auto">
-                            Explore nossa linha completa de soluções profissionais.
-                        </p>
-                    </div>
-
-                    {/* Filters */}
-                    <div className="flex flex-wrap justify-center gap-2 md:gap-4 sticky top-4 z-50 py-4 backdrop-blur-md rounded-2xl bg-black/50 border border-white/5 px-6 mx-auto w-fit">
-                        {['Todos', 'Industrial', 'Cozinha', 'Hospitalar', 'Geral', 'Escolar'].map(cat => (
-                            <button
-                                key={cat}
-                                onClick={() => setActiveCategory(cat)}
-                                className={`px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all border ${activeCategory === cat
-                                    ? 'bg-brand-green text-black border-brand-green shadow-[0_0_20px_rgba(37,211,102,0.3)]'
-                                    : 'bg-white/5 text-white/50 border-white/5 hover:bg-white/10 hover:text-white'
-                                    }`}
-                            >
-                                {cat}
-                            </button>
+                    {/* Scroll View */}
+                    <div
+                        ref={scrollRef}
+                        className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-6 -mx-6 px-6 md:mx-0 md:px-0 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
+                        style={{
+                            scrollbarWidth: 'none',
+                            msOverflowStyle: 'none'
+                        }}
+                        onMouseDown={startDragging}
+                        onMouseLeave={stopDragging}
+                        onMouseUp={stopDragging}
+                        onMouseMove={onDrag}
+                    >
+                        {products.map((p, i) => (
+                            <div key={i} className="w-[85vw] md:w-[300px] lg:w-[350px] snap-center flex-shrink-0 pointer-events-auto select-none">
+                                <ProductCard
+                                    product={p}
+                                    onOpenDetails={(prod) => {
+                                        if (!isDragging) setSelectedProduct(prod)
+                                    }}
+                                    colorFilter={getProductFilter(p.tags)}
+                                />
+                            </div>
                         ))}
                     </div>
-
-                    {/* Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-                        {products
-                            .filter(p => activeCategory === 'Todos' || p.tags.some(t => t.includes(activeCategory)))
-                            .map((p, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.05 }}
-                                    onClick={() => setSelectedProduct(p)}
-                                    className="group cursor-pointer bg-[#0b0f0d] border border-white/5 rounded-3xl p-6 hover:border-brand-green/30 transition-all hover:bg-white/[0.02]"
-                                >
-                                    <div className="aspect-[4/5] bg-black/40 rounded-2xl mb-6 relative overflow-hidden flex items-center justify-center p-4">
-                                        <Image
-                                            src={p.image}
-                                            alt={`Galão BRUX ${p.title} 5L - Limpeza Industrial`}
-                                            width={200}
-                                            height={250}
-                                            className="object-contain transition-transform duration-500 group-hover:scale-110"
-                                            style={{ filter: getProductFilter(p.tags) }}
-                                        />
-                                    </div>
-                                    <div className="text-center space-y-2">
-                                        <h3 className="text-white font-black uppercase text-lg leading-tight">{p.title}</h3>
-                                        <div className="text-brand-green text-[10px] font-bold uppercase tracking-widest">{p.subtitle}</div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                    </div>
                 </div>
+
+                {/* View All Button */}
+                <div className="flex justify-center mt-[-10px] mb-8 relative z-20">
+                    <button
+                        onClick={() => setShowFullCatalog(true)}
+                        className="btn-stitch px-12 py-4 text-sm font-black uppercase tracking-[0.2em] hover:scale-105 transition-transform shadow-[0_0_20px_rgba(57,255,20,0.3)]"
+                    >
+                        Ver Catálogo Completo
+                    </button>
+                </div>
+
+                <ProductDetailModal
+                    product={selectedProduct}
+                    isOpen={!!selectedProduct}
+                    onClose={() => setSelectedProduct(null)}
+                />
+
+                {/* Full Catalog Modal */}
+                <AnimatePresence>
+                    {showFullCatalog && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl overflow-y-auto"
+                        >
+                            <div className="max-w-[1800px] mx-auto p-6 md:p-12 relative min-h-screen">
+                                <button
+                                    onClick={() => setShowFullCatalog(false)}
+                                    className="fixed top-8 right-8 z-[110] p-4 bg-white/5 hover:bg-white/10 rounded-full text-white/50 hover:text-white transition-all backdrop-blur-md border border-white/5"
+                                >
+                                    <span className="sr-only">Fechar</span>
+                                    ✕
+                                </button>
+
+                                <div className="space-y-12">
+                                    <div className="text-center space-y-4 pt-12">
+                                        <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-white">
+                                            Catálogo <span className="text-brand-green">Completo</span>
+                                        </h2>
+                                        <p className="text-white/40 max-w-2xl mx-auto">
+                                            Explore nossa linha completa de soluções profissionais.
+                                        </p>
+                                    </div>
+
+                                    {/* Filters */}
+                                    <div className="flex flex-wrap justify-center gap-2 md:gap-4 sticky top-4 z-50 py-4 backdrop-blur-md rounded-2xl bg-black/50 border border-white/5 px-6 mx-auto w-fit">
+                                        {['Todos', 'Industrial', 'Cozinha', 'Hospitalar', 'Geral', 'Escolar'].map(cat => (
+                                            <button
+                                                key={cat}
+                                                onClick={() => setActiveCategory(cat)}
+                                                className={`px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all border ${activeCategory === cat
+                                                    ? 'bg-brand-green text-black border-brand-green shadow-[0_0_20px_rgba(37,211,102,0.3)]'
+                                                    : 'bg-white/5 text-white/50 border-white/5 hover:bg-white/10 hover:text-white'
+                                                    }`}
+                                            >
+                                                {cat}
+                                            </button>
+                                        ))}
+                                    </div>
+
+                                    {/* Grid */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
+                                        {products
+                                            .filter(p => activeCategory === 'Todos' || p.tags.some(t => t.includes(activeCategory)))
+                                            .map((p, i) => (
+                                                <motion.div
+                                                    key={i}
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: i * 0.05 }}
+                                                    onClick={() => setSelectedProduct(p)}
+                                                    className="group cursor-pointer bg-[#0b0f0d] border border-white/5 rounded-3xl p-6 hover:border-brand-green/30 transition-all hover:bg-white/[0.02]"
+                                                >
+                                                    <div className="aspect-[4/5] bg-black/40 rounded-2xl mb-6 relative overflow-hidden flex items-center justify-center p-4">
+                                                        <Image
+                                                            src={p.image}
+                                                            alt={`Galão BRUX ${p.title} 5L - Limpeza Industrial`}
+                                                            width={200}
+                                                            height={250}
+                                                            className="object-contain transition-transform duration-500 group-hover:scale-110"
+                                                            style={{ filter: getProductFilter(p.tags) }}
+                                                        />
+                                                    </div>
+                                                    <div className="text-center space-y-2">
+                                                        <h3 className="text-white font-black uppercase text-lg leading-tight">{p.title}</h3>
+                                                        <div className="text-brand-green text-[10px] font-bold uppercase tracking-widest">{p.subtitle}</div>
+                                                    </div>
+                                                </motion.div>
+                                            ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
-        </motion.div>
-    )}
-</AnimatePresence>
-            </div >
-        </section >
+        </section>
     )
 }
