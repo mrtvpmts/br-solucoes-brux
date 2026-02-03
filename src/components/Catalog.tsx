@@ -17,7 +17,7 @@ function ProductCard({ product, onOpenDetails, colorFilter }: ProductCardProps) 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="industrial-card group flex flex-col items-center text-center gap-6 md:gap-8 h-full p-8 md:p-12"
+            className="industrial-card group flex flex-col items-center text-center gap-6 md:gap-8 h-full p-4 md:p-12"
         >
             <div className="w-full aspect-[4/5] relative bg-[#0a0a0a] rounded-[32px] border border-white/5 overflow-hidden flex items-center justify-center p-6 md:p-10 group-hover:border-brand-green/30 transition-all shrink-0 shadow-inner">
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -48,7 +48,7 @@ function ProductCard({ product, onOpenDetails, colorFilter }: ProductCardProps) 
             <div className="w-full space-y-3">
                 <button
                     onClick={() => onOpenDetails(product)}
-                    className="btn-stitch w-full py-4 text-xs uppercase font-black"
+                    className="btn-stitch w-full py-3 text-xs uppercase font-black"
                 >
                     Visualizar Detalhes
                 </button>

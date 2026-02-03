@@ -76,7 +76,7 @@ export default function Government() {
                         <div className="w-12 h-[2px] bg-gradient-to-l from-transparent to-brand-green" />
                     </div>
 
-                    <h2 className="text-impact !text-3xl md:!text-8xl mb-6">
+                    <h2 className="text-impact !text-2xl sm:!text-3xl md:!text-8xl mb-6 leading-tight">
                         Autoridade<br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)]">
                             Governamental
@@ -110,12 +110,12 @@ export default function Government() {
                         {/* Stats */}
                         <div className="grid grid-cols-2 gap-8 pt-4 border-t border-white/10">
                             <div className="text-center">
-                                <div className="text-5xl md:text-7xl font-black text-brand-green mb-2">100%</div>
-                                <div className="text-sm md:text-base text-white/40 uppercase tracking-[0.2em] font-bold">Conformidade</div>
+                                <div className="text-4xl md:text-7xl font-black text-brand-green mb-2">100%</div>
+                                <div className="text-[10px] md:text-base text-white/40 uppercase tracking-[0.2em] font-bold">Conformidade</div>
                             </div>
                             <div className="text-center">
-                                <div className="text-5xl md:text-7xl font-black text-brand-green mb-2">31+</div>
-                                <div className="text-sm md:text-base text-white/40 uppercase tracking-[0.2em] font-bold">Produtos</div>
+                                <div className="text-4xl md:text-7xl font-black text-brand-green mb-2">31+</div>
+                                <div className="text-[10px] md:text-base text-white/40 uppercase tracking-[0.2em] font-bold">Produtos</div>
                             </div>
                         </div>
                     </motion.div>
