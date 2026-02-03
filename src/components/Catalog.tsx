@@ -171,8 +171,6 @@ export default function Catalog() {
                 {/* Carousel */}
                 <div
                     ref={scrollRef}
-                <div
-                    ref={scrollRef}
                     className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-6 -mx-6 px-6 pb-12 items-stretch ${isDragging ? 'cursor-grabbing snap-none' : 'cursor-grab'}`}
                     style={{
                         scrollbarWidth: 'none',

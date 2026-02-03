@@ -67,7 +67,7 @@ export default function Segments() {
 
     return (
         <section id="segments" className="relative py-2 md:py-8 bg-[#060807] overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+            <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 
                 <div className="flex flex-col items-center mb-8 md:mb-16 space-y-4 md:space-y-6">
                     <h2 className="text-impact !text-3xl md:!text-8xl leading-none">
