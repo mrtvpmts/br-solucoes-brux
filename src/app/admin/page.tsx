@@ -77,9 +77,14 @@ export default function AdminLogin() {
                         </div>
 
                         {error && (
-                            <p className="text-red-500 text-xs text-center font-bold uppercase tracking-widest animate-pulse p-2 bg-red-500/10 rounded-lg">
-                                {error}
-                            </p>
+                            <div className="space-y-2">
+                                <p className="text-red-500 text-xs text-center font-bold uppercase tracking-widest animate-pulse p-2 bg-red-500/10 rounded-lg">
+                                    {error}
+                                </p>
+                                <p className="text-[10px] text-white/30 text-center font-mono">
+                                    URL: {process.env.NEXT_PUBLIC_SUPABASE_URL?.slice(0, 20)}...
+                                </p>
+                            </div>
                         )}
 
                         <div className="flex justify-end">
