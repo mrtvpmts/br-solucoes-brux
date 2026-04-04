@@ -191,7 +191,7 @@ export default function TechnicalStructure() {
                                                     </h4>
                                                     <div className="w-full h-full relative flex items-center justify-center p-4">
                                                         <Image
-                                                            src={product.image || "/textures/brux-galao-green.png"}
+                                                            src="/textures/brux-galao-green.png"
                                                             alt={product.name}
                                                             fill
                                                             className="object-contain"
