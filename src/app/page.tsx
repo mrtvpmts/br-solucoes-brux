@@ -23,16 +23,18 @@ export default function Page() {
       <Header />
       <main className="relative selection:bg-brand-green selection:text-black">
         <Hero />
-        <About />
-        <Segments />
-        <Catalog />
-        <TechnicalStructure />
-        <Government />
-        <Logistics />
-        <Differentials />
-        <ContactForm />
-        <SocialProofCarousel />
-        <FAQ />
+        <div className="paper-background-texture relative z-10">
+          <About />
+          <Segments />
+          <Catalog />
+          <TechnicalStructure />
+          <Government />
+          <Logistics />
+          <Differentials />
+          <ContactForm />
+          <SocialProofCarousel />
+          <FAQ />
+        </div>
       </main>
       <Footer />
       <WhatsAppButton />

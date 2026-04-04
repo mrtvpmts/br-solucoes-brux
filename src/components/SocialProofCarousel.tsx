@@ -118,10 +118,10 @@ export default function SocialProofCarousel() {
     }
 
     return (
-        <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-[#060807] via-[#0a0f0b] to-[#060807]">
+        <section className="relative py-20 md:py-32 overflow-hidden bg-brand-light">
             {/* Background Effects */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-green/5 via-transparent to-transparent" />
-            <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-green/3 via-transparent to-transparent" />
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-brand-dark/5" />
 
             <div className="relative max-w-7xl mx-auto px-6">
                 {/* Header */}
@@ -130,9 +130,9 @@ export default function SocialProofCarousel() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-block mb-4"
+                        className="inline-block mb-6"
                     >
-                        <span className="text-xs font-black uppercase tracking-[0.3em] text-brand-green">
+                        <span className="text-[10px] font-black text-brand-green uppercase tracking-[0.4em] px-6 py-2 border border-brand-green/20 rounded-full bg-brand-green/5">
                             Prova Social
                         </span>
                     </motion.div>
@@ -141,16 +141,16 @@ export default function SocialProofCarousel() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl font-black text-white mb-6"
+                        className="text-5xl md:text-8xl font-black text-brand-dark italic tracking-tighter uppercase leading-none mb-6"
                     >
-                        Resultados que <span className="text-neon">Impressionam</span>
+                        Resultados que <span className="text-brand-green">Impressionam</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-lg text-white/60 max-w-2xl mx-auto"
+                        className="text-lg text-brand-dark/60 font-medium max-w-2xl mx-auto"
                     >
                         Veja o que nossos clientes dizem sobre a transformação que a BRUX trouxe para seus ambientes
                     </motion.p>
@@ -192,26 +192,26 @@ export default function SocialProofCarousel() {
                     {/* Navigation Arrows */}
                     <button
                         onClick={() => paginate(-1)}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-14 h-14 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 w-16 h-16 rounded-full bg-white border border-brand-dark/5 shadow-xl flex items-center justify-center text-brand-dark hover:bg-brand-green hover:border-brand-green hover:text-white transition-all group scale-90 hover:scale-100"
                     >
-                        <ChevronLeft className="w-6 h-6 group-hover:text-brand-green transition-colors" />
+                        <ChevronLeft className="w-6 h-6" />
                     </button>
                     <button
                         onClick={() => paginate(1)}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-14 h-14 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-brand-green/20 hover:border-brand-green/50 transition-all group"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 w-16 h-16 rounded-full bg-white border border-brand-dark/5 shadow-xl flex items-center justify-center text-brand-dark hover:bg-brand-green hover:border-brand-green hover:text-white transition-all group scale-90 hover:scale-100"
                     >
-                        <ChevronRight className="w-6 h-6 group-hover:text-brand-green transition-colors" />
+                        <ChevronRight className="w-6 h-6" />
                     </button>
 
                     {/* Dots */}
-                    <div className="flex justify-center gap-2 mt-8">
+                    <div className="flex justify-center gap-3 mt-12">
                         {testimonials.map((_, index) => (
                             <button
                                 key={index}
                                 onClick={() => handleDotClick(index)}
-                                className={`h-2 rounded-full transition-all ${index === currentIndex
-                                    ? 'w-8 bg-brand-green'
-                                    : 'w-2 bg-white/20 hover:bg-white/40'
+                                className={`h-1.5 rounded-full transition-all duration-500 ${index === currentIndex
+                                    ? 'w-12 bg-brand-green'
+                                    : 'w-1.5 bg-brand-dark/10 hover:bg-brand-dark/20'
                                     }`}
                             />
                         ))}
@@ -247,46 +247,49 @@ export default function SocialProofCarousel() {
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
     return (
-        <div className="grid md:grid-cols-2 gap-8 bg-white/[0.02] border border-white/10 rounded-3xl overflow-hidden backdrop-blur-xl">
+        <div className="grid md:grid-cols-2 gap-8 bg-white border border-brand-dark/5 rounded-[32px] overflow-hidden shadow-2xl relative">
             {/* Image */}
-            <div className="relative h-64 md:h-full">
+            <div className="relative h-64 md:h-full group">
                 <Image
                     src={testimonial.image}
                     alt={testimonial.category}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/60 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6">
-                    <span className="inline-block px-4 py-2 bg-brand-green/90 backdrop-blur-sm rounded-full text-xs font-black uppercase tracking-wider text-black">
+                    <span className="inline-block px-5 py-2 bg-brand-green rounded-full text-[10px] font-black uppercase tracking-widest text-white shadow-lg">
                         {testimonial.category}
                     </span>
                 </div>
             </div>
 
             {/* Content */}
-            <div className="p-8 md:p-12 flex flex-col justify-center">
+            <div className="p-8 md:p-14 flex flex-col justify-center bg-white relative">
+                {/* Decorative Quote Mark */}
+                <div className="absolute top-8 right-8 text-brand-green/10 text-8xl font-serif leading-none select-none">"</div>
+
                 {/* Stars */}
-                <div className="flex gap-1 mb-6">
+                <div className="flex gap-1 mb-8 relative z-10">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-brand-green text-brand-green" />
+                        <Star key={i} className="w-4 h-4 fill-brand-green text-brand-green" />
                     ))}
                 </div>
 
                 {/* Quote */}
-                <blockquote className="text-xl md:text-2xl font-light text-white mb-8 leading-relaxed">
+                <blockquote className="text-xl md:text-3xl font-medium text-brand-dark mb-10 leading-snug tracking-tight relative z-10">
                     "{testimonial.text}"
                 </blockquote>
 
                 {/* Author */}
-                <div className="border-t border-white/10 pt-6">
-                    <div className="font-bold text-white text-lg mb-1">
+                <div className="border-t border-brand-dark/5 pt-8 relative z-10">
+                    <div className="font-black text-brand-dark text-xl mb-1 uppercase tracking-tight">
                         {testimonial.name}
                     </div>
-                    <div className="text-sm text-white/60 mb-1">
+                    <div className="text-xs text-brand-dark/40 font-bold uppercase tracking-widest mb-2">
                         {testimonial.role}
                     </div>
-                    <div className="text-sm text-brand-green font-semibold">
+                    <div className="text-brand-green font-black text-xs uppercase tracking-widest">
                         {testimonial.company} • {testimonial.location}
                     </div>
                 </div>

@@ -43,9 +43,8 @@ export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(null)
 
     return (
-        <section id="faq" className="relative bg-[#050505] py-24 px-8 overflow-hidden">
+        <section id="faq" className="relative bg-white py-24 px-8 overflow-hidden">
             {/* Background Effects */}
-            <div className="absolute inset-0 scanlines opacity-5 pointer-events-none" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-brand-green/5 rounded-full blur-[200px]" />
 
             <div className="max-w-4xl mx-auto relative z-10">
@@ -67,9 +66,9 @@ export default function FAQ() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-impact !text-4xl md:!text-6xl mb-6"
+                        className="text-5xl md:text-8xl font-black text-brand-dark italic tracking-tighter uppercase leading-none mb-6"
                     >
-                        Dúvidas <span className="text-neon">Técnicas</span>
+                        Dúvidas <span className="text-brand-green">Técnicas</span>
                     </motion.h2>
 
                     <motion.p
@@ -77,7 +76,7 @@ export default function FAQ() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-white/40 font-medium text-lg max-w-2xl mx-auto"
+                        className="text-brand-dark/60 font-medium text-lg max-w-2xl mx-auto"
                     >
                         Respostas diretas sobre nossos produtos, processos e serviços
                     </motion.p>
@@ -96,10 +95,10 @@ export default function FAQ() {
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                className="w-full bg-white/[0.02] border border-white/10 rounded-2xl p-6 md:p-8 text-left transition-all hover:border-brand-green/40 hover:bg-white/[0.04]"
+                                className="w-full bg-brand-light border border-brand-dark/5 rounded-2xl p-6 md:p-8 text-left transition-all hover:border-brand-green/30 hover:bg-white shadow-sm"
                             >
                                 <div className="flex items-center justify-between gap-6">
-                                    <h3 className="text-white font-black text-base md:text-lg pr-4">
+                                    <h3 className="text-brand-dark font-black text-base md:text-lg pr-4">
                                         {item.question}
                                     </h3>
                                     <motion.div
@@ -109,7 +108,7 @@ export default function FAQ() {
                                     >
                                         <ChevronDown
                                             size={24}
-                                            className={`transition-colors ${openIndex === index ? 'text-brand-green' : 'text-white/40'
+                                            className={`transition-colors ${openIndex === index ? 'text-brand-green' : 'text-brand-dark/20'
                                                 }`}
                                         />
                                     </motion.div>
@@ -124,8 +123,8 @@ export default function FAQ() {
                                             transition={{ duration: 0.3 }}
                                             className="overflow-hidden"
                                         >
-                                            <div className="pt-6 border-t border-white/5 mt-6">
-                                                <p className="text-white/60 font-medium leading-relaxed">
+                                            <div className="pt-6 border-t border-brand-dark/5 mt-6">
+                                                <p className="text-brand-dark/60 font-medium leading-relaxed">
                                                     {item.answer}
                                                 </p>
                                             </div>
@@ -144,12 +143,12 @@ export default function FAQ() {
                     viewport={{ once: true }}
                     className="mt-16 text-center"
                 >
-                    <p className="text-white/40 font-medium mb-6">
+                    <p className="text-brand-dark/40 font-black uppercase tracking-widest text-xs mb-8">
                         Não encontrou sua resposta?
                     </p>
                     <a
                         href="#contact"
-                        className="btn-stitch btn-stitch-primary inline-flex items-center gap-3"
+                        className="btn-stitch btn-stitch-primary inline-flex items-center gap-3 px-12 py-6 text-sm"
                     >
                         Falar com Especialista
                     </a>

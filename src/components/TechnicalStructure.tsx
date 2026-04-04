@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ChevronDown, ChevronUp } from 'lucide-react'
+import Image from 'next/image'
 import { useState } from 'react'
 import TechnicalProductModal from './TechnicalProductModal'
 
@@ -83,35 +84,46 @@ export default function TechnicalStructure() {
     const [selectedProduct, setSelectedProduct] = useState<{ name: string, description: string, family: string, sector: string } | null>(null)
 
     return (
-        <section id="technical-structure" className="relative py-16 md:py-24 bg-[#060807] overflow-hidden">
-            {/* Background Effects */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-[#060807] to-black" />
-            <div className="noise-overlay opacity-5" />
+        <section id="technical-structure" className="relative py-24 md:py-40 overflow-hidden border-t border-brand-dark/5 z-[10]">
+            {/* Decorative Background Element */}
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-light/50 -skew-x-12 translate-x-1/2" />
 
-            <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-6">
-                {/* Header */}
-                <div className="text-center space-y-6 mb-12 md:mb-16">
-                    <motion.div
+            <div className="relative z-10 max-w-6xl mx-auto px-6">
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-20">
+                    <div className="max-w-2xl">
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="inline-block px-4 py-1.5 rounded-full bg-brand-green/10 border border-brand-green/20 mb-6"
+                        >
+                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-green">
+                                Conformidade ANVISA • Licitações
+                            </span>
+                        </motion.div>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="text-4xl md:text-7xl font-black text-brand-dark italic tracking-tighter uppercase leading-[0.9]"
+                        >
+                            Estrutura Técnica por
+                            <span className="text-brand-green block">Família de Produtos</span>
+                        </motion.h2>
+                    </div>
+                    <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-block"
+                        transition={{ delay: 0.2 }}
+                        className="text-brand-dark/50 text-lg md:text-xl font-medium max-w-sm leading-tight border-l-2 border-brand-green/20 pl-6"
                     >
-                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-green/60 block mb-4">
-                            Conformidade ANVISA • Licitações
-                        </span>
-                        <h2 className="text-3xl md:text-6xl font-black uppercase italic tracking-tighter text-white">
-                            Estrutura Técnica por
-                            <span className="text-brand-green block mt-2">Família de Produtos</span>
-                        </h2>
-                    </motion.div>
-                    <p className="text-white/40 max-w-3xl mx-auto text-sm md:text-base">
                         Classificação técnica seguindo parâmetros legais de rotulagem e notificações da ANVISA para processos licitatórios.
-                    </p>
+                    </motion.p>
                 </div>
 
-                {/* Product Families */}
-                <div className="space-y-4">
+                <div className="grid gap-6">
                     {productFamilies.map((family, index) => (
                         <motion.div
                             key={family.sector}
@@ -119,34 +131,29 @@ export default function TechnicalStructure() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="border border-white/10 rounded-2xl overflow-hidden bg-white/[0.02] backdrop-blur-sm hover:border-brand-green/30 transition-all"
+                            className="group"
                         >
-                            {/* Sector Header */}
                             <button
                                 onClick={() => setExpandedSector(expandedSector === family.sector ? null : family.sector)}
-                                className="w-full p-6 md:p-8 flex items-center justify-between gap-4 hover:bg-white/[0.02] transition-colors group"
+                                className="w-full p-8 md:p-10 flex items-center justify-between gap-6 bg-white border border-brand-dark/5 rounded-[24px] group-hover:border-brand-green/30 transition-all duration-500 hover:bg-brand-light shadow-sm group-hover:shadow-xl relative z-10"
                             >
-                                <div className="flex items-center gap-4 md:gap-6 text-left">
-                                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center flex-shrink-0">
-                                        <span className="text-brand-green font-black text-xl md:text-2xl font-mono">
+                                <div className="flex items-center gap-6 md:gap-8 text-left">
+                                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                        <span className="text-brand-green font-black text-2xl md:text-3xl font-mono">
                                             {family.sector}
                                         </span>
                                     </div>
                                     <div>
-                                        <span className="text-white/40 text-[10px] font-black uppercase tracking-widest block mb-1">
-                                            Família Setor {family.sector}
+                                        <span className="text-brand-dark/30 text-[11px] font-black uppercase tracking-[0.2em] block mb-2">
+                                            Portfólio Estruturado • Setor {family.sector}
                                         </span>
-                                        <h3 className="text-white font-black text-base md:text-xl uppercase tracking-tight">
+                                        <h3 className="text-brand-dark font-black text-xl md:text-3xl uppercase tracking-tighter italic leading-none">
                                             {family.title}
                                         </h3>
                                     </div>
                                 </div>
-                                <div className="text-white/30 group-hover:text-brand-green transition-colors flex-shrink-0">
-                                    {expandedSector === family.sector ? (
-                                        <ChevronUp size={24} />
-                                    ) : (
-                                        <ChevronDown size={24} />
-                                    )}
+                                <div className={`w-12 h-12 rounded-full border border-brand-dark/5 flex items-center justify-center transition-all duration-500 ${expandedSector === family.sector ? 'bg-brand-green border-brand-green text-white rotate-180' : 'bg-white text-brand-dark group-hover:border-brand-green/30 group-hover:text-brand-green'}`}>
+                                    <ChevronDown size={20} />
                                 </div>
                             </button>
 
@@ -156,31 +163,45 @@ export default function TechnicalStructure() {
                                     initial={{ height: 0, opacity: 0 }}
                                     animate={{ height: 'auto', opacity: 1 }}
                                     exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="border-t border-white/10"
+                                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                    className="overflow-hidden"
                                 >
-                                    <div className="p-6 md:p-8 space-y-4">
+                                    <div className="p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-4 bg-brand-light/20 rounded-b-[24px] mt-[-32px] pt-[56px] border-x border-b border-brand-dark/5">
                                         {family.products.map((product, idx) => (
-                                            <div
+                                            <motion.div
                                                 key={idx}
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: idx * 0.05 }}
                                                 onClick={() => setSelectedProduct({
                                                     name: product.name,
                                                     description: product.description,
                                                     family: family.title,
                                                     sector: family.sector
                                                 })}
-                                                className="flex gap-4 p-4 rounded-xl bg-white/[0.01] border border-white/5 hover:border-brand-green/20 hover:bg-white/[0.02] transition-all group cursor-pointer"
+                                                className="flex gap-5 p-6 rounded-2xl bg-white border border-brand-dark/5 hover:border-brand-green/40 hover:shadow-xl transition-all group/card cursor-pointer relative overflow-hidden"
                                             >
-                                                <div className="w-2 h-2 rounded-full bg-brand-green/40 mt-2 flex-shrink-0 group-hover:bg-brand-green transition-colors" />
-                                                <div className="flex-1 min-w-0">
-                                                    <h4 className="text-brand-green font-black text-sm md:text-base uppercase tracking-tight mb-1">
+                                                {/* Card Accent */}
+                                                <div className="absolute top-0 right-0 w-24 h-24 bg-brand-green/5 rounded-full translate-x-12 -translate-y-12 group-hover/card:scale-150 transition-transform duration-500" />
+
+                                                <div className="w-1.5 h-1.5 rounded-full bg-brand-green mt-2.5 flex-shrink-0" />
+                                                <div className="flex-1 min-w-0 relative z-10">
+                                                    <h4 className="text-brand-dark font-black text-lg md:text-xl uppercase tracking-tighter mb-1 group-hover/card:text-brand-green transition-colors">
                                                         {product.name}
                                                     </h4>
-                                                    <p className="text-white/60 text-xs md:text-sm leading-relaxed">
+                                                    <div className="w-full h-full relative flex items-center justify-center p-4">
+                                                        <Image
+                                                            src={product.image || "/textures/brux-galao-green.png"}
+                                                            alt={product.name}
+                                                            fill
+                                                            className="object-contain"
+                                                        />
+                                                    </div>
+                                                    <p className="text-brand-dark/60 text-sm leading-relaxed font-medium">
                                                         {product.description}
                                                     </p>
                                                 </div>
-                                            </div>
+                                            </motion.div>
                                         ))}
                                     </div>
                                 </motion.div>
@@ -189,26 +210,34 @@ export default function TechnicalStructure() {
                     ))}
                 </div>
 
-                {/* Technical Notice */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mt-12 p-6 md:p-8 rounded-2xl bg-brand-green/5 border border-brand-green/20"
+                    className="mt-16 p-10 rounded-[32px] bg-brand-dark border border-brand-dark relative overflow-hidden group shadow-2xl"
                 >
-                    <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-lg bg-brand-green/20 flex items-center justify-center flex-shrink-0">
-                            <span className="text-brand-green text-xl">⚠️</span>
+                    {/* Decorative Background Effect */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-brand-green/10 rounded-full translate-x-24 -translate-y-24 group-hover:scale-110 transition-transform duration-700" />
+
+                    <div className="flex flex-col md:flex-row items-center md:items-start gap-8 relative z-10">
+                        <div className="w-16 h-16 rounded-2xl bg-brand-green flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-green/20">
+                            <span className="text-white text-3xl font-black italic">!</span>
                         </div>
-                        <div className="flex-1">
-                            <h4 className="text-brand-green font-black text-sm md:text-base uppercase tracking-wide mb-2">
-                                Aviso Técnico e Comercial
+                        <div className="flex-1 text-center md:text-left">
+                            <h4 className="text-white font-black text-xl md:text-2xl uppercase tracking-tight italic mb-3">
+                                Apoio Técnico e Relacionamento Comercial
                             </h4>
-                            <p className="text-white/70 text-xs md:text-sm leading-relaxed">
-                                Consulte nossa equipe técnica para protocolos de diluição e treinamento de sua equipe de limpeza.
-                                Atendemos sob demanda com faturamento para empresas (CNPJ) e licitações em conformidade com as normas da ANVISA.
+                            <p className="text-white/60 text-base md:text-lg leading-snug font-medium max-w-3xl">
+                                Nossos especialistas desenvolvem protocolos personalizados de diluição e higienização.
+                                Atendimento especializado para indústrias, instituições de saúde e editais públicos em total conformidade ANVISA.
                             </p>
                         </div>
+                        <button
+                            onClick={() => window.open('https://wa.me/551127768000?text=Olá, gostaria de suporte técnico especializado da BRUX.', '_blank')}
+                            className="px-8 py-4 bg-brand-green hover:bg-white text-white hover:text-brand-dark font-black uppercase text-xs tracking-widest rounded-full transition-all shadow-xl whitespace-nowrap"
+                        >
+                            Falar com especialista
+                        </button>
                     </div>
                 </motion.div>
 

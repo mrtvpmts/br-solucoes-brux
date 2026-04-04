@@ -52,27 +52,23 @@ export default function About() {
         <section
             id="about"
             ref={containerRef}
-            className="relative bg-[#060807] py-2 md:py-8 overflow-hidden"
+            className="relative bg-transparent py-12 md:py-24 overflow-hidden"
         >
-            <div className="beveled-divider" />
-
-            {/* CINEMATIC LAYERED BACKGROUND */}
+            {/* Soft Ambient Background Elements */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(57,255,20,0.03)_0%,transparent_70%)]" />
-                <div className="absolute inset-0 noise-overlay opacity-10" />
-                <div className="absolute inset-0 scanlines opacity-5" />
+                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,107,63,0.02)_0%,transparent_70%)]" />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 flex flex-col items-center">
 
-                {/* MASSIVE REACTIVE CAROUSEL FRAME */}
+                {/* PROFESSIONAL CAROUSEL FRAME */}
                 <motion.div
                     style={{ scale, opacity }}
-                    className="relative w-full border-x border-white/5 bg-white/[0.01] backdrop-blur-3xl rounded-[32px] md:rounded-[80px] p-6 md:py-12 md:px-20 overflow-hidden group shadow-[0_0_100px_rgba(0,0,0,0.5)]"
+                    className="relative w-full border border-brand-dark/5 bg-white rounded-[32px] md:rounded-[48px] p-6 md:py-16 md:px-24 overflow-hidden group shadow-xl"
                 >
-                    {/* Animated Heavy Brackets (STITCH LOGO DNA) */}
-                    <div className="absolute top-0 left-0 w-12 md:w-32 h-12 md:h-32 border-t-2 md:border-t-4 border-l-2 md:border-l-4 border-brand-green/40 rounded-tl-[32px] md:rounded-tl-[100px] group-hover:border-brand-green transition-all duration-1000" />
-                    <div className="absolute bottom-0 right-0 w-12 md:w-32 h-12 md:h-32 border-b-2 md:border-b-4 border-r-2 md:border-r-4 border-brand-green/40 rounded-br-[32px] md:rounded-br-[100px] group-hover:border-brand-green transition-all duration-1000" />
+                    {/* Subtle Brand Accents */}
+                    <div className="absolute top-0 left-0 w-16 md:w-32 h-16 md:h-32 border-t-2 md:border-t-4 border-l-2 md:border-l-4 border-brand-green/20 rounded-tl-[32px] md:rounded-tl-[48px] group-hover:border-brand-green/40 transition-all duration-1000" />
+                    <div className="absolute bottom-0 right-0 w-16 md:w-32 h-16 md:h-32 border-b-2 md:border-b-4 border-r-2 md:border-r-4 border-brand-green/20 rounded-br-[32px] md:rounded-br-[48px] group-hover:border-brand-green/40 transition-all duration-1000" />
 
                     {/* TOP HUD NAV */}
                     <div className="w-full flex justify-between mb-4 md:mb-12 opacity-30 text-[7px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.5em] text-brand-green">
@@ -107,18 +103,18 @@ export default function About() {
                                 className="space-y-4 md:space-y-10 touch-none cursor-grab active:cursor-grabbing w-full h-full flex flex-col items-center justify-center py-2 md:py-4"
                             >
                                 <div className="space-y-2 md:space-y-4">
-                                    <span className="text-brand-green font-black uppercase tracking-[0.4em] md:tracking-[0.8em] text-[8px] md:text-[12px] drop-shadow-[0_0_10px_rgba(57,255,20,0.5)]">
+                                    <span className="text-brand-green font-black uppercase tracking-[0.4em] md:tracking-[0.8em] text-[10px] md:text-[14px]">
                                         {slides[activeSlide].label}
                                     </span>
-                                    <h2 className="text-white font-black italic uppercase tracking-tighter text-xl md:text-7xl leading-tight md:leading-[0.9]">
+                                    <h2 className="text-brand-dark font-black uppercase tracking-tight text-2xl md:text-6xl leading-tight md:leading-[1.1]">
                                         {slides[activeSlide].title.split(':').map((part, idx) => (
-                                            <span key={idx} className={idx === 1 ? "text-transparent bg-clip-text bg-gradient-to-r from-brand-green via-[#7FFF00] to-brand-green drop-shadow-[0_0_30px_rgba(57,255,20,0.5)] block mt-1 md:mt-2 pr-2" : ""}>{part}</span>
+                                            <span key={idx} className={idx === 1 ? "text-brand-green block mt-1 md:mt-2" : ""}>{part}</span>
                                         ))}
                                     </h2>
-                                    <div className="h-[1px] md:h-[2px] w-12 md:w-40 bg-brand-green/40 mx-auto rounded-full shadow-[0_0_20px_#39FF14]" />
+                                    <div className="h-[2px] md:h-[4px] w-12 md:w-24 bg-brand-green/20 mx-auto rounded-full" />
                                 </div>
 
-                                <p className="text-white/90 md:text-white !text-xl md:!text-3xl lg:!text-4xl font-bold leading-tight max-w-6xl mx-auto tracking-tight px-4 drop-shadow-2xl mt-8">
+                                <p className="text-brand-dark/70 md:text-brand-dark !text-lg md:!text-2xl lg:!text-3xl font-semibold leading-relaxed max-w-5xl mx-auto tracking-tight px-4 mt-6">
                                     {slides[activeSlide].desc}
                                 </p>
 
@@ -126,29 +122,29 @@ export default function About() {
                                 <div className="flex items-center justify-center gap-3 pt-4">
                                     <button
                                         onClick={prevSlide}
-                                        className="w-8 h-8 md:w-12 md:h-12 rounded-lg border border-white/5 bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-brand-green transition-all"
+                                        className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-brand-green/10 bg-brand-light flex items-center justify-center text-brand-green/40 hover:text-brand-green hover:border-brand-green/30 transition-all shadow-sm hover:shadow-md"
                                     >
-                                        <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
+                                        <ChevronLeft className="w-5 h-5 md:w-8 md:h-8" />
                                     </button>
 
-                                    <div className="flex gap-1.5">
+                                    <div className="flex gap-2">
                                         {slides.map((_, i) => (
                                             <div
                                                 key={i}
-                                                className={`h-1 transition-all duration-700 rounded-full ${i === activeSlide ? 'w-6 md:w-8 bg-brand-green shadow-[0_0_10px_#39FF14]' : 'w-1.5 bg-white/10'}`}
+                                                className={`h-1.5 transition-all duration-700 rounded-full ${i === activeSlide ? 'w-8 md:w-12 bg-brand-green' : 'w-2 bg-brand-dark/10'}`}
                                             />
                                         ))}
                                     </div>
 
                                     <button
                                         onClick={nextSlide}
-                                        className="w-8 h-8 md:w-12 md:h-12 rounded-lg border border-white/5 bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-brand-green transition-all"
+                                        className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-brand-green/10 bg-brand-light flex items-center justify-center text-brand-green/40 hover:text-brand-green hover:border-brand-green/30 transition-all shadow-sm hover:shadow-md"
                                     >
-                                        <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
+                                        <ChevronRight className="w-5 h-5 md:w-8 md:h-8" />
                                     </button>
                                 </div>
 
-                                <div className="pt-2 md:pt-6 text-[7px] md:text-[10px] text-white/20 font-black uppercase tracking-[0.3em] md:tracking-[0.8em]">
+                                <div className="pt-4 md:pt-10 text-[8px] md:text-[12px] text-brand-dark/30 font-bold uppercase tracking-[0.2em] md:tracking-[0.4em]">
                                     {slides[activeSlide].meta}
                                 </div>
                             </motion.div>

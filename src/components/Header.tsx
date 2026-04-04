@@ -27,7 +27,7 @@ export default function Header() {
 
     return (
         <>
-            <header className="fixed top-0 left-0 w-full z-[100] bg-[#060807]/92 backdrop-blur-xl border-b border-white/5">
+            <header className="fixed top-0 left-0 w-full z-[200] bg-white/95 backdrop-blur-xl border-b border-brand-green/10">
                 <div className="max-w-7xl mx-auto px-3 md:px-6 h-16 md:h-24 flex items-center justify-between gap-2 md:gap-8">
 
                     {/* LOGO */}
@@ -40,12 +40,12 @@ export default function Header() {
                             }}
                             className="block group cursor-pointer"
                         >
-                            <div className="relative w-[140px] h-[45px] md:w-[380px] md:h-[122px] transform-gpu transition-all duration-500 group-hover:scale-105">
+                            <div className="relative w-[140px] h-[45px] md:w-[320px] md:h-[100px] transform-gpu transition-all duration-500 group-hover:scale-105">
                                 <Image
                                     src="/textures/brux-logo-horizontal.png"
                                     alt="Logotipo BRUX - Soluções em Higiene Profissional e Limpeza Técnica"
                                     fill
-                                    className="object-contain object-left scale-110 drop-shadow-[0_0_40px_rgba(34,197,94,0.4)] brightness-110"
+                                    className="object-contain object-left scale-110 drop-shadow-[0_4px_20px_rgba(0,107,63,0.1)]"
                                     priority
                                 />
                             </div>
@@ -53,12 +53,12 @@ export default function Header() {
                     </div>
 
                     {/* NAVIGATION DESKTOP */}
-                    <nav className="hidden lg:flex flex-1 items-center justify-center gap-8">
+                    <nav className="hidden lg:flex flex-1 items-center justify-center gap-10">
                         {navItems.map((item) => (
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-brand-green transition-all hover:tracking-[0.3em] whitespace-nowrap"
+                                className="text-[11px] font-bold uppercase tracking-[0.15em] text-brand-dark/50 hover:text-brand-green transition-all whitespace-nowrap"
                             >
                                 {item.label}
                             </Link>
@@ -72,7 +72,7 @@ export default function Header() {
                                 setOpen(true)
                                 trackEvent('click_cta_header')
                             }}
-                            className="hidden sm:flex bg-[#39FF14] hover:bg-[#32e012] text-black font-black py-2 px-3 md:py-3 md:px-6 text-[9px] md:text-[10px] uppercase tracking-wider whitespace-nowrap rounded-lg transition-all shadow-[0_0_20px_rgba(57,255,20,0.4)]"
+                            className="hidden sm:flex bg-brand-green hover:bg-brand-green-fresh text-white font-bold py-2 px-3 md:py-3.5 md:px-6 text-[10px] uppercase tracking-wider whitespace-nowrap rounded-xl transition-all shadow-md active:scale-95"
                         >
                             <span className="sm:inline">Falar com Especialista</span>
                         </button>
@@ -80,12 +80,12 @@ export default function Header() {
                         {/* Cart Icon */}
                         <button
                             onClick={() => setOpen(true)}
-                            className="relative p-2 text-white/50 hover:text-brand-green transition-colors flex-shrink-0"
+                            className="relative p-2 text-brand-dark/40 hover:text-brand-green transition-colors flex-shrink-0"
                             aria-label="Carrinho de compras"
                         >
-                            <ShoppingBag size={20} className="md:w-6 md:h-6" />
+                            <ShoppingBag size={22} className="md:w-6 md:h-6" />
                             {cart.length > 0 && (
-                                <span className="absolute -top-1 -right-1 bg-brand-green text-black text-[9px] font-black w-4 h-4 flex items-center justify-center rounded-full animate-pulse shadow-[0_0_10px_rgba(57,255,20,0.8)]">
+                                <span className="absolute -top-1 -right-1 bg-brand-green text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full shadow-sm">
                                     {cart.length}
                                 </span>
                             )}
@@ -94,10 +94,10 @@ export default function Header() {
                         {/* Botão Menu Mobile */}
                         <button
                             onClick={() => setIsMenuOpen(true)}
-                            className="lg:hidden p-2 text-white hover:text-brand-green transition-colors flex-shrink-0"
+                            className="lg:hidden p-2 text-brand-dark hover:text-brand-green transition-colors flex-shrink-0"
                             aria-label="Abrir menu"
                         >
-                            <Menu size={20} className="md:w-6 md:h-6" />
+                            <Menu size={24} className="md:w-6 md:h-6" />
                         </button>
                     </div>
                 </div>
@@ -114,13 +114,13 @@ export default function Header() {
                         className="fixed inset-0 z-[9999] lg:hidden overflow-hidden"
                         style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
                     >
-                        {/* FUNDO PRETO SÓLIDO - TELA INTEIRA */}
-                        <div className="absolute inset-0 bg-[#060807]/92 backdrop-blur-2xl" />
+                        {/* FUNDO BRANCO SÓLIDO - TELA INTEIRA */}
+                        <div className="absolute inset-0 bg-white/98 backdrop-blur-2xl" />
 
                         {/* Botão Fechar */}
                         <button
                             onClick={() => setIsMenuOpen(false)}
-                            className="absolute top-6 right-6 p-2 text-white hover:text-brand-green transition-colors z-[10000] cursor-pointer bg-white/5 rounded-full"
+                            className="absolute top-6 right-6 p-2 text-brand-dark hover:text-brand-green transition-colors z-[10000] cursor-pointer bg-brand-dark/5 rounded-full"
                         >
                             <X size={32} />
                         </button>

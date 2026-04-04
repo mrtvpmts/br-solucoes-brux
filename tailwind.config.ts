@@ -9,7 +9,11 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                "brand-green": "#39FF14",
+                "brand-green": "#006B3F",
+                "brand-green-fresh": "#2CBF7A",
+                "brand-dark": "#1A202C",
+                "brand-light": "#F8FAFC",
+                "brand-silver": "#E2E8F0",
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
