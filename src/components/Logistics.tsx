@@ -30,14 +30,10 @@ export default function Logistics() {
 
                         <div className="grid gap-6">
                             {[
-                                { icon: <Truck size={28} />, title: "Frota Própria SP", desc: "Entregas em até 24h para Grande São Paulo e Região Metropolitana com veículos dedicados." },
-                                { icon: <Map size={28} />, title: "Cobertura Nacional", desc: "Hubs de distribuição estratégicos para atendimento rápido em todos os estados do Brasil." },
-                                { icon: <Clock size={28} />, title: "Frete Grátis*", desc: "Condições especiais de frete CIF para pedidos corporativos e contratos de fornecimento." }
+                                { title: "Frota Própria SP", desc: "Entregas em até 24h para Grande São Paulo e Região Metropolitana." },
+                                { title: "Cobertura Nacional", desc: "Logística ágil para atendimento em todos os estados do Brasil." }
                             ].map((item, i) => (
                                 <div key={i} className="bg-white border border-brand-dark/5 rounded-2xl p-6 flex items-start gap-6 hover:border-brand-green/30 transition-all group shadow-sm hover:shadow-md">
-                                    <div className="p-3 bg-brand-green/10 rounded-xl text-brand-green group-hover:bg-brand-green group-hover:text-white transition-all">
-                                        {item.icon}
-                                    </div>
                                     <div>
                                         <h3 className="text-brand-dark font-black text-lg uppercase tracking-wide mb-2">{item.title}</h3>
                                         <p className="text-brand-dark/50 text-sm leading-relaxed font-medium">{item.desc}</p>
@@ -71,8 +67,8 @@ export default function Logistics() {
 
                             {/* Brazil Label */}
                             <div className="absolute bottom-4 right-10 flex flex-col items-end opacity-20">
-                                <span className="text-[100px] font-black text-brand-dark leading-none tracking-tighter">BR</span>
-                                <span className="text-xs font-black text-brand-green uppercase tracking-[1em] -mt-4">LOGÍSTICA</span>
+                                <span className="text-[60px] md:text-[100px] font-black text-brand-dark leading-none tracking-tighter">BR</span>
+                                <span className="text-[8px] md:text-xs font-black text-brand-green uppercase tracking-[1em] -mt-2 md:-mt-4">LOGÍSTICA</span>
                             </div>
                         </div>
                     </motion.div>

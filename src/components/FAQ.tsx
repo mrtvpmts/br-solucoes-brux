@@ -7,35 +7,35 @@ import { ChevronDown } from 'lucide-react'
 const faqData = [
     {
         question: "Quais são os prazos de entrega?",
-        answer: "Trabalhamos com entregas expressas para a Grande São Paulo em até 24h úteis. Para outras regiões, o prazo varia entre 2 a 5 dias úteis, dependendo da localização e volume do pedido."
+        answer: "Grande SP: 24h úteis. Outras regiões: 2 a 5 dias úteis, conforme volume."
     },
     {
         question: "Vocês fornecem fichas técnicas e FISPQ?",
-        answer: "Sim! Todos os nossos produtos possuem documentação técnica completa, incluindo fichas técnicas detalhadas e FISPQ (Ficha de Informações de Segurança de Produtos Químicos) para garantir conformidade e segurança operacional."
+        answer: "Sim. Documentação técnica completa e FISPQ disponível para toda a linha."
     },
     {
         question: "Qual o pedido mínimo?",
-        answer: "Não trabalhamos com pedido mínimo. Atendemos desde pequenas demandas até grandes volumes industriais, sempre com o mesmo padrão de qualidade e atendimento especializado."
+        answer: "Não trabalhamos com pedido mínimo. Atendemos todas as demandas."
     },
     {
         question: "Os produtos são concentrados?",
-        answer: "Sim, nossa linha industrial é formulada com alta concentração para máxima eficiência e economia. Fornecemos orientações precisas de diluição para cada aplicação específica."
+        answer: "Sim. Alta concentração para máxima diluição e economia profissional."
     },
     {
         question: "Fazem formulações personalizadas?",
-        answer: "Absolutamente! Nossa engenharia química desenvolve soluções sob medida para necessidades específicas. Entre em contato com nosso time técnico para discutir seu projeto."
+        answer: "Sim. Nossa engenharia desenvolve soluções sob medida para sua necessidade."
     },
     {
         question: "Como funciona o suporte técnico?",
-        answer: "Oferecemos suporte técnico completo incluindo: orientação de aplicação, treinamento de equipes, visitas técnicas e acompanhamento de performance. Nossa equipe está disponível via WhatsApp, e-mail e telefone."
+        answer: "Suporte completo via WhatsApp e telefone: orientação, treinamento e visitas."
     },
     {
         question: "Trabalham com contratos corporativos?",
-        answer: "Sim, estruturamos contratos personalizados para fornecimento contínuo com condições especiais de preço, prazo e logística para empresas e indústrias."
+        answer: "Sim. Logística e condições comerciais exclusivas para fornecimento contínuo."
     },
     {
         question: "Os produtos são biodegradáveis?",
-        answer: "Parte significativa da nossa linha é formulada com componentes biodegradáveis e de baixo impacto ambiental, atendendo às mais rigorosas normas ambientais. Consulte-nos sobre produtos específicos."
+        answer: "Sim. Nossa linha atende às mais rigorosas normas ambientais vigentes."
     }
 ]
 

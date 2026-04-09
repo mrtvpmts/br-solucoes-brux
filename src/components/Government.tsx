@@ -46,9 +46,8 @@ export default function Government() {
                         <div className="w-8 h-[2px] bg-brand-green" />
                     </div>
 
-                    <h2 className="font-black text-brand-dark leading-none uppercase tracking-tighter" style={{ fontSize: 'clamp(2rem, 6vw, 4.5rem)' }}>
-                        Autoridade <br />
-                        <span className="text-brand-green">Governamental</span>
+                    <h2 className="font-black text-brand-dark leading-none uppercase tracking-tighter whitespace-nowrap" style={{ fontSize: 'clamp(1.75rem, 8vw, 4.5rem)' }}>
+                        Setor <span className="text-brand-green">Público</span>
                     </h2>
                 </motion.div>
 
@@ -64,17 +63,17 @@ export default function Government() {
                             className="space-y-6"
                         >
                             <h3 className="text-lg md:text-3xl font-black text-brand-dark leading-tight uppercase">
-                                A <span className="text-brand-green">BRUX</span> é parceira estratégica de órgãos públicos.
+                                Atendimento para <span className="text-brand-green">Órgãos Públicos</span>.
                             </h3>
                             <p className="text-brand-dark/70 text-sm md:text-lg font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
-                                Oferecemos soluções químicas de alto rendimento que atendem rigorosamente aos editais e normas de segurança vigentes.
+                                Produtos de alto rendimento que atendem rigorosamente às normas de segurança vigentes.
                             </p>
                         </motion.div>
 
                         <div className="grid grid-cols-2 gap-4 border-t border-brand-dark/10 pt-6">
                             <div className="flex flex-col items-center lg:items-start p-6 bg-white border border-brand-dark/5 rounded-2xl shadow-sm">
                                 <span className="text-3xl md:text-5xl font-black text-brand-green">100%</span>
-                                <span className="text-[10px] md:text-xs text-brand-dark/40 uppercase tracking-widest mt-1">Conformidade</span>
+                                <span className="text-[10px] md:text-xs text-brand-dark/40 uppercase tracking-widest mt-1">Garantia</span>
                             </div>
                             <div className="flex flex-col items-center lg:items-start p-6 bg-white border border-brand-dark/5 rounded-2xl shadow-sm">
                                 <span className="text-3xl md:text-5xl font-black text-brand-green">31+</span>
@@ -85,7 +84,10 @@ export default function Government() {
 
                     {/* Right Side: Cards */}
                     <div className="flex flex-col gap-4 w-full">
-                        {authorityItems.map((item, i) => (
+                        {[
+                            { title: "Entrega Garantida", desc: "Logística ágil para suprimento em larga escala." },
+                            { title: "Segurança Total", desc: "Fórmulas biodegradáveis e ecoeficientes." }
+                        ].map((item, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, y: 20 }}
@@ -95,9 +97,6 @@ export default function Government() {
                                 className="group w-full bg-white border border-brand-dark/5 hover:border-brand-green/30 rounded-2xl p-4 md:p-6 transition-all duration-300 shadow-sm hover:shadow-md"
                             >
                                 <div className="flex items-start gap-4">
-                                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-brand-green/10 text-brand-green flex items-center justify-center shrink-0 group-hover:bg-brand-green group-hover:text-white transition-colors border border-brand-green/10">
-                                        {item.icon}
-                                    </div>
                                     <div className="flex-1 text-left">
                                         <h4 className="text-brand-dark font-bold text-sm md:text-lg uppercase tracking-wide mb-1 group-hover:text-brand-green transition-colors">
                                             {item.title}
@@ -121,11 +120,10 @@ export default function Government() {
                     className="mt-12 w-full md:w-auto"
                 >
                     <button
-                        onClick={() => window.open('https://wa.me/551127768000?text=Solicitar documentação técnica', '_blank')}
+                        onClick={() => window.open('https://wa.me/551127768000?text=Solicitar orçamento para setor público', '_blank')}
                         className="w-full md:w-auto btn-stitch btn-stitch-primary py-4 px-10 text-sm font-bold flex items-center justify-center gap-2"
                     >
-                        <Shield className="w-4 h-4" />
-                        Solicitar Documentação Técnica
+                        Solicitar Orçamento Setor Público
                     </button>
                 </motion.div>
 

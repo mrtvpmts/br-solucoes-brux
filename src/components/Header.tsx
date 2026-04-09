@@ -20,9 +20,9 @@ export default function Header() {
     const navItems = [
         { label: 'Home', href: '#home' },
         { label: 'Produtos', href: '#catalog' },
-        { label: 'Indústria & Governo', href: '#government' },
+        { label: 'Setor Público', href: '#government' },
         { label: 'Logística', href: '#logistics' },
-        { label: 'Contato', href: '#contact' },
+        { label: 'Dúvidas', href: '#faq' },
     ]
 
     return (
@@ -138,7 +138,7 @@ export default function Header() {
                                         <Link
                                             href={item.href}
                                             onClick={() => setIsMenuOpen(false)}
-                                            className="text-4xl font-black uppercase italic tracking-tight text-white hover:text-brand-green transition-all block py-3"
+                                            className="text-4xl font-black uppercase italic tracking-tight text-brand-dark hover:text-brand-green transition-all block py-3"
                                         >
                                             <span className="text-brand-green mr-4 text-sm font-mono not-italic">0{i + 1}</span>
                                             {item.label}
@@ -148,10 +148,10 @@ export default function Header() {
                             </nav>
 
                             <div className="mt-16 space-y-6">
-                                <div className="h-[1px] w-48 bg-white/10" />
+                                <div className="h-[1px] w-48 bg-brand-dark/10" />
                                 <div>
                                     <span className="text-[10px] font-black text-brand-green uppercase tracking-[0.3em] block mb-2">Contato Direto</span>
-                                    <div className="text-2xl font-black text-white">(11) 2776-8000</div>
+                                    <div className="text-2xl font-black text-brand-dark">(11) 2776-8000</div>
                                 </div>
                                 <button
                                     onClick={() => {

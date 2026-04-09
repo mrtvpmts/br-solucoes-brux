@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import './globals.css'
 
+const inter = Inter({ subsets: ['latin'] })
+
 export const metadata: Metadata = {
-  title: 'BRUX | Líder em Higiene Profissional e Limpeza Técnica Industrial',
-  description: 'A BRUX (Bê-Erre-U-Xis) é a autoridade máxima em soluções químicas de alta performance para indústrias, hospitais e órgãos públicos. Conformidade ANVISA, padrão ESG e entrega estratégica nacional.',
-  keywords: 'Higiene Profissional, Limpeza Industrial, Saneantes, Marca Própria de Limpeza, Licitações, Desengordurante Industrial, BRUX Soluções, Química de Alta Performance, Fornecedor Governamental',
+  title: 'BRUX | Higiene Profissional e Limpeza de Alta Performance',
+  description: 'A BRUX oferece soluções químicas de alto desempenho para empresas, condomínios e setor público. Produtos concentrados que garantem máxima eficiência.',
+  keywords: 'Higiene Profissional, Limpeza de Alta Performance, Saneantes, Produtos de Limpeza Profissional, Limpeza Pesada, BRUX Soluções, Química Eficiente, Fornecedor de Limpeza',
   authors: [{ name: 'BRUX Soluções em Limpeza' }],
   creator: 'BRUX',
   publisher: 'BRUX Soluções em Limpeza',
@@ -27,21 +30,21 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     url: 'https://brux.com.br',
     siteName: 'BRUX Soluções em Limpeza',
-    title: 'BRUX | Líder em Higiene Profissional e Limpeza Técnica Industrial',
-    description: 'A BRUX (Bê-Erre-U-Xis) é a autoridade máxima em soluções químicas de alta performance para indústrias, hospitais e órgãos públicos. Conformidade ANVISA, padrão ESG e entrega estratégica nacional.',
+    title: 'BRUX | Higiene Profissional e Limpeza de Alta Performance',
+    description: 'Soluções químicas de alto desempenho para empresas, condomínios e setor público. Máxima eficiência para todos os ambientes.',
     images: [
       {
         url: '/textures/brux-solucoes-limpeza-profissional.png',
         width: 1200,
         height: 630,
-        alt: 'Logotipo BRUX - Soluções em Higiene Profissional e Limpeza Técnica',
+        alt: 'BRUX - Higiene Profissional e Limpeza de Alta Performance',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BRUX | Líder em Higiene Profissional e Limpeza Técnica Industrial',
-    description: 'A BRUX (Bê-Erre-U-Xis) é a autoridade máxima em soluções químicas de alta performance para indústrias, hospitais e órgãos públicos.',
+    title: 'BRUX | Higiene Profissional e Limpeza de Alta Performance',
+    description: 'Soluções químicas de alto desempenho para empresas e setor público.',
     images: ['/textures/brux-solucoes-limpeza-profissional.png'],
   },
 }
@@ -56,7 +59,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className="antialiased selection:bg-brand-green selection:text-black">
+      <body className={`${inter.className} antialiased selection:bg-brand-green selection:text-black`}>
         {children}
       </body>
     </html>

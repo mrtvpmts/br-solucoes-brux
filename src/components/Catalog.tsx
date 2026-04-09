@@ -24,7 +24,7 @@ function ProductCard({ product, onOpenDetails, colorFilter }: ProductCardProps) 
                     {product.title}
                 </h3>
                 <div className="text-brand-green font-bold text-xs md:text-sm tracking-[0.1em] uppercase">
-                    Industrial • {product.subtitle}
+                    {product.subtitle}
                 </div>
             </div>
 
@@ -32,7 +32,7 @@ function ProductCard({ product, onOpenDetails, colorFilter }: ProductCardProps) 
                 <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-brand-green/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <Image
                     src={product.image}
-                    alt={`Galão BRUX ${product.title} 5L - Limpeza Industrial`}
+                    alt={`Galão BRUX ${product.title}`}
                     width={280}
                     height={350}
                     className="relative z-10 transition-transform duration-700 group-hover:scale-110 object-contain"
@@ -40,28 +40,13 @@ function ProductCard({ product, onOpenDetails, colorFilter }: ProductCardProps) 
                 />
             </div>
 
-            {/* Packaging Badge */}
-            <div className="text-[10px] text-brand-dark/40 font-bold uppercase tracking-widest">
-                5L • 20L • 50L • 200L • 1000L
-            </div>
-
-            <div className="w-full space-y-3 pt-4">
+            <div className="w-full pt-4">
                 <button
                     onClick={() => onOpenDetails(product)}
-                    className="btn-stitch btn-stitch-primary w-full py-4 text-xs tracking-[0.15em] border-none"
+                    className="btn-stitch btn-stitch-primary w-full py-4 text-xs tracking-[0.15em] border-none shadow-lg hover:shadow-brand-green/20"
                 >
-                    Visualizar Detalhes
+                    Solicitar Orçamento
                 </button>
-
-                {/* Wholesale Link */}
-                <a
-                    href="https://wa.me/551127768000?text=Olá, gostaria de preços diferenciados para Atacado e Licitações."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-center text-[10px] text-brand-green font-black hover:text-brand-green-fresh transition-colors uppercase tracking-wider"
-                >
-                    Cotação Corporativa
-                </a>
             </div>
         </motion.div>
     )
@@ -132,7 +117,7 @@ export default function Catalog() {
                         <h2 className="text-impact mb-6 leading-[1.1] !font-black" style={{ fontSize: 'clamp(2rem, 6vw, 5rem)' }}>
                             Soluções Químicas <br className="md:hidden" />
                             <span className="text-brand-green pr-2">
-                                PARA LIMPEZA INDUSTRIAL
+                                PARA LIMPEZA PROFISSIONAL
                             </span>
                         </h2>
                         <div className="h-1.5 w-20 md:w-32 bg-brand-green/20 mx-auto rounded-full mt-4 md:mt-8" />
@@ -232,7 +217,7 @@ export default function Catalog() {
 
                                     {/* Filters */}
                                     <div className="flex flex-wrap justify-center gap-2 md:gap-4 sticky top-4 z-50 py-4 backdrop-blur-md rounded-2xl bg-white/80 border border-brand-dark/5 px-6 mx-auto w-fit shadow-lg">
-                                        {['Todos', 'Industrial', 'Cozinha', 'Hospitalar', 'Geral', 'Escolar'].map(cat => (
+                                        {['Todos', 'Limpeza Pesada', 'Cozinha', 'Hospitalar', 'Geral', 'Escolar'].map(cat => (
                                             <button
                                                 key={cat}
                                                 onClick={() => setActiveCategory(cat)}
