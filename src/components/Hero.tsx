@@ -20,10 +20,10 @@ export default function Hero() {
 
                 {/* 2. DYNAMIC OVERLAY (TEXT & BUTTONS) */}
                 <div className="absolute inset-0 flex items-center">
-                    <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-2 items-center">
+                    <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] items-center">
  
-                        {/* THE CONTENT - Centralizado apenas verticalmente, alinhado à esquerda */}
-                        <div className="space-y-2 md:space-y-6 ml-0 max-w-[50%] md:max-w-none text-left">
+                        {/* THE CONTENT - IMPACTO MÁXIMO NO DESKTOP */}
+                        <div className="space-y-2 md:space-y-6 ml-0 max-w-[80%] md:max-w-none text-left">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -32,8 +32,8 @@ export default function Hero() {
                                 <motion.span className="text-brand-green font-black uppercase tracking-[0.3em] text-[8px] mb-1 block drop-shadow-sm">
                                     Performance Industrial
                                 </motion.span>
-                                <h1 className="text-lg md:text-8xl font-black uppercase italic leading-[1.1] md:leading-[0.9] mb-4 drop-shadow-2xl">
-                                    <span className="text-[#1a1a1a] md:text-white">
+                                <h1 className="text-lg md:text-[110px] font-black uppercase italic leading-[1.1] md:leading-[0.85] mb-4 drop-shadow-2xl">
+                                    <span className="text-[#1a1a1a] md:text-white whitespace-nowrap">
                                         Produtos <br className="md:hidden" /> Concentrados
                                     </span> <br />
                                     <span className="text-brand-green">Para</span> <span className="text-white">Limpeza</span> <br />
