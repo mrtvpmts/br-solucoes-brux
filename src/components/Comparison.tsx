@@ -43,16 +43,16 @@ export default function Comparison() {
                     </motion.h2>
                 </div>
 
-                {/* VISUAL COMPARISON IMAGE */}
+                {/* VISUAL COMPARISON IMAGE - Agora integrada sem box branco */}
                 <motion.div 
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    className="mb-12 relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-brand-dark/5"
+                    className="mb-12 relative w-full max-w-5xl mx-auto overflow-hidden"
                 >
                     <img 
                         src="/images/comparison-visual.png" 
                         alt="Comparação Visual: Galão de Mercado vs Galão Concentrado BRUX" 
-                        className="w-full h-auto"
+                        className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
                     />
                 </motion.div>
 
