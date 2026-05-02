@@ -5,7 +5,7 @@ import Hero from '@/components/Hero'
 import Comparison from '@/components/Comparison'
 import Catalog from '@/components/Catalog'
 import LogicalProof from '@/components/LogicalProof'
-import About from '@/components/About'
+
 import DirectImpact from '@/components/DirectImpact'
 import Government from '@/components/Government'
 import Logistics from '@/components/Logistics'
@@ -29,7 +29,7 @@ export default function Page() {
           <Comparison />
           <Catalog />
           <LogicalProof />
-          <About />
+
           <Government />
           <Logistics />
           <DirectImpact />
