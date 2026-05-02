@@ -20,19 +20,19 @@ export default function Hero() {
 
                 {/* 2. DYNAMIC OVERLAY (TEXT & BUTTONS) */}
                 <div className="absolute inset-0 flex items-center">
-                    <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] items-center">
+                    <div className="max-w-7xl mx-auto px-6 md:pl-0 md:pr-12 w-full grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] items-center">
  
-                        {/* THE CONTENT - IMPACTO MÁXIMO NO DESKTOP */}
-                        <div className="space-y-2 md:space-y-6 ml-0 max-w-[80%] md:max-w-none text-left">
+                        {/* THE CONTENT - COLADO NA ESQUERDA E TAMANHO MÁXIMO */}
+                        <div className="space-y-2 md:space-y-4 ml-0 max-w-[90%] md:max-w-none text-left">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.2 }}
                             >
-                                <motion.span className="text-brand-green font-black uppercase tracking-[0.3em] text-[8px] mb-1 block drop-shadow-sm">
+                                <motion.span className="text-brand-green font-black uppercase tracking-[0.3em] text-[8px] mb-1 block drop-shadow-sm md:pl-0">
                                     Performance Industrial
                                 </motion.span>
-                                <h1 className="text-lg md:text-6xl font-black uppercase italic leading-[1.1] md:leading-[1.0] mb-4 drop-shadow-2xl">
+                                <h1 className="text-lg md:text-[100px] font-black uppercase italic leading-[1.1] md:leading-[0.85] mb-4 drop-shadow-2xl text-white">
                                     <span className="text-[#1a1a1a] md:text-white">
                                         Produtos <br className="md:hidden" /> Concentrados
                                     </span> <br />
