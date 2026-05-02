@@ -55,7 +55,7 @@ export default function Government() {
                 <div className="w-full flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20">
 
                     {/* Left Side: Text & Stats */}
-                    <div className="flex flex-col gap-8 text-center">
+                    <div className="flex flex-col gap-8 text-center lg:text-left">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ export default function Government() {
                             <h3 className="text-lg md:text-3xl font-black text-brand-dark leading-tight uppercase">
                                 Atendimento para <span className="text-brand-green">Órgãos Públicos</span>.
                             </h3>
-                            <p className="text-brand-dark/70 text-sm md:text-lg font-medium leading-relaxed max-w-xl mx-auto">
+                            <p className="text-brand-dark/70 text-sm md:text-lg font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
                                 Produtos de alto rendimento que atendem rigorosamente às normas de segurança vigentes.
                             </p>
                         </motion.div>

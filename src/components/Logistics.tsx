@@ -15,7 +15,7 @@ export default function Logistics() {
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="space-y-12 text-center"
+                        className="space-y-12"
                     >
                         <div className="space-y-6">
                             <span className="text-brand-green text-xs font-black uppercase tracking-[0.4em]">Logística & Distribuição</span>
@@ -23,7 +23,7 @@ export default function Logistics() {
                                 Entrega Rápida <br />
                                 <span className="text-brand-green">Sem Fronteiras</span>
                             </h2>
-                            <p className="text-brand-dark/70 text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto">
+                            <p className="text-brand-dark/70 text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
                                 Estrutura logística própria e parcerias estratégicas para garantir que sua operação nunca pare. Atendemos todo o território nacional com agilidade.
                             </p>
                         </div>

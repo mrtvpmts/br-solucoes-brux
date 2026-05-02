@@ -22,6 +22,15 @@ export default function Comparison() {
                     </motion.h2>
                 </div>
 
+                {/* IMAGEM DE COMPARAÇÃO RESTAURADA */}
+                <div className="relative max-w-4xl mx-auto mb-16">
+                    <img 
+                        src="/images/comparison-visual.png" 
+                        alt="Comparação de Produtos" 
+                        className="w-full h-auto drop-shadow-2xl"
+                    />
+                </div>
+
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
                     
                     {/* MERCADO TRADICIONAL */}
@@ -29,24 +38,22 @@ export default function Comparison() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-white p-8 md:p-12 rounded-[2rem] border border-gray-100 shadow-xl text-left flex flex-col items-center justify-center min-h-[450px]"
+                        className="bg-white p-8 md:p-12 rounded-[2rem] border border-gray-100 shadow-xl flex flex-col items-center justify-center min-h-[550px] uppercase italic font-black tracking-tighter"
                     >
-                        <div className="uppercase italic space-y-4">
-                            <div className="space-y-1">
-                                <h3 className="text-2xl md:text-4xl font-black text-gray-400 ml-4">PRODUTO</h3>
-                                <h3 className="text-2xl md:text-4xl font-black text-gray-400 ml-12">COMUM</h3>
-                            </div>
+                        <div className="flex flex-col text-gray-400">
+                            <p className="text-3xl md:text-5xl ml-0">PRODUTO</p>
+                            <p className="text-3xl md:text-5xl ml-16">COMUM</p>
                             
-                            <div className="text-gray-400 font-medium text-sm md:text-lg space-y-1">
-                                <p className="ml-6">O custo por litro parece baixo,</p>
-                                <p className="ml-0 text-red-400/50 font-bold">mas o consumo é o dobro.</p>
+                            <div className="mt-8 space-y-1 text-sm md:text-xl">
+                                <p className="ml-4">O custo por litro parece baixo,</p>
+                                <p className="ml-0 text-red-400 font-bold">mas o consumo é o dobro.</p>
                             </div>
 
-                            <div className="text-gray-400 font-medium space-y-2 pt-4">
-                                <p className="ml-10">Baixa concentração</p>
+                            <div className="mt-8 space-y-2 text-sm md:text-lg">
+                                <p className="ml-12">Baixa concentração</p>
                                 <p className="ml-0">Compra semanal</p>
-                                <p className="ml-4">Custo por litro que engana</p>
-                                <p className="ml-0">Resultados inconsistentes</p>
+                                <p className="ml-6">Custo por litro que engana</p>
+                                <p className="ml-0 text-red-400/70">Resultados inconsistentes</p>
                             </div>
                         </div>
                     </motion.div>
@@ -56,34 +63,32 @@ export default function Comparison() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-brand-dark p-8 md:p-12 rounded-[2rem] shadow-2xl text-left flex flex-col items-center justify-center min-h-[450px] relative overflow-hidden"
+                        className="bg-brand-dark p-8 md:p-12 rounded-[2rem] shadow-2xl flex flex-col items-center justify-center min-h-[550px] relative overflow-hidden uppercase italic font-black tracking-tighter"
                     >
-                        <div className="relative z-10 w-full uppercase italic space-y-6">
-                            <div className="space-y-1">
-                                <h3 className="text-2xl md:text-4xl font-black text-white ml-8 md:ml-12">PRODUTOS</h3>
-                                <h3 className="text-2xl md:text-4xl font-black text-brand-green ml-16 md:ml-24 leading-none">BRUX</h3>
+                        <div className="relative z-10 flex flex-col">
+                            <p className="text-white text-3xl md:text-5xl ml-0">PRODUTOS</p>
+                            <p className="text-brand-green text-4xl md:text-7xl ml-16 md:ml-24 leading-none">BRUX</p>
+                            
+                            <div className="text-brand-green mt-10 space-y-1 text-sm md:text-xl">
+                                <p className="ml-6">Investimento inteligente:</p>
+                                <p className="ml-0 underline decoration-2 underline-offset-4">menos produto, mais resultado.</p>
                             </div>
 
-                            <div className="text-brand-green font-bold text-sm md:text-lg space-y-1">
-                                <p className="ml-4 md:ml-8">Investimento inteligente:</p>
-                                <p className="ml-0">menos produto, mais resultado.</p>
-                            </div>
-                            
-                            <div className="text-white font-bold space-y-3 pt-2 text-xs md:text-base">
-                                <p className="ml-12 md:ml-20">Alta concentração</p>
+                            <div className="text-white mt-10 space-y-3 text-sm md:text-lg">
+                                <p className="ml-16">Alta concentração</p>
                                 <p className="ml-0">Compra mensal ou trimestral</p>
-                                <p className="ml-4 md:ml-10">Economia real de até 70%</p>
+                                <p className="ml-8 text-brand-green">Economia real de até 70%</p>
                                 <p className="ml-0">Padrão profissional de limpeza</p>
                             </div>
+                        </div>
 
-                            <div className="pt-6">
-                                <button 
-                                    onClick={() => setOpen(true)}
-                                    className="w-full bg-brand-green text-brand-dark font-black py-5 rounded-xl uppercase italic tracking-wider hover:bg-white transition-all shadow-lg active:scale-95"
-                                >
-                                    QUERO ECONOMIZAR AGORA
-                                </button>
-                            </div>
+                        <div className="relative z-10 pt-12 w-full max-w-xs">
+                            <button 
+                                onClick={() => setOpen(true)}
+                                className="w-full bg-brand-green text-brand-dark font-black py-5 rounded-xl uppercase italic tracking-wider hover:bg-white transition-all shadow-lg active:scale-95"
+                            >
+                                QUERO ECONOMIZAR AGORA
+                            </button>
                         </div>
                     </motion.div>
                 </div>
