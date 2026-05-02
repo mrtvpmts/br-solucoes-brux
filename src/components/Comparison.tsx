@@ -64,6 +64,7 @@ export default function Comparison() {
                             whileInView={{ opacity: 1, x: 0 }}
                             className="px-4 md:px-8"
                         >
+                            <h3 className="text-xl font-black text-brand-dark/40 uppercase italic mb-4">Produto Comum</h3>
                             <p className="text-brand-dark/50 font-bold mb-6 text-center md:text-left">
                                 O custo por litro parece baixo, mas o consumo é o dobro.
                             </p>
@@ -83,6 +84,7 @@ export default function Comparison() {
                             whileInView={{ opacity: 1, x: 0 }}
                             className="px-4 md:px-8"
                         >
+                            <h3 className="text-xl font-black text-brand-green uppercase italic mb-4">Produtos BRUX</h3>
                             <p className="text-brand-green font-bold mb-6 text-center md:text-left">
                                 Investimento inteligente: menos produto, mais resultado.
                             </p>
