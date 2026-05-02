@@ -19,20 +19,20 @@ export default function Hero() {
                 />
 
                 {/* 2. DYNAMIC OVERLAY (TEXT & BUTTONS) */}
-                <div className="absolute inset-0 flex items-center">
-                    <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-2 items-center">
-
+                <div className="absolute inset-0 flex items-start">
+                    <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-2 items-start">
+ 
                         {/* THE CONTENT - Travado na esquerda, branco com sombra e bem estreito */}
-                        <div className="space-y-4 md:space-y-8 pt-32 pb-10 md:pt-0 md:-mt-12 max-w-[60%] md:max-w-none text-left">
+                        <div className="space-y-4 md:space-y-6 pt-24 pb-10 md:pt-40 max-w-[55%] md:max-w-none text-left">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.2 }}
                             >
-                                <motion.span className="text-brand-green font-black uppercase tracking-[0.3em] text-[10px] mb-4 block drop-shadow-sm">
+                                <motion.span className="text-brand-green font-black uppercase tracking-[0.3em] text-[8px] mb-2 block drop-shadow-sm">
                                     Performance Industrial
                                 </motion.span>
-                                <h1 className="text-xl md:text-7xl font-black text-white uppercase italic leading-[1.1] mb-4 drop-shadow-2xl">
+                                <h1 className="text-lg md:text-7xl font-black text-white uppercase italic leading-[1.2] mb-4 drop-shadow-2xl">
                                     Produtos <br />
                                     Concentrados <br />
                                     <span className="text-brand-green">Para</span> <br />
