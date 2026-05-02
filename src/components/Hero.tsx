@@ -23,7 +23,7 @@ export default function Hero() {
                     <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-2 items-start">
  
                         {/* THE CONTENT - Travado na esquerda, branco com sombra e bem estreito */}
-                        <div className="space-y-4 md:space-y-6 pt-24 pb-10 md:pt-40 max-w-[55%] md:max-w-none text-left">
+                        <div className="space-y-4 md:space-y-6 pt-44 pb-10 md:pt-40 max-w-[50%] md:max-w-none text-left">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
