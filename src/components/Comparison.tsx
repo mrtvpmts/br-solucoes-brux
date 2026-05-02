@@ -43,72 +43,53 @@ export default function Comparison() {
                     </motion.h2>
                 </div>
 
-                {/* VISUAL COMPARISON IMAGE - Agora integrada sem box branco */}
-                <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    className="mb-12 relative w-full max-w-5xl mx-auto overflow-hidden"
-                >
-                    <img 
-                        src="/images/comparison-visual.png" 
-                        alt="Comparação Visual: Galão de Mercado vs Galão Concentrado BRUX" 
-                        className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
-                    />
-                </motion.div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-                    {/* PRODUTO COMUM */}
+                {/* VISUAL COMPARISON IMAGE INTEGRATED WITH TEXT */}
+                <div className="relative max-w-6xl mx-auto">
                     <motion.div 
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="bg-brand-silver/30 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-brand-dark/5 flex flex-col h-full"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="mb-4"
                     >
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-red-600">
-                                <X size={24} strokeWidth={3} />
-                            </div>
-                            <h3 className="text-2xl font-black text-brand-dark uppercase italic">Produto Comum</h3>
-                        </div>
-                        <p className="text-brand-dark/60 font-medium mb-8">
-                            Você paga "barato" por litro... mas precisa comprar toda semana e usar o dobro da quantidade.
-                        </p>
-                        <ul className="space-y-4 mb-12 flex-1">
-                            {commonProduct.map((item, i) => (
-                                <li key={i} className="flex gap-3 text-brand-dark/70 font-bold text-sm">
-                                    <div className="mt-1 flex-shrink-0 w-4 h-4 rounded-full bg-red-100 flex items-center justify-center text-red-500">
-                                        <X size={10} strokeWidth={4} />
-                                    </div>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
+                        <img 
+                            src="/images/comparison-visual.png" 
+                            alt="Comparação Visual BRUX" 
+                            className="w-full h-auto"
+                        />
                     </motion.div>
 
-                    {/* BRUX */}
-                    <motion.div 
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        className="bg-brand-dark text-white rounded-3xl p-8 md:p-12 border border-brand-green/30 shadow-2xl shadow-brand-green/20 flex flex-col h-full relative overflow-hidden group"
-                    >
-                        {/* Efeito de Brilho */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-green/20 blur-[100px] -mr-32 -mt-32 rounded-full" />
-                        
-                        <div className="relative z-10">
-                            <div className="flex items-center gap-4 mb-8">
-                                <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center text-white">
-                                    <Check size={24} strokeWidth={3} />
-                                </div>
-                                <h3 className="text-2xl font-black uppercase italic">Produtos BRUX</h3>
-                            </div>
-                            <p className="text-white/60 font-medium mb-8">
-                                Você investe em concentração... usa menos produto, gasta menos tempo e economiza de verdade.
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                        {/* LEFT: COMMON PRODUCT DETAILS */}
+                        <motion.div 
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            className="px-4 md:px-8"
+                        >
+                            <p className="text-brand-dark/50 font-bold mb-6 text-center md:text-left">
+                                O custo por litro parece baixo, mas o consumo é o dobro.
                             </p>
-                            <ul className="space-y-4 mb-12">
+                            <ul className="space-y-4">
+                                {commonProduct.map((item, i) => (
+                                    <li key={i} className="flex gap-3 text-brand-dark/60 font-bold text-sm">
+                                        <X className="text-red-500 mt-1 flex-shrink-0" size={18} strokeWidth={3} />
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </motion.div>
+
+                        {/* RIGHT: BRUX PRODUCT DETAILS */}
+                        <motion.div 
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            className="px-4 md:px-8"
+                        >
+                            <p className="text-brand-green font-bold mb-6 text-center md:text-left">
+                                Investimento inteligente: menos produto, mais resultado.
+                            </p>
+                            <ul className="space-y-4 mb-10">
                                 {bruxProduct.map((item, i) => (
-                                    <li key={i} className="flex gap-3 text-white/80 font-bold text-sm">
-                                        <div className="mt-1 flex-shrink-0 w-4 h-4 rounded-full bg-brand-green flex items-center justify-center text-white">
-                                            <Check size={10} strokeWidth={4} />
-                                        </div>
+                                    <li key={i} className="flex gap-3 text-brand-dark/80 font-bold text-sm">
+                                        <Check className="text-brand-green mt-1 flex-shrink-0" size={18} strokeWidth={3} />
                                         {item}
                                     </li>
                                 ))}
@@ -116,12 +97,12 @@ export default function Comparison() {
 
                             <button 
                                 onClick={() => setOpen(true)}
-                                className="w-full py-5 bg-brand-green hover:bg-brand-green-fresh text-white rounded-2xl font-black uppercase tracking-wider transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-xl shadow-brand-green/20"
+                                className="w-full py-4 bg-brand-green hover:bg-brand-green-fresh text-white rounded-xl font-black uppercase tracking-wider transition-all shadow-lg shadow-brand-green/20"
                             >
                                 Quero Economizar Agora
                             </button>
-                        </div>
-                    </motion.div>
+                        </motion.div>
+                    </div>
                 </div>
 
                 {/* Cards de Resumo Rápido */}
