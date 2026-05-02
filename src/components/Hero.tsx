@@ -22,8 +22,8 @@ export default function Hero() {
                 <div className="absolute inset-0 flex items-center">
                     <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-2 items-center">
 
-                        {/* THE CONTENT - Positioned to match unnamed.jpg */}
-                        <div className="space-y-4 md:space-y-8 -mt-6 md:-mt-12">
+                        {/* THE CONTENT - Ajustado para não cobrir o escudo no mobile */}
+                        <div className="space-y-4 md:space-y-8 pt-20 pb-10 md:pt-0 md:-mt-12">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
