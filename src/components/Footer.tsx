@@ -116,15 +116,25 @@ export default function Footer() {
             </div>
 
             <div className="max-w-7xl mx-auto pt-16 border-t border-brand-dark/5">
+                {/* LEGAL DISCLAIMER */}
+                <div className="mb-12 p-8 bg-brand-light rounded-3xl border border-brand-dark/5">
+                    <p className="text-[10px] md:text-xs text-brand-dark/40 font-medium leading-relaxed text-center uppercase tracking-wider">
+                        * A economia de até 70% é baseada no comparativo de rendimento entre produtos concentrados BRUX e produtos prontos para uso comuns de mercado, considerando as diluições técnicas recomendadas em fichas técnicas. O rendimento real pode variar conforme o tipo de superfície e nível de sujidade.
+                    </p>
+                </div>
+
                 {/* COPYRIGHT & LEGAL */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8 py-12 border-t border-brand-dark/5">
                     <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
                         <div className="flex flex-col">
                             <span className="text-[10px] text-brand-dark font-black uppercase tracking-[0.4em] mb-1">
-                                BRUX ® SOLUÇÕES EM LIMPEZA PROFISSIONAL
+                                BRUX SOLUTIONS EM LIMPEZA PROFISSIONAL LTDA
                             </span>
-                            <span className="text-[9px] text-brand-dark/40 font-medium tracking-wide">
-                                Registro INPI pendente. Direitos reservados © 2024.
+                            <span className="text-[9px] text-brand-dark/60 font-bold tracking-wide uppercase">
+                                CNPJ: 50.150.941/0001-51 | Rua Maria da Gloria, 67 - Jardim Santa Helena, São Paulo - SP
+                            </span>
+                            <span className="text-[9px] text-brand-dark/40 font-medium tracking-wide mt-1">
+                                Direitos reservados © 2024. Todos os produtos possuem registro/notificação na ANVISA.
                             </span>
                         </div>
                     </div>

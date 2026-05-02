@@ -10,7 +10,13 @@
 
 html,
 body {
-  background: var(--color-brand-light);
+  background-color: var(--color-brand-light);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 107, 63, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(44, 191, 122, 0.05) 0px, transparent 50%),
+    url("/images/paper-texture.png");
+  background-attachment: fixed;
+  background-size: cover, cover, 1200px;
   color: #1A202C;
   margin: 0;
   padding: 0;
@@ -22,12 +28,21 @@ body {
 }
 
 main {
-  padding-top: 4rem;
+  padding-top: 5rem;
 }
 
 @media (min-width: 768px) {
   main {
     padding-top: 6rem;
+  }
+}
+
+/* Header mais sólido no mobile para evitar transparência sobre o Hero */
+@media (max-width: 768px) {
+  header {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
   }
 }
 

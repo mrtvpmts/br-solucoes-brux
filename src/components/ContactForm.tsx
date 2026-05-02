@@ -79,7 +79,7 @@ export default function ContactForm() {
     }
 
     return (
-        <section id="contact-form" className="relative py-16 md:py-24 bg-brand-light px-8 overflow-hidden">
+        <div id="contact-form" className="relative py-8 md:py-12 bg-brand-light px-4 md:px-8 overflow-hidden">
             {/* Background Glows */}
             <div className="absolute top-1/4 -left-20 w-96 h-96 bg-brand-green/5 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-brand-green/10 blur-[120px] rounded-full pointer-events-none" />
@@ -374,6 +374,6 @@ export default function ContactForm() {
                     )}
                 </AnimatePresence>
             </div>
-        </section>
+        </div>
     )
 }

@@ -57,10 +57,10 @@ export default function Logistics() {
                             {/* Mascot Image */}
                             <div className="relative z-10 w-full h-full">
                                 <Image
-                                    src="/images/mascot-logistics.png"
-                                    alt="BRUX Mascot - Entrega Rápida"
+                                    src="/images/gotinha-logistics.png"
+                                    alt="Gotinha BRUX - Logística e Entrega"
                                     fill
-                                    className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+                                    className="object-contain drop-shadow-[0_20px_50px_rgba(0,107,63,0.3)]"
                                     priority
                                 />
                             </div>

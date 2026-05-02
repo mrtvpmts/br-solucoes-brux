@@ -1,78 +1,12 @@
 'use client'
 
-import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useQuote } from './QuoteContext'
-import { X, CheckCircle, Send, Loader2, Phone } from 'lucide-react'
-
-import { trackEvent } from '@/lib/analytics'
+import { X } from 'lucide-react'
+import ContactForm from './ContactForm'
 
 export default function QuoteModal() {
-    const { open, setOpen, success, setSuccess, cart, removeFromCart, setIsCatalogOpen } = useQuote()
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [formData, setFormData] = useState({
-        name: '',
-        company: '',
-        email: '',
-        whatsapp: '',
-        segment: '',
-        message: ''
-    })
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        if (!formData.name || !formData.email || !formData.company || !formData.segment) {
-            alert('Por favor, preencha os campos obrigatórios.')
-            return
-        }
-
-        setIsSubmitting(true)
-        try {
-            const response = await fetch('/api/send', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...formData, cart })
-            })
-
-            if (response.ok) {
-                trackEvent('quote_sent', { segment: formData.segment, cartSize: cart.length })
-
-                // Build items list for WhatsApp
-                let itemsList = ''
-                if (cart.length > 0) {
-                    itemsList = '\n\n*ITENS DA COTAÇÃO:*\n' + cart.map(item =>
-                        `▪️ ${item.product.title} (${item.volume}) x ${item.quantity}`
-                    ).join('\n')
-                }
-
-                // Formatting WhatsApp message
-                const waMessage = encodeURIComponent(
-                    `*NOVO ORÇAMENTO - BRUX*\n\n` +
-                    `*Nome:* ${formData.name}\n` +
-                    `*Empresa:* ${formData.company}\n` +
-                    `*E-mail:* ${formData.email}\n` +
-                    `*WhatsApp:* ${formData.whatsapp || 'Não informado'}\n` +
-                    `*Segmento:* ${formData.segment}\n` +
-                    itemsList + '\n\n' +
-                    `*Demanda:* ${formData.message || 'Sem mensagem adicional'}`
-                )
-
-                // Open WhatsApp in a new tab
-                window.open(`https://wa.me/551127768000?text=${waMessage}`, '_blank')
-                trackEvent('whatsapp_click', { source: 'quote_success' })
-
-                setSuccess(true)
-                setFormData({ name: '', company: '', email: '', whatsapp: '', segment: '', message: '' })
-            } else {
-                alert('Erro ao enviar solicitação. Tente novamente.')
-            }
-        } catch (error) {
-            console.error('Error submitting form:', error)
-            alert('Erro técnico ao conectar com o servidor.')
-        } finally {
-            setIsSubmitting(false)
-        }
-    }
+    const { open, setOpen } = useQuote()
 
     return (
         <AnimatePresence>
@@ -81,229 +15,30 @@ export default function QuoteModal() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 bg-black/80 backdrop-blur-xl z-[100] flex items-center justify-center p-4 px-6 overflow-hidden"
+                    className="fixed inset-0 bg-black/90 backdrop-blur-md z-[100] flex items-center justify-center p-0 md:p-4 overflow-hidden"
                 >
-                    <div className="absolute inset-0" onClick={() => !isSubmitting && setOpen(false)} />
+                    <div className="absolute inset-0" onClick={() => setOpen(false)} />
 
                     <motion.div
                         initial={{ scale: 0.9, opacity: 0, y: 20 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                        className="relative z-10 bg-white border border-brand-dark/10 rounded-[32px] p-8 md:p-10 w-full max-w-lg shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto custom-scrollbar"
+                        className="relative z-10 w-full max-w-5xl h-full md:h-auto max-h-screen md:max-h-[90vh] overflow-y-auto custom-scrollbar bg-brand-light md:rounded-[48px] shadow-2xl"
                     >
-                        {/* Global texture is now handled in layout.tsx */}
-
                         {/* Close Button */}
                         <button
                             onClick={() => setOpen(false)}
-                            className="absolute top-6 right-6 text-brand-dark/30 hover:text-brand-dark transition-colors p-2 z-50 rounded-full hover:bg-brand-dark/5"
+                            className="absolute top-8 right-8 text-brand-dark/20 hover:text-brand-dark transition-colors p-3 z-50 rounded-full hover:bg-brand-dark/5 bg-white md:bg-transparent shadow-lg md:shadow-none"
                         >
-                            <X size={20} />
+                            <X size={24} />
                         </button>
 
-                        {!success ? (
-                            <form onSubmit={handleSubmit} className="space-y-6 relative">
-                                <div className="space-y-2 text-center mb-6">
-                                    <div className="inline-block px-3 py-1 bg-brand-green/10 rounded-full border border-brand-green/20 mb-4">
-                                        <span className="text-[9px] font-black text-brand-green uppercase tracking-[0.2em]">Atendimento Corporativo</span>
-                                    </div>
-                                    <h3 className="text-3xl md:text-4xl font-impact tracking-normal text-brand-dark uppercase italic leading-none">
-                                        Solicitar <span className="text-brand-green">Cotação</span>
-                                    </h3>
-                                    <p className="text-brand-dark/40 text-xs font-medium leading-relaxed max-w-[300px] mx-auto pt-2">
-                                        Preencha os dados abaixo para receber um atendimento técnico personalizado.
-                                    </p>
-                                </div>
-
-                                {/* CART SUMMARY */}
-                                {cart.length > 0 && (
-                                    <div className="bg-brand-light border border-brand-dark/5 rounded-2xl p-4 space-y-3 shadow-inner">
-                                        <h4 className="text-[10px] font-black text-brand-dark/40 uppercase tracking-widest flex items-center gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-brand-green" /> Itens Selecionados ({cart.length})
-                                        </h4>
-                                        <div className="space-y-2 max-h-[150px] overflow-y-auto pr-2 custom-scrollbar">
-                                            {cart.map((item, index) => (
-                                                <div key={index} className="flex items-center justify-between text-sm bg-white p-2 rounded-lg border border-brand-dark/5 shadow-sm transition-all hover:border-brand-green/20">
-                                                    <div>
-                                                        <div className="text-brand-dark font-bold text-xs">{item.product.title}</div>
-                                                        <div className="text-brand-green font-mono text-[10px]">
-                                                            {item.volume} • Qtd: {item.quantity}
-                                                        </div>
-                                                    </div>
-                                                    <button
-                                                        type="button"
-                                                        onClick={() => removeFromCart(item.product.title)}
-                                                        className="text-brand-dark/20 hover:text-red-500 transition-colors p-1"
-                                                    >
-                                                        <X size={14} />
-                                                    </button>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                <div className="space-y-4">
-                                    <div className="space-y-1">
-                                        <label className="text-[9px] font-black uppercase tracking-widest text-brand-dark/60 ml-3">Nome Completo *</label>
-                                        <input
-                                            required
-                                            value={formData.name}
-                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full p-4 rounded-2xl bg-brand-light border border-brand-dark/5 focus:border-brand-green/50 focus:bg-white focus:outline-none transition-all placeholder:text-brand-dark/20 text-brand-dark text-sm"
-                                            placeholder="Seu nome"
-                                        />
-                                    </div>
-                                    <div className="space-y-1">
-                                        <label className="text-[9px] font-black uppercase tracking-widest text-brand-dark/60 ml-3">Empresa *</label>
-                                        <input
-                                            required
-                                            value={formData.company}
-                                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                                            className="w-full p-4 rounded-2xl bg-brand-light border border-brand-dark/5 focus:border-brand-green/50 focus:bg-white focus:outline-none transition-all placeholder:text-brand-dark/20 text-brand-dark text-sm"
-                                            placeholder="Nome da empresa"
-                                        />
-                                    </div>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div className="space-y-1">
-                                            <label className="text-[9px] font-black uppercase tracking-widest text-brand-dark/60 ml-3">E-mail *</label>
-                                            <input
-                                                required
-                                                type="email"
-                                                value={formData.email}
-                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                className="w-full p-4 rounded-2xl bg-brand-light border border-brand-dark/5 focus:border-brand-green/50 focus:bg-white focus:outline-none transition-all placeholder:text-brand-dark/20 text-brand-dark text-sm"
-                                                placeholder="email@empresa.com"
-                                            />
-                                        </div>
-                                        <div className="space-y-1">
-                                            <label className="text-[9px] font-black uppercase tracking-widest text-brand-dark/60 ml-3">WhatsApp</label>
-                                            <input
-                                                value={formData.whatsapp}
-                                                onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                                                className="w-full p-4 rounded-2xl bg-brand-light border border-brand-dark/5 focus:border-brand-green/50 focus:bg-white focus:outline-none transition-all placeholder:text-brand-dark/20 text-brand-dark text-sm"
-                                                placeholder="(11) 00000-0000"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-1">
-                                        <label className="text-[9px] font-black uppercase tracking-widest text-brand-dark/60 ml-3">Segmento *</label>
-                                        <div className="relative">
-                                            <select
-                                                required
-                                                value={formData.segment}
-                                                onChange={(e) => setFormData({ ...formData, segment: e.target.value })}
-                                                className="w-full p-4 rounded-2xl bg-brand-light border border-brand-dark/5 focus:border-brand-green/50 focus:bg-white focus:outline-none transition-all text-brand-dark appearance-none cursor-pointer text-sm"
-                                            >
-                                                <option value="" disabled>Selecione um segmento</option>
-                                                <option value="Condomínios">Condomínios</option>
-                                                <option value="Hotéis">Hotéis</option>
-                                                <option value="Restaurantes">Restaurantes</option>
-                                                <option value="Comércios">Comércios</option>
-                                                <option value="Indústrias">Indústrias</option>
-                                                <option value="Escritórios">Ambientes Corporativos</option>
-                                            </select>
-                                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-brand-dark/20 select-none">▼</div>
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-1">
-                                        <label className="text-[9px] font-black uppercase tracking-widest text-brand-dark/60 ml-3">Mensagem</label>
-                                        <textarea
-                                            value={formData.message}
-                                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                            className="w-full p-4 rounded-2xl bg-brand-light border border-brand-dark/5 focus:border-brand-green/50 focus:bg-white focus:outline-none transition-all placeholder:text-brand-dark/20 text-brand-dark min-h-[100px] resize-none text-sm"
-                                            placeholder="Como podemos ajudar sua operação?"
-                                        />
-                                    </div>
-
-                                    <div className="flex flex-col gap-3 pt-4">
-                                        <button
-                                            type="button"
-                                            onClick={() => {
-                                                setOpen(false)
-                                                setIsCatalogOpen(true)
-                                            }}
-                                            className="w-full py-4 text-xs font-bold uppercase tracking-widest text-brand-dark/40 hover:text-brand-dark border border-brand-dark/5 hover:bg-brand-dark/5 rounded-xl transition-all"
-                                        >
-                                            + Adicionar Mais Produtos
-                                        </button>
-
-                                        <button
-                                            type="submit"
-                                            disabled={isSubmitting}
-                                            className="w-full py-5 bg-brand-dark hover:bg-brand-green text-white text-sm uppercase font-impact tracking-[0.2em] flex items-center justify-center gap-3 disabled:opacity-50 transition-all rounded-full shadow-xl shadow-brand-dark/20"
-                                        >
-                                            {isSubmitting ? (
-                                                <>Enviando <Loader2 className="w-4 h-4 animate-spin" /></>
-                                            ) : (
-                                                <>Solicitar Cotação <Send size={16} /></>
-                                            )}
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        ) : (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                className="text-center space-y-8 py-8"
-                            >
-                                <div className="relative mx-auto w-32 h-32">
-                                    <motion.div
-                                        initial={{ scale: 0 }}
-                                        animate={{ scale: 1 }}
-                                        className="absolute inset-0 bg-brand-green/10 blur-3xl rounded-full"
-                                    />
-                                    <div className="relative w-full h-full rounded-full border border-brand-green/20 flex items-center justify-center text-brand-green bg-gradient-to-br from-brand-light to-white backdrop-blur-md shadow-lg">
-                                        <CheckCircle size={64} strokeWidth={1} />
-                                    </div>
-                                </div>
-
-                                <div className="space-y-3">
-                                    <h3 className="text-4xl font-impact text-brand-dark tracking-normal italic uppercase leading-none">
-                                        Solicitação<br /><span className="text-brand-green">Recebida!</span>
-                                    </h3>
-                                    <p className="text-brand-dark/40 leading-relaxed font-medium text-xs max-w-[280px] mx-auto">
-                                        Nossa equipe técnica analisará sua demanda e entrará em contato em breve.
-                                    </p>
-                                </div>
-
-                                {/* Simplified Protocol Box for Modal */}
-                                <div className="py-3 px-8 bg-brand-light border border-brand-dark/5 rounded-2xl inline-block relative overflow-hidden group">
-                                    <div className="absolute inset-0 bg-brand-green/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                                    <span className="block text-[8px] font-black text-brand-dark/40 uppercase tracking-[0.4em] mb-1 relative z-10">Protocolo de Atendimento</span>
-                                    <span className="text-brand-dark font-mono text-xl font-black tracking-widest relative z-10">BRUX-{new Date().getFullYear()}-QS{Math.floor(100 + Math.random() * 900)}</span>
-                                </div>
-
-                                <div className="flex flex-col gap-3 mt-8">
-                                    <button
-                                        onClick={() => {
-                                            // Re-build message for "chat now" button if needed, or rely on automatic open
-                                            const waMessage = encodeURIComponent(`*NOVO ORÇAMENTO - BRUX*\n\n*Nome:* ${formData.name}\n*Empresa:* ${formData.company}\n*Segmento:* ${formData.segment}`)
-                                            window.open(`https://wa.me/551127768000?text=${waMessage}`, '_blank')
-                                        }}
-                                        className="w-full py-4 rounded-full bg-[#25D366] text-white font-impact uppercase tracking-widest text-xs flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(37,211,102,0.2)] hover:scale-[1.02] transition-transform"
-                                    >
-                                        <Phone size={14} fill="white" />
-                                        Conversar no WhatsApp
-                                    </button>
-                                    <button
-                                        onClick={() => {
-                                            setSuccess(false)
-                                            setOpen(false)
-                                        }}
-                                        className="w-full py-3 rounded-full border border-brand-dark/10 text-brand-dark/40 text-[9px] font-bold uppercase tracking-widest hover:text-brand-dark hover:bg-brand-dark/5 transition-all"
-                                    >
-                                        Fechar Janela
-                                    </button>
-                                </div>
-                            </motion.div>
-                        )}
+                        <div className="relative">
+                            <ContactForm />
+                        </div>
 
                         {/* Industrial Accent Line */}
-                        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-green/60 to-transparent" />
+                        <div className="sticky bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-brand-green to-transparent z-50" />
                     </motion.div>
                 </motion.div>
             )}
