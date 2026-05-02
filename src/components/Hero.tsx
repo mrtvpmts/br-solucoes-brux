@@ -32,12 +32,12 @@ export default function Hero() {
                                 <motion.span className="text-brand-green font-black uppercase tracking-[0.3em] text-[8px] mb-1 block drop-shadow-sm">
                                     Performance Industrial
                                 </motion.span>
-                                <h1 className="text-base md:text-7xl font-black text-white uppercase italic leading-[1.1] mb-2 drop-shadow-2xl">
-                                    Produtos <br />
-                                    Concentrados <br />
+                                <h1 className="text-lg md:text-7xl font-black uppercase italic leading-[1.2] mb-4 drop-shadow-2xl">
+                                    <span className="text-[#1a1a1a] md:text-white">Produtos <br />
+                                    Concentrados</span> <br />
                                     <span className="text-brand-green">Para</span> <br />
-                                    Limpeza <br />
-                                    Profissional
+                                    <span className="text-white">Limpeza <br />
+                                    Profissional</span>
                                 </h1>
                             </motion.div>
                         </div>
