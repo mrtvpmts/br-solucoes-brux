@@ -55,26 +55,23 @@ export default function Government() {
                 <div className="w-full flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20">
 
                     {/* Left Side: Text & Stats */}
-                    <div className="flex flex-col gap-8 text-center mx-auto">
-                        <motion.div 
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                    <div className="flex flex-col gap-8 text-center lg:text-left">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="space-y-6 md:space-y-8 text-center max-w-2xl mx-auto"
+                            className="space-y-6"
                         >
-                            <div>
-                                <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase italic tracking-tight leading-tight">
-                                    SOLUÇÕES PARA O <span className="text-brand-green">SETOR PÚBLICO</span>
-                                </h2>
-                                <p className="text-lg text-gray-600 leading-relaxed">
-                                    Nossa linha de produtos atende rigorosamente aos padrões de exigência de órgãos públicos, 
-                                    garantindo máxima eficiência em grandes volumes com o melhor custo-benefício do mercado.
-                                </p>
-                            </div>
+                            <h3 className="text-lg md:text-3xl font-black text-brand-dark leading-tight uppercase">
+                                Atendimento para <span className="text-brand-green">Órgãos Públicos</span>.
+                            </h3>
+                            <p className="text-brand-dark/70 text-sm md:text-lg font-medium leading-relaxed max-w-xl mx-auto lg:mx-0">
+                                Produtos de alto rendimento que atendem rigorosamente às normas de segurança vigentes.
+                            </p>
                         </motion.div>
 
                         <div className="grid grid-cols-2 gap-4 border-t border-brand-dark/10 pt-6">
-                            <div className="flex flex-col items-center p-6 bg-white border border-brand-dark/5 rounded-2xl shadow-sm">
+                            <div className="flex flex-col items-center lg:items-start p-6 bg-white border border-brand-dark/5 rounded-2xl shadow-sm">
                                 <span className="text-3xl md:text-5xl font-black text-brand-green">100%</span>
                                 <span className="text-[10px] md:text-xs text-brand-dark/40 uppercase tracking-widest mt-1">Garantia</span>
                             </div>
