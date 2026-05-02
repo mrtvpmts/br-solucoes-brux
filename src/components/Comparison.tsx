@@ -38,22 +38,21 @@ export default function Comparison() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-white p-8 md:p-12 rounded-[2rem] border border-gray-100 shadow-xl flex flex-col items-center justify-center min-h-[550px] uppercase italic font-black tracking-tighter"
+                        className="bg-white p-8 md:p-12 rounded-[2rem] border border-gray-100 shadow-xl flex flex-col items-center justify-center min-h-[550px] uppercase italic font-black tracking-tighter text-center"
                     >
-                        <div className="flex flex-col text-gray-400">
-                            <p className="text-3xl md:text-5xl ml-0">PRODUTO</p>
-                            <p className="text-3xl md:text-5xl ml-16">COMUM</p>
+                        <div className="space-y-2 text-gray-400">
+                            <h3 className="text-3xl md:text-5xl">PRODUTO <br /> COMUM</h3>
                             
                             <div className="mt-8 space-y-1 text-sm md:text-xl">
-                                <p className="ml-4">O custo por litro parece baixo,</p>
-                                <p className="ml-0 text-red-400 font-bold">mas o consumo é o dobro.</p>
+                                <p>O custo por litro parece baixo,</p>
+                                <p className="text-red-400 font-bold">mas o consumo é o dobro.</p>
                             </div>
 
                             <div className="mt-8 space-y-2 text-sm md:text-lg">
-                                <p className="ml-12">Baixa concentração</p>
-                                <p className="ml-0">Compra semanal</p>
-                                <p className="ml-6">Custo por litro que engana</p>
-                                <p className="ml-0 text-red-400/70">Resultados inconsistentes</p>
+                                <p>Baixa concentração</p>
+                                <p>Compra semanal</p>
+                                <p>Custo por litro que engana</p>
+                                <p className="text-red-400/70">Resultados inconsistentes</p>
                             </div>
                         </div>
                     </motion.div>
@@ -63,22 +62,22 @@ export default function Comparison() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-brand-dark p-8 md:p-12 rounded-[2rem] shadow-2xl flex flex-col items-center justify-center min-h-[550px] relative overflow-hidden uppercase italic font-black tracking-tighter"
+                        className="bg-brand-dark p-8 md:p-12 rounded-[2rem] shadow-2xl flex flex-col items-center justify-center min-h-[550px] relative overflow-hidden uppercase italic font-black tracking-tighter text-center"
                     >
-                        <div className="relative z-10 flex flex-col">
-                            <p className="text-white text-3xl md:text-5xl ml-0">PRODUTOS</p>
-                            <p className="text-brand-green text-4xl md:text-7xl ml-16 md:ml-24 leading-none">BRUX</p>
+                        <div className="relative z-10 space-y-2">
+                            <h3 className="text-white text-3xl md:text-5xl">PRODUTOS</h3>
+                            <h3 className="text-brand-green text-4xl md:text-7xl leading-none">BRUX</h3>
                             
-                            <div className="text-brand-green mt-10 space-y-1 text-sm md:text-xl">
-                                <p className="ml-6">Investimento inteligente:</p>
-                                <p className="ml-0 underline decoration-2 underline-offset-4">menos produto, mais resultado.</p>
+                            <div className="text-brand-green mt-10 space-y-1 text-sm md:text-xl italic">
+                                <p>Investimento inteligente:</p>
+                                <p className="underline decoration-2 underline-offset-4">menos produto, mais resultado.</p>
                             </div>
 
                             <div className="text-white mt-10 space-y-3 text-sm md:text-lg">
-                                <p className="ml-16">Alta concentração</p>
-                                <p className="ml-0">Compra mensal ou trimestral</p>
-                                <p className="ml-8 text-brand-green">Economia real de até 70%</p>
-                                <p className="ml-0">Padrão profissional de limpeza</p>
+                                <p>Alta concentração</p>
+                                <p>Compra mensal ou trimestral</p>
+                                <p className="text-brand-green">Economia real de até 70%</p>
+                                <p>Padrão profissional de limpeza</p>
                             </div>
                         </div>
 
