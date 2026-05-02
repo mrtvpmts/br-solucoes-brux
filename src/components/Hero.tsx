@@ -22,17 +22,20 @@ export default function Hero() {
                 <div className="absolute inset-0 flex items-center">
                     <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-2 items-center">
 
-                        {/* THE CONTENT - Ajustado para não cobrir o escudo no mobile */}
-                        <div className="space-y-4 md:space-y-8 pt-20 pb-10 md:pt-0 md:-mt-12">
+                        {/* THE CONTENT - Travado na esquerda e mais baixo para liberar o escudo */}
+                        <div className="space-y-4 md:space-y-8 pt-32 pb-10 md:pt-0 md:-mt-12 max-w-[85%] md:max-w-none text-left">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8 }}
-                                className="space-y-1 md:space-y-3"
+                                transition={{ delay: 0.2 }}
                             >
-                                <h1 className="text-[1.8rem] sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-black text-[#1a1a1a] tracking-tight uppercase leading-[1.1]">
-                                    Produtos Concentrados <br className="hidden md:block" />
-                                    para Limpeza Profissional
+                                <motion.span className="text-brand-green font-black uppercase tracking-[0.3em] text-xs mb-4 block">
+                                    Performance Industrial
+                                </motion.span>
+                                <h1 className="text-3xl md:text-7xl font-black text-brand-dark uppercase italic leading-[0.9] mb-4">
+                                    Produtos <br />
+                                    Concentrados <span className="text-brand-green">Para</span> <br />
+                                    Limpeza Profissional
                                 </h1>
 
                                 <div className="flex flex-wrap items-center gap-2 md:gap-3 text-[9px] md:text-[11px] font-bold text-black/60 tracking-wider uppercase">
