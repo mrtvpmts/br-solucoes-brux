@@ -57,21 +57,21 @@ export default function Comparison() {
                         />
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start text-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start text-left">
                         {/* LEFT: COMMON PRODUCT DETAILS */}
                         <motion.div 
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            className="px-4 md:px-8 flex flex-col items-center"
+                            className="px-4 md:px-8 flex flex-col items-start"
                         >
                             <h3 className="text-xl font-black text-brand-dark/40 uppercase italic mb-4">Produto Comum</h3>
                             <p className="text-brand-dark/50 font-bold mb-6">
                                 O custo por litro parece baixo, mas o consumo é o dobro.
                             </p>
-                            <ul className="space-y-4 text-center">
+                            <ul className="space-y-4">
                                 {commonProduct.map((item, i) => (
-                                    <li key={i} className="flex flex-col items-center gap-1 text-brand-dark/60 font-bold text-sm">
-                                        <X className="text-red-500" size={18} strokeWidth={3} />
+                                    <li key={i} className="flex gap-3 text-brand-dark/60 font-bold text-sm">
+                                        <X className="text-red-500 mt-1" size={18} strokeWidth={3} />
                                         {item}
                                     </li>
                                 ))}
@@ -82,16 +82,16 @@ export default function Comparison() {
                         <motion.div 
                             initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            className="px-4 md:px-8 flex flex-col items-center"
+                            className="px-4 md:px-8 flex flex-col items-start"
                         >
                             <h3 className="text-xl font-black text-brand-green uppercase italic mb-4">Produtos BRUX</h3>
                             <p className="text-brand-green font-bold mb-6">
                                 Investimento inteligente: menos produto, mais resultado.
                             </p>
-                            <ul className="space-y-4 mb-10 text-center">
+                            <ul className="space-y-4 mb-10">
                                 {bruxProduct.map((item, i) => (
-                                    <li key={i} className="flex flex-col items-center gap-1 text-brand-dark/80 font-bold text-sm">
-                                        <Check className="text-brand-green" size={18} strokeWidth={3} />
+                                    <li key={i} className="flex gap-3 text-brand-dark/80 font-bold text-sm">
+                                        <Check className="text-brand-green mt-1" size={18} strokeWidth={3} />
                                         {item}
                                     </li>
                                 ))}

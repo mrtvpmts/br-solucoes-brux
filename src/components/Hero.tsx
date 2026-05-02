@@ -22,8 +22,8 @@ export default function Hero() {
                 <div className="absolute inset-0 flex items-center">
                     <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-2 items-center">
  
-                        {/* THE CONTENT - Centralizado total no mobile */}
-                        <div className="space-y-2 md:space-y-6 mx-auto md:ml-0 max-w-[80%] md:max-w-none text-center md:text-left">
+                        {/* THE CONTENT - Centralizado apenas verticalmente, alinhado à esquerda */}
+                        <div className="space-y-2 md:space-y-6 ml-0 max-w-[50%] md:max-w-none text-left">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
